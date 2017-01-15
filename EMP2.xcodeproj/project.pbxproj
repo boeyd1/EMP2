@@ -124,8 +124,8 @@
 			children = (
 				FF72786A1E2BCC2700A1340E /* EMP2.entitlements */,
 				FF7278361E2BCBBE00A1340E /* Assets.xcassets */,
-				FF72786F1E2BCE4000A1340E /* Others */,
 				FF72786E1E2BCE0A00A1340E /* Layout */,
+				FF72786F1E2BCE4000A1340E /* Others */,
 				FF7278711E2BCE5C00A1340E /* Models */,
 				FF7278721E2BCE6F00A1340E /* Controllers */,
 				FF72786D1E2BCDFD00A1340E /* Supporting Files */,
@@ -154,9 +154,9 @@
 		FF72786F1E2BCE4000A1340E /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				FF7278701E2BCE4C00A1340E /* Helpers */,
 				FF7278351E2BCBBE00A1340E /* AppDelegate.swift */,
 				FF7278441E2BCBBE00A1340E /* MainViewController.swift */,
+				FF7278701E2BCE4C00A1340E /* Helpers */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -189,9 +189,9 @@
 		FF7278721E2BCE6F00A1340E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FF7278741E2BCE8A00A1340E /* Customer Storyboard */,
-				FF7278751E2BCE9400A1340E /* Merchant Storyboard */,
 				FF7278731E2BCE7F00A1340E /* Login & Signup Screens */,
+				FF7278751E2BCE9400A1340E /* Merchant Storyboard */,
+				FF7278741E2BCE8A00A1340E /* Customer Storyboard */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
