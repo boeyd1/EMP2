@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		748DA5C7179E012FB2F6EAA0 /* Pods_EMP2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87089779C9CB2D16E00F5B0C /* Pods_EMP2.framework */; };
+		FF7278501E2BCBBE00A1340E /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278341E2BCBBE00A1340E /* ActivityIndicator.swift */; };
+		FF7278511E2BCBBE00A1340E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278351E2BCBBE00A1340E /* AppDelegate.swift */; };
+		FF7278521E2BCBBE00A1340E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF7278361E2BCBBE00A1340E /* Assets.xcassets */; };
+		FF7278531E2BCBBE00A1340E /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278371E2BCBBE00A1340E /* AuthProvider.swift */; };
+		FF7278541E2BCBBE00A1340E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF7278381E2BCBBE00A1340E /* LaunchScreen.storyboard */; };
+		FF7278551E2BCBBE00A1340E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF72783A1E2BCBBE00A1340E /* Main.storyboard */; };
+		FF7278561E2BCBBE00A1340E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72783C1E2BCBBE00A1340E /* Constants.swift */; };
+		FF7278571E2BCBBE00A1340E /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72783D1E2BCBBE00A1340E /* Customer.swift */; };
+		FF7278581E2BCBBE00A1340E /* CustomerMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72783E1E2BCBBE00A1340E /* CustomerMainViewController.swift */; };
+		FF7278591E2BCBBE00A1340E /* DBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72783F1E2BCBBE00A1340E /* DBProvider.swift */; };
+		FF72785A1E2BCBBE00A1340E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF7278401E2BCBBE00A1340E /* Info.plist */; };
+		FF72785B1E2BCBBE00A1340E /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278411E2BCBBE00A1340E /* Inventory.swift */; };
+		FF72785C1E2BCBBE00A1340E /* InventoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278421E2BCBBE00A1340E /* InventoryCollectionViewCell.swift */; };
+		FF72785D1E2BCBBE00A1340E /* InventoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278431E2BCBBE00A1340E /* InventoryCollectionViewController.swift */; };
+		FF72785E1E2BCBBE00A1340E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278441E2BCBBE00A1340E /* MainViewController.swift */; };
+		FF72785F1E2BCBBE00A1340E /* Merchant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278451E2BCBBE00A1340E /* Merchant.swift */; };
+		FF7278601E2BCBBE00A1340E /* MerchantAllChatsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278461E2BCBBE00A1340E /* MerchantAllChatsVC.swift */; };
+		FF7278611E2BCBBE00A1340E /* MerchantChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278471E2BCBBE00A1340E /* MerchantChatTableViewCell.swift */; };
+		FF7278621E2BCBBE00A1340E /* MerchantMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278481E2BCBBE00A1340E /* MerchantMainViewController.swift */; };
+		FF7278631E2BCBBE00A1340E /* MerchantSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278491E2BCBBE00A1340E /* MerchantSettingsViewController.swift */; };
+		FF7278641E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784A1E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift */; };
+		FF7278651E2BCBBE00A1340E /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784B1E2BCBBE00A1340E /* PhotoTakingHelper.swift */; };
+		FF7278661E2BCBBE00A1340E /* RegisterNewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784C1E2BCBBE00A1340E /* RegisterNewUserViewController.swift */; };
+		FF7278671E2BCBBE00A1340E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784D1E2BCBBE00A1340E /* SignInViewController.swift */; };
+		FF7278681E2BCBBE00A1340E /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784E1E2BCBBE00A1340E /* SimpleAlert.swift */; };
+		FF7278691E2BCBBE00A1340E /* SpecificInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784F1E2BCBBE00A1340E /* SpecificInventoryViewController.swift */; };
+		FF72786C1E2BCD9600A1340E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF72786B1E2BCD9600A1340E /* GoogleService-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5285EA3BF87C60776B8867A3 /* Pods-EMP2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMP2.release.xcconfig"; path = "Pods/Target Support Files/Pods-EMP2/Pods-EMP2.release.xcconfig"; sourceTree = "<group>"; };
+		87089779C9CB2D16E00F5B0C /* Pods_EMP2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EMP2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB21792D38F94E3A22415829 /* Pods-EMP2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMP2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EMP2/Pods-EMP2.debug.xcconfig"; sourceTree = "<group>"; };
+		FF72781E1E2BCB4600A1340E /* EMP2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EMP2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF7278341E2BCBBE00A1340E /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		FF7278351E2BCBBE00A1340E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FF7278361E2BCBBE00A1340E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF7278371E2BCBBE00A1340E /* AuthProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		FF7278391E2BCBBE00A1340E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FF72783B1E2BCBBE00A1340E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FF72783C1E2BCBBE00A1340E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FF72783D1E2BCBBE00A1340E /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
+		FF72783E1E2BCBBE00A1340E /* CustomerMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerMainViewController.swift; sourceTree = "<group>"; };
+		FF72783F1E2BCBBE00A1340E /* DBProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBProvider.swift; sourceTree = "<group>"; };
+		FF7278401E2BCBBE00A1340E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF7278411E2BCBBE00A1340E /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		FF7278421E2BCBBE00A1340E /* InventoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		FF7278431E2BCBBE00A1340E /* InventoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryCollectionViewController.swift; sourceTree = "<group>"; };
+		FF7278441E2BCBBE00A1340E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FF7278451E2BCBBE00A1340E /* Merchant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Merchant.swift; sourceTree = "<group>"; };
+		FF7278461E2BCBBE00A1340E /* MerchantAllChatsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantAllChatsVC.swift; sourceTree = "<group>"; };
+		FF7278471E2BCBBE00A1340E /* MerchantChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantChatTableViewCell.swift; sourceTree = "<group>"; };
+		FF7278481E2BCBBE00A1340E /* MerchantMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantMainViewController.swift; sourceTree = "<group>"; };
+		FF7278491E2BCBBE00A1340E /* MerchantSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantSettingsViewController.swift; sourceTree = "<group>"; };
+		FF72784A1E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantSpecificChatViewController.swift; sourceTree = "<group>"; };
+		FF72784B1E2BCBBE00A1340E /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
+		FF72784C1E2BCBBE00A1340E /* RegisterNewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterNewUserViewController.swift; sourceTree = "<group>"; };
+		FF72784D1E2BCBBE00A1340E /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		FF72784E1E2BCBBE00A1340E /* SimpleAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleAlert.swift; sourceTree = "<group>"; };
+		FF72784F1E2BCBBE00A1340E /* SpecificInventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificInventoryViewController.swift; sourceTree = "<group>"; };
+		FF72786A1E2BCC2700A1340E /* EMP2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EMP2.entitlements; sourceTree = "<group>"; };
+		FF72786B1E2BCD9600A1340E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FF72781B1E2BCB4600A1340E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				748DA5C7179E012FB2F6EAA0 /* Pods_EMP2.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE4A812EE5FF34A7D9AAF66B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				87089779C9CB2D16E00F5B0C /* Pods_EMP2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F6B5B37BA66B5EBA712FC374 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CB21792D38F94E3A22415829 /* Pods-EMP2.debug.xcconfig */,
+				5285EA3BF87C60776B8867A3 /* Pods-EMP2.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FF7278151E2BCB4500A1340E = {
+			isa = PBXGroup;
+			children = (
+				FF7278331E2BCBBE00A1340E /* EMP2 */,
+				FF72781F1E2BCB4600A1340E /* Products */,
+				F6B5B37BA66B5EBA712FC374 /* Pods */,
+				BE4A812EE5FF34A7D9AAF66B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FF72781F1E2BCB4600A1340E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF72781E1E2BCB4600A1340E /* EMP2.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF7278331E2BCBBE00A1340E /* EMP2 */ = {
+			isa = PBXGroup;
+			children = (
+				FF72786A1E2BCC2700A1340E /* EMP2.entitlements */,
+				FF7278361E2BCBBE00A1340E /* Assets.xcassets */,
+				FF72786F1E2BCE4000A1340E /* Others */,
+				FF72786E1E2BCE0A00A1340E /* Layout */,
+				FF7278711E2BCE5C00A1340E /* Models */,
+				FF7278721E2BCE6F00A1340E /* Controllers */,
+				FF72786D1E2BCDFD00A1340E /* Supporting Files */,
+			);
+			path = EMP2;
+			sourceTree = "<group>";
+		};
+		FF72786D1E2BCDFD00A1340E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FF72786B1E2BCD9600A1340E /* GoogleService-Info.plist */,
+				FF7278401E2BCBBE00A1340E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FF72786E1E2BCE0A00A1340E /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				FF7278381E2BCBBE00A1340E /* LaunchScreen.storyboard */,
+				FF72783A1E2BCBBE00A1340E /* Main.storyboard */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		FF72786F1E2BCE4000A1340E /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				FF7278701E2BCE4C00A1340E /* Helpers */,
+				FF7278351E2BCBBE00A1340E /* AppDelegate.swift */,
+				FF7278441E2BCBBE00A1340E /* MainViewController.swift */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
+		FF7278701E2BCE4C00A1340E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FF7278341E2BCBBE00A1340E /* ActivityIndicator.swift */,
+				FF7278371E2BCBBE00A1340E /* AuthProvider.swift */,
+				FF72783F1E2BCBBE00A1340E /* DBProvider.swift */,
+				FF72784B1E2BCBBE00A1340E /* PhotoTakingHelper.swift */,
+				FF72784E1E2BCBBE00A1340E /* SimpleAlert.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		FF7278711E2BCE5C00A1340E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FF72783C1E2BCBBE00A1340E /* Constants.swift */,
+				FF72783D1E2BCBBE00A1340E /* Customer.swift */,
+				FF7278411E2BCBBE00A1340E /* Inventory.swift */,
+				FF7278421E2BCBBE00A1340E /* InventoryCollectionViewCell.swift */,
+				FF7278451E2BCBBE00A1340E /* Merchant.swift */,
+				FF7278471E2BCBBE00A1340E /* MerchantChatTableViewCell.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		FF7278721E2BCE6F00A1340E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FF7278741E2BCE8A00A1340E /* Customer Storyboard */,
+				FF7278751E2BCE9400A1340E /* Merchant Storyboard */,
+				FF7278731E2BCE7F00A1340E /* Login & Signup Screens */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		FF7278731E2BCE7F00A1340E /* Login & Signup Screens */ = {
+			isa = PBXGroup;
+			children = (
+				FF72784C1E2BCBBE00A1340E /* RegisterNewUserViewController.swift */,
+				FF72784D1E2BCBBE00A1340E /* SignInViewController.swift */,
+			);
+			name = "Login & Signup Screens";
+			sourceTree = "<group>";
+		};
+		FF7278741E2BCE8A00A1340E /* Customer Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				FF72783E1E2BCBBE00A1340E /* CustomerMainViewController.swift */,
+			);
+			name = "Customer Storyboard";
+			sourceTree = "<group>";
+		};
+		FF7278751E2BCE9400A1340E /* Merchant Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				FF7278481E2BCBBE00A1340E /* MerchantMainViewController.swift */,
+				FF72787A1E2BCED100A1340E /* Notifications */,
+				FF7278791E2BCECC00A1340E /* Analytics */,
+				FF7278761E2BCEB200A1340E /* Inventory */,
+				FF7278771E2BCEC000A1340E /* Chat */,
+				FF7278781E2BCEC600A1340E /* Settings */,
+			);
+			name = "Merchant Storyboard";
+			sourceTree = "<group>";
+		};
+		FF7278761E2BCEB200A1340E /* Inventory */ = {
+			isa = PBXGroup;
+			children = (
+				FF7278431E2BCBBE00A1340E /* InventoryCollectionViewController.swift */,
+				FF72784F1E2BCBBE00A1340E /* SpecificInventoryViewController.swift */,
+			);
+			name = Inventory;
+			sourceTree = "<group>";
+		};
+		FF7278771E2BCEC000A1340E /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				FF7278461E2BCBBE00A1340E /* MerchantAllChatsVC.swift */,
+				FF72784A1E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
+		FF7278781E2BCEC600A1340E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FF7278491E2BCBBE00A1340E /* MerchantSettingsViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		FF7278791E2BCECC00A1340E /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		FF72787A1E2BCED100A1340E /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FF72781D1E2BCB4600A1340E /* EMP2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF7278301E2BCB4600A1340E /* Build configuration list for PBXNativeTarget "EMP2" */;
+			buildPhases = (
+				6268183734217D67470500B9 /* [CP] Check Pods Manifest.lock */,
+				FF72781A1E2BCB4600A1340E /* Sources */,
+				FF72781B1E2BCB4600A1340E /* Frameworks */,
+				FF72781C1E2BCB4600A1340E /* Resources */,
+				0C425D5A27B3B3FEA61E56E5 /* [CP] Embed Pods Frameworks */,
+				BC69A5E2B37C8FC76B321A1E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EMP2;
+			productName = EMP2;
+			productReference = FF72781E1E2BCB4600A1340E /* EMP2.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FF7278161E2BCB4500A1340E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = DominicBoey;
+				TargetAttributes = {
+					FF72781D1E2BCB4600A1340E = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = KW256FW74Z;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = FF7278191E2BCB4500A1340E /* Build configuration list for PBXProject "EMP2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FF7278151E2BCB4500A1340E;
+			productRefGroup = FF72781F1E2BCB4600A1340E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FF72781D1E2BCB4600A1340E /* EMP2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FF72781C1E2BCB4600A1340E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF72785A1E2BCBBE00A1340E /* Info.plist in Resources */,
+				FF7278551E2BCBBE00A1340E /* Main.storyboard in Resources */,
+				FF72786C1E2BCD9600A1340E /* GoogleService-Info.plist in Resources */,
+				FF7278521E2BCBBE00A1340E /* Assets.xcassets in Resources */,
+				FF7278541E2BCBBE00A1340E /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0C425D5A27B3B3FEA61E56E5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EMP2/Pods-EMP2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6268183734217D67470500B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BC69A5E2B37C8FC76B321A1E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EMP2/Pods-EMP2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FF72781A1E2BCB4600A1340E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF72785B1E2BCBBE00A1340E /* Inventory.swift in Sources */,
+				FF7278631E2BCBBE00A1340E /* MerchantSettingsViewController.swift in Sources */,
+				FF72785E1E2BCBBE00A1340E /* MainViewController.swift in Sources */,
+				FF7278621E2BCBBE00A1340E /* MerchantMainViewController.swift in Sources */,
+				FF7278581E2BCBBE00A1340E /* CustomerMainViewController.swift in Sources */,
+				FF7278531E2BCBBE00A1340E /* AuthProvider.swift in Sources */,
+				FF7278651E2BCBBE00A1340E /* PhotoTakingHelper.swift in Sources */,
+				FF7278601E2BCBBE00A1340E /* MerchantAllChatsVC.swift in Sources */,
+				FF7278671E2BCBBE00A1340E /* SignInViewController.swift in Sources */,
+				FF7278571E2BCBBE00A1340E /* Customer.swift in Sources */,
+				FF7278591E2BCBBE00A1340E /* DBProvider.swift in Sources */,
+				FF7278611E2BCBBE00A1340E /* MerchantChatTableViewCell.swift in Sources */,
+				FF72785D1E2BCBBE00A1340E /* InventoryCollectionViewController.swift in Sources */,
+				FF7278511E2BCBBE00A1340E /* AppDelegate.swift in Sources */,
+				FF72785C1E2BCBBE00A1340E /* InventoryCollectionViewCell.swift in Sources */,
+				FF7278641E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift in Sources */,
+				FF7278501E2BCBBE00A1340E /* ActivityIndicator.swift in Sources */,
+				FF7278661E2BCBBE00A1340E /* RegisterNewUserViewController.swift in Sources */,
+				FF7278681E2BCBBE00A1340E /* SimpleAlert.swift in Sources */,
+				FF7278691E2BCBBE00A1340E /* SpecificInventoryViewController.swift in Sources */,
+				FF7278561E2BCBBE00A1340E /* Constants.swift in Sources */,
+				FF72785F1E2BCBBE00A1340E /* Merchant.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FF7278381E2BCBBE00A1340E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF7278391E2BCBBE00A1340E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FF72783A1E2BCBBE00A1340E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF72783B1E2BCBBE00A1340E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FF72782E1E2BCB4600A1340E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FF72782F1E2BCB4600A1340E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FF7278311E2BCB4600A1340E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB21792D38F94E3A22415829 /* Pods-EMP2.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EMP2/EMP2.entitlements;
+				DEVELOPMENT_TEAM = KW256FW74Z;
+				INFOPLIST_FILE = EMP2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = DominicBoey.EMP2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		FF7278321E2BCB4600A1340E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5285EA3BF87C60776B8867A3 /* Pods-EMP2.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EMP2/EMP2.entitlements;
+				DEVELOPMENT_TEAM = KW256FW74Z;
+				INFOPLIST_FILE = EMP2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = DominicBoey.EMP2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FF7278191E2BCB4500A1340E /* Build configuration list for PBXProject "EMP2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF72782E1E2BCB4600A1340E /* Debug */,
+				FF72782F1E2BCB4600A1340E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF7278301E2BCB4600A1340E /* Build configuration list for PBXNativeTarget "EMP2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF7278311E2BCB4600A1340E /* Debug */,
+				FF7278321E2BCB4600A1340E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FF7278161E2BCB4500A1340E /* Project object */;
+}
