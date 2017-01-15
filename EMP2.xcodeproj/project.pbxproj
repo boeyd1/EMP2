@@ -35,6 +35,7 @@
 		FF7278681E2BCBBE00A1340E /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784E1E2BCBBE00A1340E /* SimpleAlert.swift */; };
 		FF7278691E2BCBBE00A1340E /* SpecificInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784F1E2BCBBE00A1340E /* SpecificInventoryViewController.swift */; };
 		FF72786C1E2BCD9600A1340E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF72786B1E2BCD9600A1340E /* GoogleService-Info.plist */; };
+		FF72787C1E2BD89600A1340E /* MerchantNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72787B1E2BD89600A1340E /* MerchantNotificationsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		FF72784F1E2BCBBE00A1340E /* SpecificInventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificInventoryViewController.swift; sourceTree = "<group>"; };
 		FF72786A1E2BCC2700A1340E /* EMP2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EMP2.entitlements; sourceTree = "<group>"; };
 		FF72786B1E2BCD9600A1340E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FF72787B1E2BD89600A1340E /* MerchantNotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantNotificationsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +264,7 @@
 		FF72787A1E2BCED100A1340E /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				FF72787B1E2BD89600A1340E /* MerchantNotificationsViewController.swift */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				FF7278671E2BCBBE00A1340E /* SignInViewController.swift in Sources */,
 				FF7278571E2BCBBE00A1340E /* Customer.swift in Sources */,
 				FF7278591E2BCBBE00A1340E /* DBProvider.swift in Sources */,
+				FF72787C1E2BD89600A1340E /* MerchantNotificationsViewController.swift in Sources */,
 				FF7278611E2BCBBE00A1340E /* MerchantChatTableViewCell.swift in Sources */,
 				FF72785D1E2BCBBE00A1340E /* InventoryCollectionViewController.swift in Sources */,
 				FF7278511E2BCBBE00A1340E /* AppDelegate.swift in Sources */,
