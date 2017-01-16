@@ -9,11 +9,12 @@
 import UIKit
 import Firebase
 import OneSignal
+import UserNotifications
 
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     private let oneSignalAppId = "1cfdea0d-4138-4f03-b59c-9982f4c8638e"
     
@@ -21,23 +22,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-
-        OneSignal.initWithLaunchOptions(launchOptions, appId: oneSignalAppId) { (result) in
+        if #available(iOS 10.0, *) {
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
             
-            // This block gets called when the user reacts to a notification received
-            
-            let payload = result.notification.payload
-            let messageTitle = "OneSignal Example"
-            var fullMessage = payload.title
-            
-            //Try to fetch the action selected
-            if let additionalData = payload.additionalData && actionSelected = additionalData["actionSelected"] as? String {
-                fullMessage =  fullMessage + "\nPressed ButtonId:\(actionSelected)"
-            }
-            
-            let alertView = UIAlertView(title: messageTitle, message: fullMessage, delegate: nil, cancelButtonTitle: "Close")
-            alertView.show()
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
         }
+        
+        application.registerForRemoteNotifications()
+        
+        
+        OneSignal.initWithLaunchOptions(launchOptions, appId: oneSignalAppId, handleNotificationReceived: { (notification) in
+            print("Received Notification - \(notification?.payload.notificationID)")
+            }, handleNotificationAction: { (result) in
+                
+                // This block gets called when the user reacts to a notification received
+                let payload = result?.notification.payload
+                var fullMessage = payload?.title
+                
+                //Try to fetch the action selected
+                if let additionalData = payload?.additionalData {
+                    let actionSelected = additionalData["actionSelected"] as? String
+                        fullMessage =  fullMessage! + "\nPressed ButtonId:\(actionSelected)"
+                    
+                }
+                print(fullMessage)
+            }, settings: [kOSSettingsKeyAutoPrompt : true, kOSSettingsKeyInFocusDisplayOption : OSNotificationDisplayType.notification.rawValue])
+        
         
         FIRApp.configure()
         return true

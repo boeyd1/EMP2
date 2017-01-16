@@ -89,6 +89,29 @@ class DBProvider {
         return storageRef.child(Constants.VIDEO_STORAGE)
     }
     
+    func updateOneSignalUserId(isMerchant: Bool, id: String){
+        if isMerchant{
+            let dataForMerchantRef: Dictionary<String, Any> = [Constants.ONE_SIGNAL_UID: id]
+            merchantsRef.child(AuthProvider.Instance.userID()).updateChildValues(dataForMerchantRef)
+            
+        }else{
+            let dataForCustomerRef: Dictionary<String, Any> = [Constants.ONE_SIGNAL_UID: id]
+            customersRef.child(AuthProvider.Instance.userID()).updateChildValues(dataForCustomerRef)
+        }
+    }
+    
+    func updateOneSignalPushToken(isMerchant: Bool, token: String){
+        if isMerchant{
+            let dataForMerchantRef: Dictionary<String, Any> = [Constants.ONE_SIGNAL_TOKEN: token]
+            merchantsRef.child(AuthProvider.Instance.userID()).updateChildValues(dataForMerchantRef)
+            
+        }else{
+            let dataForCustomerRef: Dictionary<String, Any> = [Constants.ONE_SIGNAL_TOKEN: token]
+            customersRef.child(AuthProvider.Instance.userID()).updateChildValues(dataForCustomerRef)
+        }
+
+    }
+    
     func createInventory(senderID: String, shopName: String, name: String, description: String, price: String, quantity: String,url: String){
         
         let dataForInvRef: Dictionary<String, Any> = [Constants.NAME: name, Constants.SENDER_ID: senderID, Constants.SHOP_NAME: shopName, Constants.DESCRIPTION: description, Constants.PRICE: price, Constants.QUANTITY: quantity, Constants.URL: url]

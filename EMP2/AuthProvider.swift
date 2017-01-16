@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseAuth
+import OneSignal
 
 typealias LoginHandler = (_ msg: String?) -> Void
 
@@ -39,6 +40,7 @@ class AuthProvider {
                 self.handleErrors(err: error as! NSError, loginHandler: loginHandler)
             }else{
                 loginHandler?(nil)
+                
             }
         })
     }

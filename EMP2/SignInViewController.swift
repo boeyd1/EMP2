@@ -8,9 +8,10 @@
 
 import UIKit
 import FirebaseAuth
+import OneSignal
 
 class SignInViewController: UIViewController {
-
+    
     
     private let SHOW_MERCHANT_STORYBOARD = "showMerchantStoryBoard"
     private let SHOW_CUSTOMER_STORYBOARD = "showCustomerStoryBoard"
@@ -28,21 +29,21 @@ class SignInViewController: UIViewController {
     
     
     @IBAction func unwindToSignInVC(segue: UIStoryboardSegue){}
-
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.hideKeyboard()
-
+        
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if AuthProvider.Instance.isLoggedIn() {
             
-           if isUserMerchant(email: (FIRAuth.auth()?.currentUser!.email)!) {
+            if isUserMerchant(email: (FIRAuth.auth()?.currentUser!.email)!) {
                 AuthProvider.Instance.currentUserIsMerchant = true
                 performSegue(withIdentifier: SHOW_MERCHANT_STORYBOARD, sender: nil)
             }else{
@@ -53,7 +54,7 @@ class SignInViewController: UIViewController {
             DBProvider.Instance.getUserData(id: AuthProvider.Instance.userID())
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -61,7 +62,7 @@ class SignInViewController: UIViewController {
     
     //actions
     @IBAction func loginButtonTapped(_ sender: AnyObject) {
-       
+        
         ActivityIndicator.startAnimating()
         
         pseudoEmail = "\(userOrMerchantSwitch.isOn)" + emailTF.text!
@@ -95,7 +96,7 @@ class SignInViewController: UIViewController {
             
         }
     }
-
+    
     func isUserMerchant(email: String) -> Bool {
         let index = email.index(email.startIndex, offsetBy: 4)
         
@@ -103,7 +104,7 @@ class SignInViewController: UIViewController {
         
         return checkUserType == USER_IS_MERCHANT
         
-
+        
     }
     
     private func alertUser(title: String, message: String) {
@@ -114,10 +115,38 @@ class SignInViewController: UIViewController {
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == SHOW_MERCHANT_STORYBOARD {
+            
+            OneSignal.idsAvailable({ (userId, pushToken) in
+                print("UserId:%@", userId)
+                DBProvider.Instance.updateOneSignalUserId(isMerchant: true, id: userId!)
+                if (pushToken != nil) {
+                    print("pushToken:%@", pushToken)
+                    DBProvider.Instance.updateOneSignalPushToken(isMerchant: true, token: pushToken!)
+                    
+                }
+            })
+        }else if segue.identifier == SHOW_CUSTOMER_STORYBOARD {
+            OneSignal.idsAvailable({ (userId, pushToken) in
+                print("UserId:%@", userId)
+                DBProvider.Instance.updateOneSignalUserId(isMerchant: false, id: userId!)
+                if (pushToken != nil) {
+                    print("pushToken:%@", pushToken)
+                    DBProvider.Instance.updateOneSignalPushToken(isMerchant: false, token: pushToken!)
+                    
+                }
+            })
+        }
+    }
+    
+    
 }
 
 extension SignInViewController {
+    
     
     func hideKeyboard()
     {
