@@ -16,6 +16,8 @@ import FirebaseMessaging
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    static let oneSignalAppId = "1cfdea0d-4138-4f03-b59c-9982f4c8638e"
+    
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
     

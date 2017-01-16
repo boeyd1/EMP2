@@ -14,5 +14,6 @@ pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'Firebase/Messaging'
 pod 'JSQMessagesViewController'
+pod 'OneSignal'
 
 end
