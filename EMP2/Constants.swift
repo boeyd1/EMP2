@@ -12,11 +12,15 @@ class Constants {
     
     //DBProvider
     
-    static let MERCHANTS = "Merchants"
-    static let CUSTOMERS = "Customers"
+   
     
     static let ONE_SIGNAL_UID = "One_signal_userId"
     static let ONE_SIGNAL_TOKEN = "One_signal_token"
+    
+    static let MERCHANTS = "Merchants"
+    static let CUSTOMERS = "Customers"
+    static let FOLLOWERS = "followers"
+    static let FOLLOWING = "following"
     
     static let INVENTORIES = "Inventories"
     static let PRICE = "price"
@@ -28,6 +32,7 @@ class Constants {
     static let IMAGE_STORAGE = "Image_Storage"
     static let VIDEO_STORAGE = "Video_Storage"
     
+    //Registration fields
     static let SALUTATION = "salutation"
     static let PSEUDO_EMAIL = "pseudo_email"
     static let ACTUAL_EMAIL = "actual_email"

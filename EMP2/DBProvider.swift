@@ -35,6 +35,11 @@ protocol FetchInventoryData: class {
     
 }
 
+protocol FetchFollowersData: class {
+    
+    func followersIdReceived(ids: [String])
+}
+
 
 class DBProvider {
     
@@ -46,6 +51,7 @@ class DBProvider {
     weak var merchantsDelegate: FetchMerchantData?
     weak var userDelegate: FetchCurrentUserData?
     weak var inventoryDelegate: FetchInventoryData?
+    weak var followersDelegate: FetchFollowersData?
     
     private init() {}
     
@@ -212,7 +218,7 @@ class DBProvider {
                             let addressPostalCode = merchantData[Constants.SHOP_ADDRESS_POST_CODE] as! String
                             
                             
-                            let newMerchant = Merchant(id: id, salutation: salutation, name: name, email: actualEmail, mobileNum: mobileNum, shopName: shopName, shopContactNum: shopContactNum, addressStreet: addressStreet, addressBlk: addressBlk, addressUnit: addressUnit, addressPostalCode: addressPostalCode, inventory: nil)
+                            let newMerchant = Merchant(id: id, salutation: salutation, name: name, email: actualEmail, mobileNum: mobileNum, shopName: shopName, shopContactNum: shopContactNum, addressStreet: addressStreet, addressBlk: addressBlk, addressUnit: addressUnit, addressPostalCode: addressPostalCode /*, inventory: nil*/)
                             
                             merchants.append(newMerchant)
                         }
@@ -222,6 +228,30 @@ class DBProvider {
             self.merchantsDelegate?.merchantsDataReceived(merchants: merchants)
         }   // this delegate calls the dataReceived method so that it can pass the customers from this DBProvider to the VC that extends the protocol FetchData. when the delegate above calls dataReceived, all controllers that extends the protocol FetchData will trigger the method dataReceived and be parsed the customers values from here
     }
+    
+    func getMerchantFollowersOSId(merchantId: String){
+        
+        merchantsRef.child(merchantId).child(Constants.FOLLOWERS).observe(FIRDataEventType.value) {
+            (snapshot: FIRDataSnapshot) in
+            
+            var ids = [String]()
+            
+            if let followersDict = snapshot.value as? NSDictionary {
+                
+                for (_,value) in followersDict {
+                    
+                    if let followerData = value as? NSDictionary {
+                        
+                        let id = followerData[Constants.ONE_SIGNAL_UID] as! String
+                        
+                        ids.append(id)
+                    }
+                }
+            }
+            self.followersDelegate?.followersIdReceived(ids: ids)
+        }
+    }
+    
     
     func getMerchantInventoryData(id: String){
         
@@ -292,7 +322,7 @@ class DBProvider {
                     let addressUnit = merchantData[Constants.SHOP_ADDRESS_UNIT] as! String
                     let addressPostalCode = merchantData[Constants.SHOP_ADDRESS_POST_CODE] as! String
                     
-                    let newMerchant = Merchant(id: id, salutation: salutation, name: name, email: actualEmail, mobileNum: mobileNum, shopName: shopName, shopContactNum: shopContactNum, addressStreet: addressStreet, addressBlk: addressBlk, addressUnit: addressUnit, addressPostalCode: addressPostalCode, inventory: nil)
+                    let newMerchant = Merchant(id: id, salutation: salutation, name: name, email: actualEmail, mobileNum: mobileNum, shopName: shopName, shopContactNum: shopContactNum, addressStreet: addressStreet, addressBlk: addressBlk, addressUnit: addressUnit, addressPostalCode: addressPostalCode /* , inventory: nil */)
                     
                     
                     AuthProvider.Instance.currentMerchant = newMerchant

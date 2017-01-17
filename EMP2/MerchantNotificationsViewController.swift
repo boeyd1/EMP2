@@ -7,19 +7,34 @@
 //
 
 import UIKit
+import OneSignal
 
-class MerchantNotificationsViewController: UIViewController, UITextViewDelegate {
+class MerchantNotificationsViewController: UIViewController, UITextViewDelegate, FetchFollowersData {
 
+    var followerOSIds : [String]?
+    
+    
     @IBOutlet weak var textView: UITextView!
     var placeholderLabel : UILabel!
     
     @IBOutlet weak var charLimitLabel: UILabel!
     
     @IBAction func sendButtonTapped(_ sender: AnyObject) {
+        
+        OneSignal.postNotification(["contents": ["en": textView.text], "include_player_ids": followerOSIds!])
+
+        
+        
     }
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        DBProvider.Instance.followersDelegate = self
+        
+        DBProvider.Instance.getMerchantFollowersOSId(merchantId: AuthProvider.Instance.userID())
         
         self.hideKeyboard()
         
@@ -30,6 +45,14 @@ class MerchantNotificationsViewController: UIViewController, UITextViewDelegate 
         createTextViewPlaceholder(tv: textView)
         // Do any additional setup after loading the view.
     }
+    
+    // dataReceived functions
+    
+    func followersIdReceived(ids: [String]){
+        self.followerOSIds = ids
+    }
+    
+    // appearance functions
     
     func createTextViewPlaceholder(tv: UITextView){
         
