@@ -12,7 +12,7 @@ class Constants {
     
     //DBProvider
     
-   
+    static let BIZ_CATEGORIES = ["Beauty & Fragrances", "Books & Magazines", "Clothing & Apparels", "Education", "Electronics & Accessories", "Entertainment & Media", "Financial Services & Products", "Food & Beverage", "Gifts & Flowers", "Health & Personal Care", "Nonprofit", "Pets & Animals", "Religion & Spirituality", "Sports", "Toys & Hobbies", "Travel"]
     
     static let ONE_SIGNAL_UID = "One_signal_userId"
     static let ONE_SIGNAL_TOKEN = "One_signal_token"
