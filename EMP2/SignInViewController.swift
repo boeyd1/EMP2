@@ -121,6 +121,7 @@ class SignInViewController: UIViewController {
         if segue.identifier == SHOW_MERCHANT_STORYBOARD {
             
             OneSignal.idsAvailable({ (userId, pushToken) in
+                
                 print("UserId:%@", userId)
                 DBProvider.Instance.updateOneSignalUserId(isMerchant: true, id: userId!)
                 if (pushToken != nil) {
