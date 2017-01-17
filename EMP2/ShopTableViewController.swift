@@ -23,29 +23,53 @@ class ShopTableViewController: UITableViewController {
     var storedOffsets = [Int: CGFloat]()
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.count
+        return 1
+        
+        //based on number of categories
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell1", for: indexPath)
-        
-        return cell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell1", for: indexPath)
+            
+            
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell2", for: indexPath)
+            
+            return cell
+            
+        }
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
+        if indexPath.row == 0 {
         guard let tableViewCell = cell as? TableViewCell1 else { return }
         
         tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
         tableViewCell.collectionViewOffset = storedOffsets[indexPath.row] ?? 0
+        }else{
+            guard let tableViewCell = cell as? TableViewCell2 else { return }
+            
+            tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
+            tableViewCell.collectionViewOffset = storedOffsets[indexPath.row] ?? 0
+            
+        }
     }
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
+        if indexPath.row == 0 {
         guard let tableViewCell = cell as? TableViewCell1 else { return }
         
         storedOffsets[indexPath.row] = tableViewCell.collectionViewOffset
+        }else{
+            guard let tableViewCell = cell as? TableViewCell2 else { return }
+            
+            storedOffsets[indexPath.row] = tableViewCell.collectionViewOffset
+        }
     }
 }
 
@@ -55,11 +79,16 @@ extension ShopTableViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
-        cell.backgroundColor = model[collectionView.tag][indexPath.item]
-        
-        return cell
+        if collectionView.tag == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell1", for: indexPath)
+            
+            return cell
+            
+        } else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell2", for: indexPath)
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
