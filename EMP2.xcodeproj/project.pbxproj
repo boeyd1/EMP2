@@ -18,7 +18,6 @@
 		FF7278571E2BCBBE00A1340E /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72783D1E2BCBBE00A1340E /* Customer.swift */; };
 		FF7278581E2BCBBE00A1340E /* CustomerMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72783E1E2BCBBE00A1340E /* CustomerMainViewController.swift */; };
 		FF7278591E2BCBBE00A1340E /* DBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72783F1E2BCBBE00A1340E /* DBProvider.swift */; };
-		FF72785A1E2BCBBE00A1340E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF7278401E2BCBBE00A1340E /* Info.plist */; };
 		FF72785B1E2BCBBE00A1340E /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278411E2BCBBE00A1340E /* Inventory.swift */; };
 		FF72785C1E2BCBBE00A1340E /* InventoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278421E2BCBBE00A1340E /* InventoryCollectionViewCell.swift */; };
 		FF72785D1E2BCBBE00A1340E /* InventoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278431E2BCBBE00A1340E /* InventoryCollectionViewController.swift */; };
@@ -340,7 +339,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = DominicBoey;
 				TargetAttributes = {
 					FF72781D1E2BCB4600A1340E = {
@@ -384,7 +383,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF72785A1E2BCBBE00A1340E /* Info.plist in Resources */,
 				FF7278551E2BCBBE00A1340E /* Main.storyboard in Resources */,
 				FF72786C1E2BCD9600A1340E /* GoogleService-Info.plist in Resources */,
 				FF7278521E2BCBBE00A1340E /* Assets.xcassets in Resources */,
@@ -516,6 +514,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -565,6 +564,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

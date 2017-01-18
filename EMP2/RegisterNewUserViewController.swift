@@ -170,7 +170,8 @@ class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIP
             })
             
          }else{
-           alertUser(title: "Email and Password required", message: "Please enter email and password in the text fields")
+           ActivityIndicator.stopAnimating()
+            alertUser(title: "Email and Password required", message: "Please enter email and password in the text fields")
         }
     }
     
