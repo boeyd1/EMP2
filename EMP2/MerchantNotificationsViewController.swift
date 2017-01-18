@@ -22,8 +22,6 @@ class MerchantNotificationsViewController: UIViewController, UITextViewDelegate,
     @IBAction func sendButtonTapped(_ sender: AnyObject) {
         
         OneSignal.postNotification(["contents": ["en": textView.text], "include_player_ids": followerOSIds!])
-
-        
         
     }
   

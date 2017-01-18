@@ -65,7 +65,7 @@ class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIP
             
             viewHeightConstraint.isActive = false
             regBtnToBottomConstraint.isActive = false
-            regBtnToPostCodeConstraint.isActive = false
+            regBtnToIndustryPVConstraint.isActive = false
             bizInfoToMobileConstraint.isActive = false
             
             heightConstraint = NSLayoutConstraint(item: viewOnScrollView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: screenHeight)
@@ -93,7 +93,7 @@ class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIP
             bizInfoToMobileConstraint_new?.isActive = false
             
             viewHeightConstraint.isActive = true
-            regBtnToPostCodeConstraint.isActive = true
+            regBtnToIndustryPVConstraint.isActive = true
             regBtnToBottomConstraint.isActive = true
             bizInfoToMobileConstraint.isActive = true
         }
@@ -101,7 +101,8 @@ class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIP
     
     @IBOutlet var bizInfoToMobileConstraint: NSLayoutConstraint!
     @IBOutlet var regBtnToBottomConstraint: NSLayoutConstraint!
-    @IBOutlet var regBtnToPostCodeConstraint: NSLayoutConstraint!
+    
+    @IBOutlet var regBtnToIndustryPVConstraint: NSLayoutConstraint!
     @IBOutlet var viewHeightConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {

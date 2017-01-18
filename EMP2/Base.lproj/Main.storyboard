@@ -232,7 +232,7 @@
                                 <rect key="frame" x="124.5" y="542" width="126" height="30"/>
                                 <state key="normal" title="New User Sign Up"/>
                                 <connections>
-                                    <segue destination="Fhf-jJ-DNf" kind="show" id="bhZ-Gz-lVm"/>
+                                    <action selector="signUpButtonTapped:" destination="e8B-Kb-Hag" eventType="touchUpInside" id="9lD-B0-WI3"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poppaIcon" translatesAutoresizingMaskIntoConstraints="NO" id="lJR-IL-OvM">
@@ -281,6 +281,7 @@
                         <outlet property="userOrMerchantSwitch" destination="FQP-c1-au1" id="2ak-YS-RID"/>
                         <segue destination="esz-B1-71x" kind="show" identifier="showMerchantStoryBoard" id="ACZ-WV-t1F"/>
                         <segue destination="lGk-SS-ucK" kind="show" identifier="showCustomerStoryBoard" id="5jQ-kZ-Ovm"/>
+                        <segue destination="Fhf-jJ-DNf" kind="show" identifier="showRegistrationVC" id="0vn-iV-Jbt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GtC-Uv-3Yq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -993,6 +994,9 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CzW-2t-nKb" userLabel="NameTF">
                                                 <rect key="frame" x="140" y="145.5" width="205" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="UNU-F5-RWL"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1005,6 +1009,9 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Same as above" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cFX-aj-cce" userLabel="ReEnterPasswordTF">
                                                 <rect key="frame" x="148.5" y="307.5" width="196.5" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="4Lq-jA-l2A"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -1019,6 +1026,9 @@ Password:</string>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Koe-Vz-8Ge" userLabel="MobileNumTF">
                                                 <rect key="frame" x="174.5" y="368" width="170.5" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="53d-9T-4yq"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -1032,6 +1042,7 @@ Password:</string>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mr" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aNw-zT-z89" userLabel="PickerViewTF">
                                                 <rect key="frame" x="85" y="145.5" width="50" height="30"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="CxF-RZ-ks7"/>
                                                     <constraint firstAttribute="width" constant="50" id="zVb-Ec-FkK"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
@@ -1083,6 +1094,9 @@ Password:</string>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. EMP Pte Ltd" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="631-Yy-urd" userLabel="ShopNameTF">
                                                 <rect key="frame" x="161.5" y="487" width="183.5" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="bJ4-DM-UZz"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1111,6 +1125,9 @@ Password:</string>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w62-OX-9mG" userLabel="StreetTF">
                                                 <rect key="frame" x="121.5" y="622" width="223.5" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="n1j-KB-rxR"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1125,6 +1142,7 @@ Password:</string>
                                                 <rect key="frame" x="158.5" y="655.5" width="150" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="IYQ-IG-iPB"/>
+                                                    <constraint firstAttribute="height" constant="30" id="h9G-yC-mUf"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1139,6 +1157,7 @@ Password:</string>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. #01-02" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Kf-cr-mEy" userLabel="UnitTF">
                                                 <rect key="frame" x="158.5" y="693" width="150" height="30"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="8cg-1l-UzA"/>
                                                     <constraint firstAttribute="width" constant="150" id="ZR1-ih-xFc"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
@@ -1155,6 +1174,7 @@ Password:</string>
                                                 <rect key="frame" x="168.5" y="726.5" width="140" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="140" id="JUf-2g-rV6"/>
+                                                    <constraint firstAttribute="height" constant="30" id="R5c-Vd-fAS"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1182,8 +1202,11 @@ Password:</string>
                                                     <action selector="signUpButtonTapped:" destination="Nzb-fV-lu3" eventType="touchUpInside" id="ATD-r3-iSs"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yol-R8-fiS" userLabel="MobileNumTF">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yol-R8-fiS" userLabel="ShopContactNumTF">
                                                 <rect key="frame" x="161.5" y="530.5" width="183.5" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="COZ-Xn-vYD"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -1198,6 +1221,9 @@ number:</string>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose industry" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gkc-Hs-cK5" userLabel="IndustryTF">
                                                 <rect key="frame" x="131" y="777.5" width="214" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="IdD-Wc-tRK"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1355,6 +1381,7 @@ number:</string>
                         <outlet property="pickerViewTF" destination="aNw-zT-z89" id="opl-iu-LBW"/>
                         <outlet property="postalCodeTF" destination="Upk-ky-zGd" id="7CJ-aq-P5K"/>
                         <outlet property="regBtnToBottomConstraint" destination="ire-N6-Vx5" id="s1Y-fT-49b"/>
+                        <outlet property="regBtnToIndustryPVConstraint" destination="7AY-wF-tEF" id="mva-DT-44a"/>
                         <outlet property="registerBtn" destination="NQ5-a9-zIl" id="sAG-C7-FKi"/>
                         <outlet property="repeatPasswordTF" destination="cFX-aj-cce" id="oVa-F6-Ozu"/>
                         <outlet property="salutationPV" destination="FKW-lW-C2g" id="djf-Mc-6KE"/>

@@ -15,7 +15,11 @@ class SignInViewController: UIViewController {
     
     private let SHOW_MERCHANT_STORYBOARD = "showMerchantStoryBoard"
     private let SHOW_CUSTOMER_STORYBOARD = "showCustomerStoryBoard"
+    
+    private let SHOW_REGISTRATION_VIEW = "showRegistrationVC"
+    
     private let USER_IS_MERCHANT = "true"
+    
     
     
     var pseudoEmail: String?
@@ -116,6 +120,9 @@ class SignInViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    @IBAction func signUpButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: SHOW_REGISTRATION_VIEW, sender: nil)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == SHOW_MERCHANT_STORYBOARD {
