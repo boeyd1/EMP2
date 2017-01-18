@@ -22,9 +22,11 @@ class Merchant {
     private var _address_blk = ""
     private var _address_unit = ""
     private var _address_postalCode = ""
+    private var _industry = ""
+    
    // var _inventory : [Inventory]?
     
-    init(id: String, salutation: String, name: String, email: String, mobileNum: String, shopName: String?, shopContactNum: String?, addressStreet: String?, addressBlk: String?, addressUnit: String?, addressPostalCode: String? /*, inventory: [Inventory]?*/) {
+    init(id: String, salutation: String, name: String, email: String, mobileNum: String, shopName: String?, shopContactNum: String?, addressStreet: String?, addressBlk: String?, addressUnit: String?, addressPostalCode: String?, industry: String?/*, inventory: [Inventory]?*/) {
         
         _id = id
         _salutation = salutation
@@ -38,6 +40,8 @@ class Merchant {
         _address_blk = addressBlk ?? ""
         _address_unit = addressUnit ?? ""
         _address_postalCode = addressPostalCode ?? ""
+        
+        _industry = industry ?? ""
         
        // _inventory = inventory
     }
@@ -84,6 +88,10 @@ class Merchant {
     
     var addressPostalCode: String {
         return _address_postalCode
+    }
+    
+    var industry: String {
+        return _industry
     }
     
 /*    var inventory: [Inventory]? {

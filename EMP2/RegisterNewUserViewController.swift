@@ -147,7 +147,7 @@ class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIP
                 return
             }
             
-            AuthProvider.Instance.signUp(salutation: pickerViewTF.text!, name: nameTF.text!, withEmail: pseudoEmail!, actualEmail: emailTF.text!, password: passwordTF.text!, mobileNum: mobileNumTF.text!, shopName: shopNameTF.text, shopContactNum: shopNumTF.text, shopAddSt: streetTF.text, shopAddBlk: blockTF.text, shopAddUnit: unitTF.text, shopAddPostCode: postalCodeTF.text, isMerchant: userOrMerchantSwitch.isOn, loginHandler: { (message) in
+            AuthProvider.Instance.signUp(salutation: pickerViewTF.text!, name: nameTF.text!, withEmail: pseudoEmail!, actualEmail: emailTF.text!, password: passwordTF.text!, mobileNum: mobileNumTF.text!, shopName: shopNameTF.text, shopContactNum: shopNumTF.text, shopAddSt: streetTF.text, shopAddBlk: blockTF.text, shopAddUnit: unitTF.text, shopAddPostCode: postalCodeTF.text, isMerchant: userOrMerchantSwitch.isOn, industry: industryTF.text, loginHandler: { (message) in
                 
                 ActivityIndicator.stopAnimating()
                 
@@ -272,10 +272,12 @@ class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIP
         
         if textField == self.pickerViewTF {
             self.salutationPV.isHidden = false
+            dismissKeyboard()
             
             //if you dont want the users to see the keyboard type:
         } else if textField == self.industryTF {
             self.industryPV.isHidden = false
+            dismissKeyboard()
         }
         
         textField.endEditing(true)

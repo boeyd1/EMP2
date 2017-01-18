@@ -47,7 +47,7 @@ class AuthProvider {
     
     //add function to store user info in database
     
-    func signUp(salutation: String, name: String, withEmail: String, actualEmail: String, password: String, mobileNum: String, shopName: String?, shopContactNum: String?, shopAddSt: String?, shopAddBlk: String?, shopAddUnit: String?, shopAddPostCode: String?, isMerchant: Bool, loginHandler: LoginHandler?) {
+    func signUp(salutation: String, name: String, withEmail: String, actualEmail: String, password: String, mobileNum: String, shopName: String?, shopContactNum: String?, shopAddSt: String?, shopAddBlk: String?, shopAddUnit: String?, shopAddPostCode: String?, isMerchant: Bool, industry: String?, loginHandler: LoginHandler?) {
         
         FIRAuth.auth()?.createUser(withEmail: withEmail, password: password, completion: { (user, error) in
             
@@ -73,7 +73,7 @@ class AuthProvider {
                             postalCode = postalCode.substring(from: postalCode.index(postalCode.startIndex, offsetBy: 1))
                         }
                         
-                        DBProvider.Instance.saveMerchant(withID: user!.uid, salutation: salutation, name: name, pseudoEmail: withEmail, actualEmail: actualEmail, password: password, mobileNum: mobileNum, shopName: shopName!, shopContactNum: shopContactNum!, shopAddSt: shopAddSt!, shopAddBlk: blkNum, shopAddUnit: shopAddUnit!, shopAddPostCode: postalCode)
+                        DBProvider.Instance.saveMerchant(withID: user!.uid, salutation: salutation, name: name, pseudoEmail: withEmail, actualEmail: actualEmail, password: password, mobileNum: mobileNum, shopName: shopName!, shopContactNum: shopContactNum!, shopAddSt: shopAddSt!, shopAddBlk: blkNum, shopAddUnit: shopAddUnit!, shopAddPostCode: postalCode, industry: industry!)
                     }else{
                         DBProvider.Instance.saveCustomer(withID: user!.uid, salutation: salutation, name: name, pseudoEmail: withEmail, actualEmail: actualEmail, password: password, mobileNum: mobileNum)
                     }

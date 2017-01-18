@@ -71,6 +71,10 @@ class DBProvider {
         return dbRef.child(Constants.INVENTORIES)
     }
     
+    var industriesRef: FIRDatabaseReference {
+        return dbRef.child(Constants.INDUSTRY)
+    }
+    
     var customersRef: FIRDatabaseReference {
         return dbRef.child(Constants.CUSTOMERS)
     }
@@ -133,9 +137,9 @@ class DBProvider {
         
     }
     
-    func updateInventory(senderID: String, inventoryID: String, shopName: String, name: String, description: String, price: String, quantity: String,url: String){
+    func updateInventory(merchantID: String, inventoryID: String, shopName: String, name: String, description: String, price: String, quantity: String,url: String){
         
-        let dataForInvRef: Dictionary<String, Any> = [Constants.NAME: name, Constants.SENDER_ID: senderID, Constants.SHOP_NAME: shopName, Constants.DESCRIPTION: description, Constants.PRICE: price, Constants.QUANTITY: quantity, Constants.URL: url]
+        let dataForInvRef: Dictionary<String, Any> = [Constants.NAME: name, Constants.MERCHANT_ID: merchantID, Constants.SHOP_NAME: shopName, Constants.DESCRIPTION: description, Constants.PRICE: price, Constants.QUANTITY: quantity, Constants.URL: url]
         
         let invId = inventoriesRef.child(inventoryID)
         invId.updateChildValues(dataForInvRef)
@@ -157,11 +161,28 @@ class DBProvider {
         customersRef.child(withID).setValue(data)
     }
     
-    func saveMerchant(withID: String, salutation: String, name: String, pseudoEmail: String, actualEmail: String, password: String, mobileNum: String, shopName: String, shopContactNum: String, shopAddSt: String, shopAddBlk: String, shopAddUnit: String, shopAddPostCode: String){
+    func saveMerchant(withID: String, salutation: String, name: String, pseudoEmail: String, actualEmail: String, password: String, mobileNum: String, shopName: String, shopContactNum: String, shopAddSt: String, shopAddBlk: String, shopAddUnit: String, shopAddPostCode: String, industry: String){
         
-        let data: Dictionary<String, Any> = [Constants.PSEUDO_EMAIL: pseudoEmail, Constants.ACTUAL_EMAIL: actualEmail, Constants.PASSWORD: password, Constants.SALUTATION: salutation, Constants.NAME: name, Constants.MOBILE_NUM: mobileNum, Constants.SHOP_NAME: shopName, Constants.SHOP_CONTACT_NUM: shopContactNum, Constants.SHOP_ADDRESS_STREET: shopAddSt, Constants.SHOP_ADDRESS_BLK: shopAddBlk, Constants.SHOP_ADDRESS_UNIT: shopAddUnit, Constants.SHOP_ADDRESS_POST_CODE: shopAddPostCode]
+        let data: Dictionary<String, Any> = [Constants.PSEUDO_EMAIL: pseudoEmail, Constants.ACTUAL_EMAIL: actualEmail, Constants.PASSWORD: password, Constants.SALUTATION: salutation, Constants.NAME: name, Constants.MOBILE_NUM: mobileNum, Constants.SHOP_NAME: shopName, Constants.SHOP_CONTACT_NUM: shopContactNum, Constants.SHOP_ADDRESS_STREET: shopAddSt, Constants.SHOP_ADDRESS_BLK: shopAddBlk, Constants.SHOP_ADDRESS_UNIT: shopAddUnit, Constants.SHOP_ADDRESS_POST_CODE: shopAddPostCode, Constants.INDUSTRY: industry]
         
         merchantsRef.child(withID).setValue(data)
+        updateIndustry(merchantId: withID, industry: industry)
+        
+    }
+    
+    func updateIndustry(merchantId: String, industry: String){
+        if AuthProvider.Instance.currentMerchant?.industry != nil {
+            industriesRef.child(industry).child(merchantId).removeValue(completionBlock: { (error, FIRDatabaseReference) in
+                
+                if error != nil {
+                    print("error deleting merchantId from industry data")
+                }else{
+                    print("successfully deleted")
+                }
+            })
+        }
+        let data: Dictionary<String, Any> = [Constants.MERCHANT_ID:merchantId]
+        industriesRef.child(industry).setValue(data)
     }
     
     func getCustomers() {
@@ -216,9 +237,10 @@ class DBProvider {
                             let addressBlk = merchantData[Constants.SHOP_ADDRESS_BLK] as! String
                             let addressUnit = merchantData[Constants.SHOP_ADDRESS_UNIT] as! String
                             let addressPostalCode = merchantData[Constants.SHOP_ADDRESS_POST_CODE] as! String
+                            let industry = merchantData[Constants.INDUSTRY] as! String
                             
                             
-                            let newMerchant = Merchant(id: id, salutation: salutation, name: name, email: actualEmail, mobileNum: mobileNum, shopName: shopName, shopContactNum: shopContactNum, addressStreet: addressStreet, addressBlk: addressBlk, addressUnit: addressUnit, addressPostalCode: addressPostalCode /*, inventory: nil*/)
+                            let newMerchant = Merchant(id: id, salutation: salutation, name: name, email: actualEmail, mobileNum: mobileNum, shopName: shopName, shopContactNum: shopContactNum, addressStreet: addressStreet, addressBlk: addressBlk, addressUnit: addressUnit, addressPostalCode: addressPostalCode, industry: industry /*, inventory: nil*/)
                             
                             merchants.append(newMerchant)
                         }
@@ -321,8 +343,9 @@ class DBProvider {
                     let addressBlk = merchantData[Constants.SHOP_ADDRESS_BLK] as! String
                     let addressUnit = merchantData[Constants.SHOP_ADDRESS_UNIT] as! String
                     let addressPostalCode = merchantData[Constants.SHOP_ADDRESS_POST_CODE] as! String
+                    let industry = merchantData[Constants.INDUSTRY] as! String
                     
-                    let newMerchant = Merchant(id: id, salutation: salutation, name: name, email: actualEmail, mobileNum: mobileNum, shopName: shopName, shopContactNum: shopContactNum, addressStreet: addressStreet, addressBlk: addressBlk, addressUnit: addressUnit, addressPostalCode: addressPostalCode /* , inventory: nil */)
+                    let newMerchant = Merchant(id: id, salutation: salutation, name: name, email: actualEmail, mobileNum: mobileNum, shopName: shopName, shopContactNum: shopContactNum, addressStreet: addressStreet, addressBlk: addressBlk, addressUnit: addressUnit, addressPostalCode: addressPostalCode, industry: industry /* , inventory: nil */)
                     
                     
                     AuthProvider.Instance.currentMerchant = newMerchant

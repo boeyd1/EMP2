@@ -45,8 +45,10 @@ class Constants {
     static let SHOP_ADDRESS_BLK = "shop_address_block"
     static let SHOP_ADDRESS_UNIT = "shop_address_unit"
     static let SHOP_ADDRESS_POST_CODE = "shop_address_postal_code"
+    static let INDUSTRY = "industry"
     
     static let IS_MERCHANT = "is_merchant"
+    static let MERCHANT_ID = "merchant_id"
     
     static let data = "data"
     

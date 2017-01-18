@@ -111,7 +111,7 @@ class SpecificInventoryViewController: UIViewController {
                 if err != nil {
                     //add delegate here and implement func in this class after calling storing method in dbprovider returning a possible error
                 }else {
-                    DBProvider.Instance.updateInventory(senderID: currentUserId, inventoryID: self.inventory!.id, shopName: currentShopName!, name: self.productNameTF.text!, description: self.productDescTV.text, price: self.productPriceTF.text!,quantity: self.productQuantityTF.text!, url: String(describing: metadata!.downloadURL()!))
+                    DBProvider.Instance.updateInventory(merchantID: currentUserId, inventoryID: self.inventory!.id, shopName: currentShopName!, name: self.productNameTF.text!, description: self.productDescTV.text, price: self.productPriceTF.text!,quantity: self.productQuantityTF.text!, url: String(describing: metadata!.downloadURL()!))
                     
                     SimpleAlert.Instance.create(title: "Update Success", message: "Inventory has been updated!", vc: self) {(handler) in
                         self.performSegue(withIdentifier: self.UNWIND_TO_INVENTORY_VC, sender: nil)
