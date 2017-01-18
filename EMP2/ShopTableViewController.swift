@@ -75,7 +75,9 @@ class ShopTableViewController: UITableViewController {
 
 extension ShopTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model[collectionView.tag].count
+    //    return model[collectionView.tag].count
+        
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

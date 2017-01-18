@@ -1176,7 +1176,7 @@ Password:</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQ5-a9-zIl">
-                                                <rect key="frame" x="157" y="937.5" width="61" height="30"/>
+                                                <rect key="frame" x="157" y="967.5" width="61" height="30"/>
                                                 <state key="normal" title="Register!"/>
                                                 <connections>
                                                     <action selector="signUpButtonTapped:" destination="Nzb-fV-lu3" eventType="touchUpInside" id="ATD-r3-iSs"/>
@@ -1196,17 +1196,17 @@ number:</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose industry" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gkc-Hs-cK5" userLabel="PickerViewTF">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose industry" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gkc-Hs-cK5" userLabel="IndustryTF">
                                                 <rect key="frame" x="131" y="777.5" width="214" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <pickerView hidden="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2IO-rM-HZX" userLabel="SalutationPV">
-                                                <rect key="frame" x="131" y="807.5" width="214" height="70"/>
+                                            <pickerView hidden="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2IO-rM-HZX" userLabel="IndustryPV">
+                                                <rect key="frame" x="131" y="807.5" width="214" height="100"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="70" id="bHN-3K-G34"/>
+                                                    <constraint firstAttribute="height" constant="100" id="bHN-3K-G34"/>
                                                 </constraints>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bvr-jJ-Nxs" userLabel="Industry">
@@ -1347,6 +1347,8 @@ number:</string>
                         <outlet property="blockTF" destination="Jsl-eJ-gVG" id="o3i-E1-LsU"/>
                         <outlet property="businessInfoLabel" destination="dnA-kq-NdH" id="Efw-AF-P4e"/>
                         <outlet property="emailTF" destination="0Xx-SP-h8F" id="lDB-wV-ZKx"/>
+                        <outlet property="industryPV" destination="2IO-rM-HZX" id="yZe-zZ-Tqo"/>
+                        <outlet property="industryTF" destination="gkc-Hs-cK5" id="dam-yt-nN5"/>
                         <outlet property="mobileNumTF" destination="Koe-Vz-8Ge" id="TjT-Es-0jN"/>
                         <outlet property="nameTF" destination="CzW-2t-nKb" id="3FI-3d-XVS"/>
                         <outlet property="passwordTF" destination="89T-od-OV5" id="rQS-iG-IQK"/>

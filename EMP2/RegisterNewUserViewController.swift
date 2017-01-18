@@ -23,6 +23,11 @@ class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var userOrMerchantSwitch: UISwitch!
     @IBOutlet weak var salutationPV: UIPickerView!
     @IBOutlet weak var pickerViewTF: UITextField!
+    
+    @IBOutlet weak var industryTF: UITextField!
+    @IBOutlet weak var industryPV: UIPickerView!
+    
+    
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
@@ -102,6 +107,10 @@ class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIP
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        industryPV.delegate = self
+        industryPV.dataSource = self
+        industryTF.delegate = self
+        
         switchBetweenUserAndMerchantView()
         salutationPV.delegate = self
         salutationPV.dataSource = self
@@ -197,7 +206,12 @@ class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIP
     
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
         
-        return list.count
+        if pickerView.tag == 0 {
+            return list.count
+        }else{
+            return Constants.BIZ_CATEGORIES.count
+        }
+        
         
     }
     
@@ -207,7 +221,15 @@ class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIP
             label = UILabel()
         }
         
-        let data = list[row]
+        
+        let data: String!
+            
+        if pickerView.tag == 0 {
+            data = list[row]
+        } else {
+            data = Constants.BIZ_CATEGORIES[row]
+        }
+        
         let title = NSAttributedString(string: data, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightRegular)])
         label?.attributedText = title
         label?.textAlignment = .left
@@ -218,14 +240,26 @@ class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIP
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         self.view.endEditing(true)
+        
+        if pickerView.tag == 0{
         return list[row]
+        } else{
+            return Constants.BIZ_CATEGORIES[row]
+        }
         
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        self.pickerViewTF.text = self.list[row]
-        self.salutationPV.isHidden = true
+        
+        if pickerView.tag == 0{
+            self.pickerViewTF.text = self.list[row]
+            self.salutationPV.isHidden = true
+        }else{
+            self.industryTF.text = Constants.BIZ_CATEGORIES[row]
+            self.industryPV.isHidden = true
+        }
+        
         
     }
     
@@ -237,11 +271,12 @@ class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIP
         if textField == self.pickerViewTF {
             self.salutationPV.isHidden = false
             
-            
             //if you dont want the users to see the keyboard type:
-            
-            textField.endEditing(true)
+        } else if textField == self.industryTF {
+            self.industryPV.isHidden = false
         }
+        
+        textField.endEditing(true)
         
     }
 
@@ -270,5 +305,6 @@ extension RegisterNewUserViewController {
     {
         view.endEditing(true)
         salutationPV.isHidden = true
+        industryPV.isHidden = true
     }
 }
