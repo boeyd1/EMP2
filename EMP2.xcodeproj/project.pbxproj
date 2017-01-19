@@ -593,6 +593,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CB21792D38F94E3A22415829 /* Pods-EMP2.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = EMP2/EMP2.entitlements;
 				DEVELOPMENT_TEAM = KW256FW74Z;
@@ -608,6 +609,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5285EA3BF87C60776B8867A3 /* Pods-EMP2.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = EMP2/EMP2.entitlements;
 				DEVELOPMENT_TEAM = KW256FW74Z;
