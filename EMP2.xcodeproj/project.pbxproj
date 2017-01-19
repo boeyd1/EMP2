@@ -29,7 +29,6 @@
 		FF7278631E2BCBBE00A1340E /* MerchantSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278491E2BCBBE00A1340E /* MerchantSettingsViewController.swift */; };
 		FF7278641E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784A1E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift */; };
 		FF7278651E2BCBBE00A1340E /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784B1E2BCBBE00A1340E /* PhotoTakingHelper.swift */; };
-		FF7278661E2BCBBE00A1340E /* RegisterNewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784C1E2BCBBE00A1340E /* RegisterNewUserViewController.swift */; };
 		FF7278671E2BCBBE00A1340E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784D1E2BCBBE00A1340E /* SignInViewController.swift */; };
 		FF7278681E2BCBBE00A1340E /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784E1E2BCBBE00A1340E /* SimpleAlert.swift */; };
 		FF7278691E2BCBBE00A1340E /* SpecificInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784F1E2BCBBE00A1340E /* SpecificInventoryViewController.swift */; };
@@ -68,7 +67,6 @@
 		FF7278491E2BCBBE00A1340E /* MerchantSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantSettingsViewController.swift; sourceTree = "<group>"; };
 		FF72784A1E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantSpecificChatViewController.swift; sourceTree = "<group>"; };
 		FF72784B1E2BCBBE00A1340E /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
-		FF72784C1E2BCBBE00A1340E /* RegisterNewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterNewUserViewController.swift; sourceTree = "<group>"; };
 		FF72784D1E2BCBBE00A1340E /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		FF72784E1E2BCBBE00A1340E /* SimpleAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleAlert.swift; sourceTree = "<group>"; };
 		FF72784F1E2BCBBE00A1340E /* SpecificInventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificInventoryViewController.swift; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 		FF7278731E2BCE7F00A1340E /* Login & Signup Screens */ = {
 			isa = PBXGroup;
 			children = (
-				FF72784C1E2BCBBE00A1340E /* RegisterNewUserViewController.swift */,
 				FF72784D1E2BCBBE00A1340E /* SignInViewController.swift */,
 				FFDEC7081E308AA00031151D /* RegistrationTableViewController.swift */,
 			);
@@ -468,7 +465,6 @@
 				FF7278641E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift in Sources */,
 				FFF2E8831E2E631E001BC919 /* ShopTableViewController.swift in Sources */,
 				FF7278501E2BCBBE00A1340E /* ActivityIndicator.swift in Sources */,
-				FF7278661E2BCBBE00A1340E /* RegisterNewUserViewController.swift in Sources */,
 				FFF2E8851E2E6486001BC919 /* TableViewCell1.swift in Sources */,
 				FF7278681E2BCBBE00A1340E /* SimpleAlert.swift in Sources */,
 				FF7278691E2BCBBE00A1340E /* SpecificInventoryViewController.swift in Sources */,

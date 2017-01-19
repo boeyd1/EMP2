@@ -39,7 +39,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.hideKeyboard()
+       // self.hideKeyboard()
         
         // Do any additional setup after loading the view.
     }
@@ -55,7 +55,7 @@ class SignInViewController: UIViewController {
                 performSegue(withIdentifier: SHOW_CUSTOMER_STORYBOARD, sender: nil)
             }
             
-            DBProvider.Instance.getUserData(id: AuthProvider.Instance.userID())
+           DBProvider.Instance.getUserData(id: AuthProvider.Instance.userID())
         }
     }
     
@@ -76,7 +76,8 @@ class SignInViewController: UIViewController {
             AuthProvider.Instance.login(withEmail: pseudoEmail!, password: passwordTF.text!, loginHandler: { (message) in
                 ActivityIndicator.stopAnimating()
                 if message != nil {
-                    self.alertUser(title: "Problem with authentication", message: message!)
+                    SimpleAlert.Instance.create(title: "Problem with authentication", message: message!, vc: self, handler: nil)
+                    
                 }else{
                     
                     self.emailTF.text! = ""
@@ -92,12 +93,11 @@ class SignInViewController: UIViewController {
                     
                     DBProvider.Instance.getUserData(id: AuthProvider.Instance.userID())
                 }
-            })
+            }, completed: nil)
             
         } else {
             ActivityIndicator.stopAnimating()
-            alertUser(title: "Email and Password are required", message: "Please enter email and password in the text fields")
-            
+            SimpleAlert.Instance.create(title: "Email and Password are required", message: "Please enter email and password in the text fields", vc: self, handler: nil)
         }
     }
     
@@ -152,19 +152,19 @@ class SignInViewController: UIViewController {
     
     
 }
-
-extension SignInViewController {
-    
-    
-    func hideKeyboard()
-    {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    
-    func dismissKeyboard()
-    {
-        view.endEditing(true)
-    }
-}
+//
+//extension SignInViewController {
+//    
+//    
+//    func hideKeyboard()
+//    {
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+//        view.addGestureRecognizer(tap)
+//    }
+//    
+//    func dismissKeyboard()
+//    {
+//        view.endEditing(true)
+//    }
+//}
 

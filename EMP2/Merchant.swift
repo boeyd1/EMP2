@@ -11,7 +11,6 @@ import Foundation
 class Merchant {
     
     private var _id = ""
-    private var _salutation = ""
     private var _name = ""
     private var _email = ""
     private var _mobileNum = ""
@@ -23,13 +22,13 @@ class Merchant {
     private var _address_unit = ""
     private var _address_postalCode = ""
     private var _industry = ""
+    private var _profilePicUrl = ""
     
    // var _inventory : [Inventory]?
     
-    init(id: String, salutation: String, name: String, email: String, mobileNum: String, shopName: String?, shopContactNum: String?, addressStreet: String?, addressBlk: String?, addressUnit: String?, addressPostalCode: String?, industry: String?/*, inventory: [Inventory]?*/) {
+    init(id: String, name: String, email: String, mobileNum: String, shopName: String?, shopContactNum: String?, addressStreet: String?, addressBlk: String?, addressUnit: String?, addressPostalCode: String?, industry: String?, profilePicUrl: String? /*, inventory: [Inventory]?*/) {
         
         _id = id
-        _salutation = salutation
         _name = name
         _email = email
         _mobileNum = mobileNum
@@ -43,15 +42,17 @@ class Merchant {
         
         _industry = industry ?? ""
         
+        _profilePicUrl = profilePicUrl ?? ""
+        
        // _inventory = inventory
+    }
+    
+    var profilePicUrl: String {
+        return _profilePicUrl
     }
     
     var id: String {
         return _id
-    }
-    
-    var salutation: String {
-        return _salutation
     }
     
     var name: String {

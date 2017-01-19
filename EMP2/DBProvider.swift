@@ -128,9 +128,9 @@ class DBProvider {
         
     }
     
-    func createInventory(senderID: String, shopName: String, name: String, description: String, price: String, quantity: String,url: String){
+    func createInventory(merchantID: String, shopName: String, name: String, description: String, price: String, quantity: String,url: String){
         
-        let dataForInvRef: Dictionary<String, Any> = [Constants.NAME: name, Constants.SENDER_ID: senderID, Constants.SHOP_NAME: shopName, Constants.DESCRIPTION: description, Constants.PRICE: price, Constants.QUANTITY: quantity, Constants.URL: url]
+        let dataForInvRef: Dictionary<String, Any> = [Constants.NAME: name, Constants.MERCHANT_ID: merchantID, Constants.SHOP_NAME: shopName, Constants.DESCRIPTION: description, Constants.PRICE: price, Constants.QUANTITY: quantity, Constants.URL: url]
         
         let invId = inventoriesRef.childByAutoId()
         invId.setValue(dataForInvRef)
@@ -160,25 +160,53 @@ class DBProvider {
     
     
     
-    func saveCustomer(withID: String, name: String, pseudoEmail: String, actualEmail: String, password: String, mobileNum: String){
+    func saveCustomer(withID: String, name: String, pseudoEmail: String, actualEmail: String, password: String, mobileNum: String, saveSuccess: ((Bool) -> Void)?){
         
         let data: Dictionary<String, Any> = [Constants.PSEUDO_EMAIL: pseudoEmail, Constants.ACTUAL_EMAIL: actualEmail, Constants.PASSWORD: password, Constants.NAME: name, Constants.MOBILE_NUM: mobileNum]
         
-        customersRef.child(withID).setValue(data)
+        customersRef.child(withID).setValue(data) { (error, FIRDatabaseReference) in
+            if let _ = error {
+                print("saveCustomer ref error")
+            }else{
+                saveSuccess!(true)
+            }
+        }
     }
     
-    func saveMerchant(withID: String, name: String, pseudoEmail: String, actualEmail: String, password: String, mobileNum: String, shopName: String, shopContactNum: String, shopAddSt: String, shopAddBlk: String, shopAddUnit: String, shopAddPostCode: String, industry: String, profilePicURL: String){
+    func saveMerchant(withID: String, name: String, pseudoEmail: String, actualEmail: String, password: String, mobileNum: String, shopName: String, shopContactNum: String, shopAddSt: String, shopAddBlk: String, shopAddUnit: String, shopAddPostCode: String, industry: String, profilePicImg: UIImage, saveSuccess: ((Bool) -> Void)?){
         
-        let data: Dictionary<String, Any> = [Constants.PSEUDO_EMAIL: pseudoEmail, Constants.ACTUAL_EMAIL: actualEmail, Constants.PASSWORD: password, Constants.NAME: name, Constants.MOBILE_NUM: mobileNum, Constants.SHOP_NAME: shopName, Constants.SHOP_CONTACT_NUM: shopContactNum, Constants.SHOP_ADDRESS_STREET: shopAddSt, Constants.SHOP_ADDRESS_BLK: shopAddBlk, Constants.SHOP_ADDRESS_UNIT: shopAddUnit, Constants.SHOP_ADDRESS_POST_CODE: shopAddPostCode, Constants.INDUSTRY: industry]
         
-        merchantsRef.child(withID).setValue(data)
-        updateIndustry(merchantId: withID, shopName: shopName, profilePic: profilePicURL, industry: industry)
+        let data = UIImageJPEGRepresentation(profilePicImg, 0.1)
         
+        DBProvider.Instance.imageStorageRef.child(withID + "\(NSUUID().uuidString).jpg").put(data!,metadata: nil) { (metadata: FIRStorageMetadata?, err: Error?) in
+           
+            ActivityIndicator.stopAnimating()
+           
+            if err != nil {
+                print("error storing image")
+                
+            }else{
+                
+                let profilePicUrl = String(describing: metadata!.downloadURL()!)
+                
+                let data: Dictionary<String, Any> = [Constants.PSEUDO_EMAIL: pseudoEmail, Constants.ACTUAL_EMAIL: actualEmail, Constants.PASSWORD: password, Constants.NAME: name, Constants.MOBILE_NUM: mobileNum, Constants.SHOP_NAME: shopName, Constants.SHOP_CONTACT_NUM: shopContactNum, Constants.SHOP_ADDRESS_STREET: shopAddSt, Constants.SHOP_ADDRESS_BLK: shopAddBlk, Constants.SHOP_ADDRESS_UNIT: shopAddUnit, Constants.SHOP_ADDRESS_POST_CODE: shopAddPostCode, Constants.INDUSTRY: industry, Constants.URL: profilePicUrl]
+                
+                self.merchantsRef.child(withID).setValue(data, withCompletionBlock: { (error, FIRDatabaseReference) in
+                    if let _ = error {
+                        print("saveMerchant ref error")
+                    }else{
+                        saveSuccess!(true)
+                    }
+                })
+                
+                self.updateIndustry(merchantId: withID, shopName: shopName, profilePic: profilePicUrl, industry: industry)
+                
+            }}
     }
     
     func updateIndustry(merchantId: String, shopName: String, profilePic: String, industry: String){
-            if AuthProvider.Instance.currentMerchant?.industry != nil {
-                industriesRef.child(industry).child(merchantId).removeValue(completionBlock: { (error, FIRDatabaseReference) in
+            if let currIndustry = AuthProvider.Instance.currentMerchant?.industry {
+                industriesRef.child(currIndustry).child(merchantId).removeValue(completionBlock: { (error, FIRDatabaseReference) in
                     
                     if error != nil {
                         print("error deleting merchantId from industry data")
@@ -187,8 +215,9 @@ class DBProvider {
                     }
                 })
             }
-       // nested dictionary(<mercId: <key:value>>)   let data: Dictionary<String, Any> = [Constants.MERCHANT_ID:merchantId, Constants.SHOP_NAME: shopName, Constants.URL: profilePic]
-          //  industriesRef.child(industry).child(merchantId).updateChildValues(data)
+        let data: Dictionary<String, Any> = [Constants.SHOP_NAME: shopName, Constants.URL: profilePic]
+        
+        industriesRef.child(industry).child(merchantId).setValue(data)
         }
         
         func getMerchantsInIndustries(){
@@ -220,13 +249,12 @@ class DBProvider {
                                 
                                 let id = key as! String
                                 let name = customerData[Constants.NAME] as! String
-                                let salutation = customerData[Constants.SALUTATION] as! String
                                 let actualEmail = customerData[Constants.ACTUAL_EMAIL] as! String
                                 let mobileNum = customerData[Constants.MOBILE_NUM] as! String
                                 
                                 
                                 
-                                let newCustomer = Customer(id: id, salutation: salutation, name: name, email: actualEmail, mobileNum: mobileNum)
+                                let newCustomer = Customer(id: id, name: name, email: actualEmail, mobileNum: mobileNum)
                                 
                                 customers.append(newCustomer)
                             }
@@ -250,7 +278,6 @@ class DBProvider {
                                 
                                 let id = key as! String
                                 let name = merchantData[Constants.NAME] as! String
-                                let salutation = merchantData[Constants.SALUTATION] as! String
                                 let actualEmail = merchantData[Constants.ACTUAL_EMAIL] as! String
                                 let mobileNum = merchantData[Constants.MOBILE_NUM] as! String
                                 let shopName = merchantData[Constants.SHOP_NAME] as! String
@@ -261,8 +288,10 @@ class DBProvider {
                                 let addressPostalCode = merchantData[Constants.SHOP_ADDRESS_POST_CODE] as! String
                                 let industry = merchantData[Constants.INDUSTRY] as! String
                                 
+                                let profilePicUrl = merchantData[Constants.URL] as! String
                                 
-                                let newMerchant = Merchant(id: id, salutation: salutation, name: name, email: actualEmail, mobileNum: mobileNum, shopName: shopName, shopContactNum: shopContactNum, addressStreet: addressStreet, addressBlk: addressBlk, addressUnit: addressUnit, addressPostalCode: addressPostalCode, industry: industry /*, inventory: nil*/)
+                                
+                                let newMerchant = Merchant(id: id, name: name, email: actualEmail, mobileNum: mobileNum, shopName: shopName, shopContactNum: shopContactNum, addressStreet: addressStreet, addressBlk: addressBlk, addressUnit: addressUnit, addressPostalCode: addressPostalCode, industry: industry, profilePicUrl: profilePicUrl /*, inventory: nil*/)
                                 
                                 merchants.append(newMerchant)
                             }
@@ -356,7 +385,6 @@ class DBProvider {
                     if let merchantData = snapshot.value as? NSDictionary {
                         
                         let name = merchantData[Constants.NAME] as! String
-                        let salutation = merchantData[Constants.SALUTATION] as! String
                         let actualEmail = merchantData[Constants.ACTUAL_EMAIL] as! String
                         let mobileNum = merchantData[Constants.MOBILE_NUM] as! String
                         let shopName = merchantData[Constants.SHOP_NAME] as! String
@@ -366,8 +394,9 @@ class DBProvider {
                         let addressUnit = merchantData[Constants.SHOP_ADDRESS_UNIT] as! String
                         let addressPostalCode = merchantData[Constants.SHOP_ADDRESS_POST_CODE] as! String
                         let industry = merchantData[Constants.INDUSTRY] as! String
+                        let profilePicUrl = merchantData[Constants.URL] as! String
                         
-                        let newMerchant = Merchant(id: id, salutation: salutation, name: name, email: actualEmail, mobileNum: mobileNum, shopName: shopName, shopContactNum: shopContactNum, addressStreet: addressStreet, addressBlk: addressBlk, addressUnit: addressUnit, addressPostalCode: addressPostalCode, industry: industry /* , inventory: nil */)
+                        let newMerchant = Merchant(id: id, name: name, email: actualEmail, mobileNum: mobileNum, shopName: shopName, shopContactNum: shopContactNum, addressStreet: addressStreet, addressBlk: addressBlk, addressUnit: addressUnit, addressPostalCode: addressPostalCode, industry: industry , profilePicUrl: profilePicUrl /* , inventory: nil */)
                         
                         
                         AuthProvider.Instance.currentMerchant = newMerchant
@@ -383,11 +412,9 @@ class DBProvider {
                     if let customerData = snapshot.value as? NSDictionary {
                         
                         let name = customerData[Constants.NAME] as! String
-                        let salutation = customerData[Constants.SALUTATION] as! String
                         let actualEmail = customerData[Constants.ACTUAL_EMAIL] as! String
                         let mobileNum = customerData[Constants.MOBILE_NUM] as! String
-                        
-                        let newCustomer = Customer(id: id, salutation: salutation, name: name, email: actualEmail, mobileNum: mobileNum)
+                        let newCustomer = Customer(id: id, name: name, email: actualEmail, mobileNum: mobileNum)
                         
                         AuthProvider.Instance.currentCustomer = newCustomer
                     }

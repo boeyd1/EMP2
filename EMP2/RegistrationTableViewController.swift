@@ -8,9 +8,10 @@
 
 import UIKit
 import FirebaseStorage
+import FirebaseDatabase
 
 class RegistrationTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
+    
     private let SHOW_MERCHANT_STORYBOARD = "showMerchantStoryBoard"
     private let SHOW_CUSTOMER_STORYBOARD = "showCustomerStoryBoard"
     private let UNWIND_TO_SIGN_IN_VC = "unwindToSignInVC"
@@ -30,19 +31,32 @@ class RegistrationTableViewController: UITableViewController, UIPickerViewDelega
     @IBOutlet weak var unitTF: UITextField!
     @IBOutlet weak var postalCodeTF: UITextField!
     
+    @IBOutlet weak var viewWithProfilePic: UIView!
+    
+    
     var pseudoEmail: String?
     var userIsMerchant = false
+    
+    var photoTakingHelper : PhotoTakingHelper?
     
     @IBAction func switchChangeValue(_ sender: Any) {
         if userOrMerchantSwitch.isOn {
             userIsMerchant = true
+            viewWithProfilePic.frame.size.height = 120
+            profilePicImg.image = UIImage(named: "no-image-selected")
         }else{
             userIsMerchant = false
+            viewWithProfilePic.frame.size.height = 0
+            profilePicImg.image = nil
         }
         tableView.reloadData()
     }
     
     @IBAction func changeProfilePicBtnTapped(_ sender: Any) {
+        
+        photoTakingHelper = PhotoTakingHelper(viewController: self, callback: { (image: UIImage?) in
+            self.profilePicImg.image = image
+        })
         
     }
     @IBAction func createNewAccountBtnTapped(_ sender: Any) {
@@ -51,9 +65,31 @@ class RegistrationTableViewController: UITableViewController, UIPickerViewDelega
         pseudoEmail = "\(userOrMerchantSwitch.isOn)" + emailTF.text!
         
         //add other constraints to test if fields are filled
-        
-        if emailTF.text != "" && passwordTF.text != "" {
+        if userIsMerchant {
+            if emailTF.text == "" && passwordTF.text == "" && nameTF.text == "" && mobileNumTF.text == "" && shopNameTF.text == "" && streetTF.text == "" && blockTF.text == "" && unitTF.text == "" && postalCodeTF.text == "" {
+               
+                ActivityIndicator.stopAnimating()
+                SimpleAlert.Instance.create(title: "Fields not completed", message: "Please fill up all input fields", vc: self, handler: nil)
+                return
+            }
             
+            if profilePicImg.image == UIImage(named: "no-image-selected") {
+                
+                ActivityIndicator.stopAnimating()
+                SimpleAlert.Instance.create(title: "Error", message: "Please select a profile image", vc: self, handler: nil)
+                return
+                
+            }
+        } else {
+            
+            if emailTF.text == "" && passwordTF.text == "" && nameTF.text == "" && mobileNumTF.text == "" {
+                
+                ActivityIndicator.stopAnimating()
+                SimpleAlert.Instance.create(title: "Fields not completed", message: "Please fill up all input fields", vc: self, handler: nil)
+                return
+            }
+        }
+        
             if !isValidEmail(testStr: emailTF.text!){
                 ActivityIndicator.stopAnimating()
                 SimpleAlert.Instance.create(title: "Invalid Email Address", message: "Please enter a valid email address", vc: self, handler: nil)
@@ -67,44 +103,58 @@ class RegistrationTableViewController: UITableViewController, UIPickerViewDelega
                 return
             }
             
-            let imageData = UIImageJPEGRepresentation(profilePicImg.image!, 0.1)
+            let industryText = Constants.BIZ_CATEGORIES[self.industryPV.selectedRow(inComponent: 0)]
             
-            DBProvider.Instance.imageStorageRef.child(shopNameTF.text! + "\(NSUUID().uuidString).jpg").put(imageData!,metadata: nil) { (metadata: FIRStorageMetadata?, err: Error?) in
+        AuthProvider.Instance.signUp(name: self.nameTF.text!, pseudoEmail: self.pseudoEmail!, actualEmail: self.emailTF.text!, password: self.passwordTF.text!, mobileNum: self.mobileNumTF.text!, shopName: self.shopNameTF.text!, shopContactNum: self.shopNumTF.text!, shopAddSt: self.streetTF.text!, shopAddBlk: self.blockTF.text!, shopAddUnit: self.unitTF.text!, shopAddPostCode: self.postalCodeTF.text!, isMerchant: self.userOrMerchantSwitch.isOn, industry: industryText, profilePicImg: self.profilePicImg.image, loginHandler: { (message) in
                 
-                let industryText = Constants.BIZ_CATEGORIES[self.industryPV.selectedRow(inComponent: 0)]
+            
                 
-                AuthProvider.Instance.signUp(name: self.nameTF.text!, withEmail: self.pseudoEmail!, actualEmail: self.emailTF.text!, password: self.passwordTF.text!, mobileNum: self.mobileNumTF.text!, shopName: self.shopNameTF.text, shopContactNum: self.shopNumTF.text, shopAddSt: self.streetTF.text, shopAddBlk: self.blockTF.text, shopAddUnit: self.unitTF.text, shopAddPostCode: self.postalCodeTF.text, isMerchant: self.userOrMerchantSwitch.isOn, industry: industryText, profilePicURL: String(describing: metadata!.downloadURL()!), loginHandler: { (message) in
-                    
+                if message != nil {
                     ActivityIndicator.stopAnimating()
+                    SimpleAlert.Instance.create(title: "Problem with creating new user", message: message!, vc: self, handler: nil)
+                }else{
                     
-                    if message != nil {
-                        SimpleAlert.Instance.create(title: "Problem with creating new user", message: message!, vc: self, handler: nil)
-                    }else{
-                        
-                        self.emailTF.text! = ""
-                        self.passwordTF.text! = ""
-                        
-                        SimpleAlert.Instance.create(title: "", message: "Registration completed!", vc: self) {(handler) in
-                            self.performSegue(withIdentifier: self.UNWIND_TO_SIGN_IN_VC, sender: nil)
-                            
-                        }
-                        
-                        // need to connect segue on storyboard. currently not connected because not finished
-                        
-                        
-                    }
+                    self.nameTF.text = ""
+                    self.emailTF.text = ""
+                    self.mobileNumTF.text = ""
+                    self.passwordTF.text = ""
+                    self.repeatPasswordTF.text = ""
+                    self.shopNameTF.text = ""
+                    self.shopNameTF.text = ""
+                    self.streetTF.text = ""
+                    self.blockTF.text = ""
+                    self.unitTF.text = ""
+                    self.postalCodeTF.text = ""
+                    
+                    
+                }
+        }, saveSuccess: { (success) in
+            
+                ActivityIndicator.stopAnimating()
+                SimpleAlert.Instance.create(title: "", message: "Registration Successful!", vc: self, handler: { (action) in
+                    self.performSegue(withIdentifier: self.UNWIND_TO_SIGN_IN_VC, sender: nil)
                 })
-            }
-        }else{
-            ActivityIndicator.stopAnimating()
-            SimpleAlert.Instance.create(title: "Email and Password required", message: "Please enter email and password in the text fields", vc: self, handler: nil)
-        }
-
+        
+        })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        viewWithProfilePic.frame.size.height = 0
+        
+        nameTF.text = ""
+        emailTF.text = ""
+        mobileNumTF.text = ""
+        passwordTF.text = ""
+        repeatPasswordTF.text = ""
+        shopNameTF.text = ""
+        shopNameTF.text = ""
+        streetTF.text = ""
+        blockTF.text = ""
+        unitTF.text = ""
+        postalCodeTF.text = ""
+        
         tableView.delegate = self
         tableView.dataSource = self
         industryPV.delegate = self
@@ -112,7 +162,7 @@ class RegistrationTableViewController: UITableViewController, UIPickerViewDelega
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
@@ -132,8 +182,6 @@ class RegistrationTableViewController: UITableViewController, UIPickerViewDelega
     
     
     // MARK: - Table view data source
-
-    
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
@@ -141,7 +189,8 @@ class RegistrationTableViewController: UITableViewController, UIPickerViewDelega
             return 0.1
         }else if !userIsMerchant && section == 3 {
             return 0.1
-            
+        }else if !userIsMerchant && section == 4 {
+            return 0.1
         }
         return super.tableView(tableView, heightForHeaderInSection: section)
     }
@@ -149,7 +198,7 @@ class RegistrationTableViewController: UITableViewController, UIPickerViewDelega
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         if section == 0{
-          return  "REGISTER AS:"
+            return  "REGISTER AS:"
         } else if section == 1 {
             return "PERSONAL PARTICULARS"
         } else if section == 2 {
@@ -162,85 +211,99 @@ class RegistrationTableViewController: UITableViewController, UIPickerViewDelega
             if !userIsMerchant {
                 return ""
             }else{
+                return "SELECT INDUSTRY:"
+            }
+        } else if section == 4 {
+            if !userIsMerchant {
+                return ""
+            }else{
                 return "SHOP ADDRESS"
             }
         }
         return ""
     }
     
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if !userIsMerchant && section == 2 {
-            return 0.1
-        }else if !userIsMerchant && section == 3 {
-            return 0.1
+       override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+            if !userIsMerchant && section == 2 {
+                return 0.1
+            }else if !userIsMerchant && section == 3 {
+                return 0.1
+            }else if !userIsMerchant && section == 4 {
+                return 0.1
+            }
+            return super.tableView(tableView, heightForFooterInSection: section)
+        }
+        
+        override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            
+            if section == 2 {
+                if !userIsMerchant {
+                    return 0
+                }else{
+                    return 2
+                }
+            }
+            
+            if section == 3 {
+                if !userIsMerchant {
+                    return 0
+                }else{
+                    return 1
+                }
+            }
+            if section == 4 {
+                if !userIsMerchant {
+                    return 0
+                }else{
+                    return 2
+                }
+            }
+            
+            return super.tableView(tableView, numberOfRowsInSection: section)
             
         }
-        return super.tableView(tableView, heightForFooterInSection: section)
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if section == 2 {
-            if !userIsMerchant {
-                return 0
-            }else{
-                return 3
+        //PICKER VIEW FUNC
+        
+        public func numberOfComponents(in pickerView: UIPickerView) -> Int{
+            return 1
+            
+        }
+        
+        public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+            
+            return Constants.BIZ_CATEGORIES.count
+            
+        }
+        
+        func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+            var label = view as! UILabel!
+            if label == nil {
+                label = UILabel()
             }
+            
+            
+            let data = Constants.BIZ_CATEGORIES[row]
+            
+            let title = NSAttributedString(string: data, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightRegular)])
+            label?.attributedText = title
+            label?.textAlignment = .left
+            return label!
+            
         }
         
-        if section == 3 {
-            if !userIsMerchant {
-                return 0
-            }else{
-                return 2
-            }
+        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+            
+            return Constants.BIZ_CATEGORIES[row]
+            
         }
-    
-        return super.tableView(tableView, numberOfRowsInSection: section)    }
-    
-
-   
-    //PICKER VIEW FUNC
-    
-    public func numberOfComponents(in pickerView: UIPickerView) -> Int{
-        return 1
         
-    }
-    
-    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        
-       return Constants.BIZ_CATEGORIES.count
-        
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var label = view as! UILabel!
-        if label == nil {
-            label = UILabel()
+        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+            
+            
         }
         
         
-        let data = Constants.BIZ_CATEGORIES[row]
-        
-        let title = NSAttributedString(string: data, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightRegular)])
-        label?.attributedText = title
-        label?.textAlignment = .left
-        return label!
-        
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        return Constants.BIZ_CATEGORIES[row]
-        
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        
-    }
-
-    
 }
 
 

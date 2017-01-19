@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseAuth
 import OneSignal
+import UIKit
 
 typealias LoginHandler = (_ msg: String?) -> Void
 
@@ -32,24 +33,28 @@ class AuthProvider {
     var currentMerchant: Merchant?
     var currentCustomer: Customer?
     
-    func login(withEmail: String, password: String, loginHandler: LoginHandler?) {
+    func login(withEmail: String, password: String, loginHandler: LoginHandler?, completed: ((FIRUser) -> Void)?) {
         
         FIRAuth.auth()?.signIn(withEmail: withEmail, password: password, completion: { (user, error) in
             
             if error != nil {
                 self.handleErrors(err: error as! NSError, loginHandler: loginHandler)
             }else{
+                
                 loginHandler?(nil)
+                completed?(user!)
+                
                 
             }
         })
+        
     }
     
     //add function to store user info in database
     
-    func signUp(name: String, withEmail: String, actualEmail: String, password: String, mobileNum: String, shopName: String?, shopContactNum: String?, shopAddSt: String?, shopAddBlk: String?, shopAddUnit: String?, shopAddPostCode: String?, isMerchant: Bool, industry: String?, profilePicURL: String?, loginHandler: LoginHandler?) {
+    func signUp(name: String, pseudoEmail: String, actualEmail: String, password: String, mobileNum: String, shopName: String, shopContactNum: String, shopAddSt: String, shopAddBlk: String, shopAddUnit: String, shopAddPostCode: String, isMerchant: Bool, industry: String, profilePicImg: UIImage?, loginHandler: LoginHandler?, saveSuccess: ((Bool) -> Void)?) {
         
-        FIRAuth.auth()?.createUser(withEmail: withEmail, password: password, completion: { (user, error) in
+        FIRAuth.auth()?.createUser(withEmail: pseudoEmail, password: password, completion: { (user, error) in
             
             if error != nil {
                 self.handleErrors(err: error as! NSError, loginHandler: loginHandler)
@@ -58,29 +63,15 @@ class AuthProvider {
                 if user?.uid != nil {
                     
                     //store user in database CHECK IF CUSTOMER OR MERCHANT
-                    
+                    //sign in user
+                   self.login(withEmail: pseudoEmail, password: password, loginHandler: loginHandler, completed: { (user) in
                     if isMerchant{
                         
-                        var blkNum = (shopAddBlk?.lowercased())!
-                        
-                        if !blkNum.contains("blk") && !blkNum.contains("block") {
-                            blkNum = "blk " + blkNum
-                        }
-                        
-                        var postalCode = (shopAddPostCode?.lowercased())!
-                        
-                        if postalCode.contains("s") {
-                            postalCode = postalCode.substring(from: postalCode.index(postalCode.startIndex, offsetBy: 1))
-                        }
-                        
-                        DBProvider.Instance.saveMerchant(withID: user!.uid, name: name, pseudoEmail: withEmail, actualEmail: actualEmail, password: password, mobileNum: mobileNum, shopName: shopName!, shopContactNum: shopContactNum!, shopAddSt: shopAddSt!, shopAddBlk: blkNum, shopAddUnit: shopAddUnit!, shopAddPostCode: postalCode, industry: industry!, profilePicURL: profilePicURL!)
+                        DBProvider.Instance.saveMerchant(withID: user.uid, name: name, pseudoEmail: pseudoEmail, actualEmail: actualEmail, password: password, mobileNum: mobileNum, shopName: shopName, shopContactNum: shopContactNum, shopAddSt: shopAddSt, shopAddBlk: shopAddBlk, shopAddUnit: shopAddUnit, shopAddPostCode: shopAddPostCode, industry: industry, profilePicImg: profilePicImg!, saveSuccess: saveSuccess)
                     }else{
-                        DBProvider.Instance.saveCustomer(withID: user!.uid, name: name, pseudoEmail: withEmail, actualEmail: actualEmail, password: password, mobileNum: mobileNum)
+                        DBProvider.Instance.saveCustomer(withID: user.uid, name: name, pseudoEmail: pseudoEmail, actualEmail: actualEmail, password: password, mobileNum: mobileNum, saveSuccess: saveSuccess)
                     }
-                    
-                    
-                    //sign in user
-                    self.login(withEmail: withEmail, password: password, loginHandler: loginHandler)
+                    })
                 }
             }
         })
