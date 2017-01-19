@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import FirebaseStorage
 
 class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
@@ -153,29 +154,35 @@ class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIP
                 return
             }
             
-            AuthProvider.Instance.signUp(salutation: pickerViewTF.text!, name: nameTF.text!, withEmail: pseudoEmail!, actualEmail: emailTF.text!, password: passwordTF.text!, mobileNum: mobileNumTF.text!, shopName: shopNameTF.text, shopContactNum: shopNumTF.text, shopAddSt: streetTF.text, shopAddBlk: blockTF.text, shopAddUnit: unitTF.text, shopAddPostCode: postalCodeTF.text, isMerchant: userOrMerchantSwitch.isOn, industry: industryTF.text, loginHandler: { (message) in
-                
-                ActivityIndicator.stopAnimating()
-                
-                if message != nil {
-                    self.alertUser(title: "Problem with creating new user", message: message!)
-                }else{
-                    
-                    self.emailTF.text! = ""
-                    self.passwordTF.text! = ""
-                    
-                    SimpleAlert.Instance.create(title: "", message: "Registration completed!", vc: self) {(handler) in
-                        self.performSegue(withIdentifier: self.UNWIND_TO_SIGN_IN_VC, sender: nil)
-                        
-                    }
-                    
-                    // need to connect segue on storyboard. currently not connected because not finished
-                    
-                    
-                }
-            })
-            
-         }else{
+//            let imageData = UIImageJPEGRepresentation(profileImage.image!, 0.1)
+//            
+//            DBProvider.Instance.imageStorageRef.child(shopNameTF.text! + "\(NSUUID().uuidString).jpg").put(imageData!,metadata: nil) { (metadata: FIRStorageMetadata?, err: Error?) in
+//            
+//            
+//            
+//                AuthProvider.Instance.signUp(salutation: pickerViewTF.text!, name: nameTF.text!, withEmail: pseudoEmail!, actualEmail: emailTF.text!, password: passwordTF.text!, mobileNum: mobileNumTF.text!, shopName: shopNameTF.text, shopContactNum: shopNumTF.text, shopAddSt: streetTF.text, shopAddBlk: blockTF.text, shopAddUnit: unitTF.text, shopAddPostCode: postalCodeTF.text, isMerchant: userOrMerchantSwitch.isOn, industry: industryTF.text, profilePicURL: String(describing: metadata!.downloadURL()!), loginHandler: { (message) in
+//                
+//                ActivityIndicator.stopAnimating()
+//                
+//                if message != nil {
+//                    self.alertUser(title: "Problem with creating new user", message: message!)
+//                }else{
+//                    
+//                    self.emailTF.text! = ""
+//                    self.passwordTF.text! = ""
+//                    
+//                    SimpleAlert.Instance.create(title: "", message: "Registration completed!", vc: self) {(handler) in
+//                        self.performSegue(withIdentifier: self.UNWIND_TO_SIGN_IN_VC, sender: nil)
+//                        
+//                    }
+//                    
+//                    // need to connect segue on storyboard. currently not connected because not finished
+//                    
+//                    
+//                }
+//            })
+//            }
+//         }else{
            ActivityIndicator.stopAnimating()
             alertUser(title: "Email and Password required", message: "Please enter email and password in the text fields")
         }

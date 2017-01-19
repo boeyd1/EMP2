@@ -12,6 +12,7 @@ class MerchantSettingsViewController: UIViewController {
 
     private let UNWIND_TO_SIGNIN_VC = "unwindToSignInVC"
     
+   
     @IBAction func signoutButtonTapped(_ sender: AnyObject) {
         
         if AuthProvider.Instance.logOut() {

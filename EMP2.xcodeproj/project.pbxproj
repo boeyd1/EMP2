@@ -35,6 +35,7 @@
 		FF7278691E2BCBBE00A1340E /* SpecificInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784F1E2BCBBE00A1340E /* SpecificInventoryViewController.swift */; };
 		FF72786C1E2BCD9600A1340E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF72786B1E2BCD9600A1340E /* GoogleService-Info.plist */; };
 		FF72787C1E2BD89600A1340E /* MerchantNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72787B1E2BD89600A1340E /* MerchantNotificationsViewController.swift */; };
+		FFDEC7091E308AA00031151D /* RegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDEC7081E308AA00031151D /* RegistrationTableViewController.swift */; };
 		FFF2E8831E2E631E001BC919 /* ShopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2E8821E2E631E001BC919 /* ShopTableViewController.swift */; };
 		FFF2E8851E2E6486001BC919 /* TableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2E8841E2E6486001BC919 /* TableViewCell1.swift */; };
 		FFF2E8871E2E6491001BC919 /* TableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2E8861E2E6491001BC919 /* TableViewCell2.swift */; };
@@ -74,6 +75,7 @@
 		FF72786A1E2BCC2700A1340E /* EMP2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EMP2.entitlements; sourceTree = "<group>"; };
 		FF72786B1E2BCD9600A1340E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FF72787B1E2BD89600A1340E /* MerchantNotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantNotificationsViewController.swift; sourceTree = "<group>"; };
+		FFDEC7081E308AA00031151D /* RegistrationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationTableViewController.swift; sourceTree = "<group>"; };
 		FFF2E8821E2E631E001BC919 /* ShopTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopTableViewController.swift; sourceTree = "<group>"; };
 		FFF2E8841E2E6486001BC919 /* TableViewCell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell1.swift; sourceTree = "<group>"; };
 		FFF2E8861E2E6491001BC919 /* TableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell2.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				FF72784C1E2BCBBE00A1340E /* RegisterNewUserViewController.swift */,
 				FF72784D1E2BCBBE00A1340E /* SignInViewController.swift */,
+				FFDEC7081E308AA00031151D /* RegistrationTableViewController.swift */,
 			);
 			name = "Login & Signup Screens";
 			sourceTree = "<group>";
@@ -218,10 +221,10 @@
 			isa = PBXGroup;
 			children = (
 				FF72783E1E2BCBBE00A1340E /* CustomerMainViewController.swift */,
-				FFF2E8811E2E628B001BC919 /* Notifications */,
-				FFF2E8801E2E6282001BC919 /* Settings */,
-				FFF2E87F1E2E6224001BC919 /* Chat */,
 				FFF2E87E1E2E621B001BC919 /* Shop */,
+				FFF2E8811E2E628B001BC919 /* Notifications */,
+				FFF2E87F1E2E6224001BC919 /* Chat */,
+				FFF2E8801E2E6282001BC919 /* Settings */,
 			);
 			name = "Customer Storyboard";
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF72785B1E2BCBBE00A1340E /* Inventory.swift in Sources */,
+				FFDEC7091E308AA00031151D /* RegistrationTableViewController.swift in Sources */,
 				FF7278631E2BCBBE00A1340E /* MerchantSettingsViewController.swift in Sources */,
 				FF72785E1E2BCBBE00A1340E /* MainViewController.swift in Sources */,
 				FF7278621E2BCBBE00A1340E /* MerchantMainViewController.swift in Sources */,
