@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import OneSignal
 import UserNotifications
-
+import IQKeyboardManagerSwift
 
 
 @UIApplicationMain
@@ -56,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 print(fullMessage)
             }, settings: [kOSSettingsKeyAutoPrompt : true, kOSSettingsKeyInFocusDisplayOption : OSNotificationDisplayType.notification.rawValue])
         
+        IQKeyboardManager.sharedManager().enable = true
         
         FIRApp.configure()
         return true

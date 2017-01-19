@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
@@ -108,6 +109,8 @@ class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIP
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        IQKeyboardManager.sharedManager().enableAutoToolbar = false
+        
         industryPV.delegate = self
         industryPV.dataSource = self
         industryTF.delegate = self
@@ -121,7 +124,10 @@ class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIP
         self.hideKeyboard()
         // Do any additional setup after loading the view.
     }
-
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        IQKeyboardManager.sharedManager().enableAutoToolbar = true
+    }
     //Action
     
     @IBAction func signUpButtonTapped(_ sender: AnyObject) {
@@ -270,14 +276,17 @@ class RegisterNewUserViewController: UIViewController, UIPickerViewDelegate, UIP
     // TEXT FIELD FUNCTIONS
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
+        view.endEditing(true)
+        
+        
         if textField == self.pickerViewTF {
             self.salutationPV.isHidden = false
-            dismissKeyboard()
+           
             
             //if you dont want the users to see the keyboard type:
         } else if textField == self.industryTF {
             self.industryPV.isHidden = false
-            dismissKeyboard()
+            
         }
         
         textField.endEditing(true)
@@ -299,10 +308,12 @@ extension UIScrollView {
 extension RegisterNewUserViewController {
 
     
+    
     func hideKeyboard()
     {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
+       
     }
     
     func dismissKeyboard()
@@ -310,5 +321,11 @@ extension RegisterNewUserViewController {
         view.endEditing(true)
         salutationPV.isHidden = true
         industryPV.isHidden = true
+    }
+}
+
+class noAutoScroll : UIScrollView {
+    override func scrollRectToVisible(_ rect: CGRect, animated: Bool) {
+        
     }
 }

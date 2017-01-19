@@ -15,4 +15,6 @@ pod 'Firebase/Storage'
 pod 'JSQMessagesViewController'
 pod 'OneSignal'
 
+pod 'IQKeyboardManagerSwift'
+
 end
