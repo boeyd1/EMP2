@@ -105,7 +105,7 @@ class RegistrationTableViewController: UITableViewController, UIPickerViewDelega
             
             let industryText = Constants.BIZ_CATEGORIES[self.industryPV.selectedRow(inComponent: 0)]
             
-        AuthProvider.Instance.signUp(name: self.nameTF.text!, pseudoEmail: self.pseudoEmail!, actualEmail: self.emailTF.text!, password: self.passwordTF.text!, mobileNum: self.mobileNumTF.text!, shopName: self.shopNameTF.text!, shopContactNum: self.shopNumTF.text!, shopAddSt: self.streetTF.text!, shopAddBlk: self.blockTF.text!, shopAddUnit: self.unitTF.text!, shopAddPostCode: self.postalCodeTF.text!, isMerchant: self.userOrMerchantSwitch.isOn, industry: industryText, profilePicImg: self.profilePicImg.image, loginHandler: { (message) in
+        AuthProvider.Instance.signUp(name: self.nameTF.text!, pseudoEmail: self.pseudoEmail!.lowercased(), actualEmail: self.emailTF.text!.lowercased(), password: self.passwordTF.text!, mobileNum: self.mobileNumTF.text!, shopName: self.shopNameTF.text!, shopContactNum: self.shopNumTF.text!, shopAddSt: self.streetTF.text!, shopAddBlk: self.blockTF.text!, shopAddUnit: self.unitTF.text!, shopAddPostCode: self.postalCodeTF.text!, isMerchant: self.userOrMerchantSwitch.isOn, industry: industryText, profilePicImg: self.profilePicImg.image, loginHandler: { (message) in
                 
             
                 

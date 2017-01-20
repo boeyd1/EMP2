@@ -82,7 +82,6 @@ extension InventoryCollectionViewController: UICollectionViewDelegate, UICollect
         cell.productName.text = inventories[(indexPath.row)].name
         cell.productPrice.text = inventories[(indexPath.row)].price
         cell.productQuantity.text = inventories[(indexPath.row)].quantity
-        cell.layer.frame.size.width = collectionView.layer.frame.width/5
         
         return cell
     }
