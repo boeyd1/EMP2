@@ -11,7 +11,7 @@ import OneSignal
 
 class MerchantNotificationsViewController: UIViewController, UITextViewDelegate, FetchFollowersData {
 
-    var followerOSIds : [String]?
+    var followerOSIds = [String]()
     
     
     @IBOutlet weak var textView: UITextView!
@@ -19,10 +19,18 @@ class MerchantNotificationsViewController: UIViewController, UITextViewDelegate,
     
     @IBOutlet weak var charLimitLabel: UILabel!
     
-    @IBAction func sendButtonTapped(_ sender: AnyObject) {
+    @IBAction func sendButtonTapped(_ sender: Any) {
         
-        OneSignal.postNotification(["contents": ["en": textView.text], "include_player_ids": followerOSIds!])
-        
+        OneSignal.postNotification(["contents": ["en": textView.text], "include_player_ids": followerOSIds], onSuccess: { (_: [AnyHashable : Any]?) in
+            SimpleAlert.Instance.create(title: "Success", message: "Your message has been broadcasted to fans!", vc: self, handler: nil)
+        }) { (error) in
+            
+            let err = self.osErrorInStr(err: OneSignal.parseNSError(asJsonString: error)!)
+            
+            SimpleAlert.Instance.create(title: "Error", message: "Message could not be broadcasted because \(err)", vc: self, handler: nil)
+            
+            
+        }
     }
   
     override func viewDidLoad() {
@@ -90,5 +98,24 @@ class MerchantNotificationsViewController: UIViewController, UITextViewDelegate,
     func dismissKeyboard()
     {
         view.endEditing(true)
+    }
+}
+
+extension MerchantNotificationsViewController {
+    
+    func osErrorInStr(err: String) -> String {
+        
+        var str = ""
+        
+        if err == "{\"errors\":[\"You must include which players, segments, or tags you wish to send this notification to.\"]}" {
+            str = "you have no subscribed followers."
+        }
+        
+        if err == "{\"error\": \"HTTP no response error\"}" {
+            str = "there is no internet connection."
+        }
+    
+    
+        return str
     }
 }

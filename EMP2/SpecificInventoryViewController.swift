@@ -130,12 +130,11 @@ class SpecificInventoryViewController: UIViewController {
                 
                 if err != nil {
                     //add delegate here and implement func in this class after calling storing method in dbprovider returning a possible error
-                    print("imageUpload error")
+                    SimpleAlert.Instance.create(title: "Upload Fail", message: "Inventory could not be uploaded!", vc: self, handler: nil)
+                    
                 }else {
-                    print("imageUpload success")
                     DBProvider.Instance.createInventory(merchantID: currentUserId, shopName: currentShopName!, name: self.productNameTF.text!, description: self.productDescTV.text, price: self.productPriceTF.text!,quantity: self.productQuantityTF.text!, url: String(describing: metadata!.downloadURL()!))
                     
-                    print("create inventory successful")
                     SimpleAlert.Instance.create(title: "Upload Success", message: "Inventory has been uploaded!", vc: self) {(handler) in
                         self.performSegue(withIdentifier: self.UNWIND_TO_INVENTORY_VC, sender: nil)
                         
