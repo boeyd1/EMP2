@@ -13,7 +13,7 @@ class ShopTableViewController: UIViewController, FetchIndustriesData {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var industriesData: [String: [MerchantInShopView]]?
+    var industriesData = [String: [MerchantInShopView]]()
     
     var industryName = [String]()
     
@@ -33,6 +33,11 @@ class ShopTableViewController: UIViewController, FetchIndustriesData {
         
         print("industries: \(industryName)")
         
+        for(key, value) in industriesData{
+            print("key is: \(key)")
+            print("value is: \(value)")
+        }
+        
         tableView.reloadData()
         
     }
@@ -42,6 +47,7 @@ class ShopTableViewController: UIViewController, FetchIndustriesData {
 extension ShopTableViewController: UITableViewDelegate, UITableViewDataSource {
 
     //MARK: TABLE VIEW FUNCTIONS
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return industryName.count + 1
@@ -61,7 +67,7 @@ extension ShopTableViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell1", for: indexPath) as! TableViewCell1
             
             return cell
@@ -69,7 +75,13 @@ extension ShopTableViewController: UITableViewDelegate, UITableViewDataSource {
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell2", for: indexPath) as! TableViewCell2
             
-         //   cell.industryLabel.text = industryName[indexPath.row - 1]
+         
+            cell.industry = industryName[indexPath.section - 1]
+            
+            cell.arrayOfMerchants = industriesData[industryName[indexPath.section - 1]]!
+            
+            //pass data from here to table to collection
+            
             return cell
             
         }

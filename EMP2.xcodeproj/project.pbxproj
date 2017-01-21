@@ -189,17 +189,14 @@
 		FF7278711E2BCE5C00A1340E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FFB4154F1E336760007F1A29 /* CustomerShop */,
 				FF72783C1E2BCBBE00A1340E /* Constants.swift */,
 				FF72783D1E2BCBBE00A1340E /* Customer.swift */,
 				FF7278411E2BCBBE00A1340E /* Inventory.swift */,
 				FF7278421E2BCBBE00A1340E /* InventoryCollectionViewCell.swift */,
 				FF7278451E2BCBBE00A1340E /* Merchant.swift */,
 				FF7278471E2BCBBE00A1340E /* MerchantChatTableViewCell.swift */,
-				FFF2E8841E2E6486001BC919 /* TableViewCell1.swift */,
-				FFF2E8861E2E6491001BC919 /* TableViewCell2.swift */,
 				FFB415451E32010D007F1A29 /* MerchantInShopView.swift */,
-				FFB4154B1E3279FE007F1A29 /* ShopCollectionViewCell1.swift */,
-				FFB4154D1E327A08007F1A29 /* ShopCollectionViewCell2.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -287,6 +284,17 @@
 				FF72787B1E2BD89600A1340E /* MerchantNotificationsViewController.swift */,
 			);
 			name = Notifications;
+			sourceTree = "<group>";
+		};
+		FFB4154F1E336760007F1A29 /* CustomerShop */ = {
+			isa = PBXGroup;
+			children = (
+				FFF2E8841E2E6486001BC919 /* TableViewCell1.swift */,
+				FFF2E8861E2E6491001BC919 /* TableViewCell2.swift */,
+				FFB4154B1E3279FE007F1A29 /* ShopCollectionViewCell1.swift */,
+				FFB4154D1E327A08007F1A29 /* ShopCollectionViewCell2.swift */,
+			);
+			name = CustomerShop;
 			sourceTree = "<group>";
 		};
 		FFF2E87E1E2E621B001BC919 /* Shop */ = {

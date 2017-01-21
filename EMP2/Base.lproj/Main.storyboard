@@ -1927,19 +1927,19 @@ number:</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tcj-fo-iOr">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="140" sectionHeaderHeight="10" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Tcj-fo-iOr">
                                 <rect key="frame" x="16" y="0.0" width="288" height="455"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell1" rowHeight="100" id="qv9-U4-Z35" customClass="TableViewCell1" customModule="EMP2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="288" height="100"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell1" rowHeight="150" id="qv9-U4-Z35" customClass="TableViewCell1" customModule="EMP2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="56" width="288" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qv9-U4-Z35" id="B06-OU-Q6m">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iLk-fj-puV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="99.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="149.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ix4-KE-W7p">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -1949,7 +1949,7 @@ number:</string>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell1" id="Qkh-yu-zhK" customClass="ShopCollectionViewCell1" customModule="EMP2" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="25" width="50" height="50"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -1957,6 +1957,10 @@ number:</string>
                                                             </view>
                                                         </collectionViewCell>
                                                     </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="qv9-U4-Z35" id="Y5b-tH-TDL"/>
+                                                        <outlet property="delegate" destination="qv9-U4-Z35" id="1WO-at-tyY"/>
+                                                    </connections>
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
@@ -1970,39 +1974,39 @@ number:</string>
                                             <outlet property="collectionView" destination="iLk-fj-puV" id="acI-v5-sNl"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell2" rowHeight="100" id="ad4-ct-P8E" customClass="TableViewCell2" customModule="EMP2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="128" width="288" height="100"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell2" rowHeight="150" id="ad4-ct-P8E" customClass="TableViewCell2" customModule="EMP2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="206" width="288" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ad4-ct-P8E" id="tDu-Z6-NCj">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hnO-mL-agV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="99.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="149.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zYw-HR-6WS">
-                                                        <size key="itemSize" width="50" height="50"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="20" id="zYw-HR-6WS">
+                                                        <size key="itemSize" width="70" height="100"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell2" id="Pzo-Yp-mFz" customClass="ShopCollectionViewCell2" customModule="EMP2" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="15" width="50" height="70"/>
+                                                            <rect key="frame" x="0.0" y="25" width="70" height="100"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="70"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="70" height="100"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zWD-nY-zBF">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="zWD-nY-zBF" secondAttribute="height" multiplier="1:1" id="t6z-yU-kTt"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Lv-yd-lSF">
-                                                                        <rect key="frame" x="0.0" y="50" width="50" height="20"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Lv-yd-lSF">
+                                                                        <rect key="frame" x="0.0" y="70" width="70" height="20"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -2017,13 +2021,17 @@ number:</string>
                                                                 <constraint firstAttribute="leading" secondItem="6Lv-yd-lSF" secondAttribute="leading" id="Rjt-QX-XmU"/>
                                                                 <constraint firstItem="zWD-nY-zBF" firstAttribute="leading" secondItem="Pzo-Yp-mFz" secondAttribute="leading" id="e8j-hA-v5j"/>
                                                             </constraints>
-                                                            <size key="customSize" width="50" height="70"/>
+                                                            <size key="customSize" width="70" height="100"/>
                                                             <connections>
                                                                 <outlet property="shopImage" destination="zWD-nY-zBF" id="5Uc-nr-DRD"/>
                                                                 <outlet property="shopName" destination="6Lv-yd-lSF" id="M2F-u2-Jmr"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="ad4-ct-P8E" id="9q7-5a-qdq"/>
+                                                        <outlet property="delegate" destination="ad4-ct-P8E" id="sec-DI-bGr"/>
+                                                    </connections>
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
