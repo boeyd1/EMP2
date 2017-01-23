@@ -14,12 +14,14 @@ class TableViewCell2: UITableViewCell {
     
     var arrayOfMerchants = [MerchantInShopView]() {
         didSet{
-            print("hello")
             collectionView.reloadData()
+            print("didSet")
         }
     }
     var industry = ""
 
+    var showSpecificShopDelegate: ShowSpecificShopDelegate?
+    
 }
 
 extension TableViewCell2: UICollectionViewDataSource{
@@ -31,10 +33,20 @@ extension TableViewCell2: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell2", for: indexPath) as! ShopCollectionViewCell2
         
+    
         cell.merchantInShopView = arrayOfMerchants[indexPath.row]
         
         
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        //segue should go 
+        if let selectedCell = collectionView.cellForItem(at: indexPath) as? ShopCollectionViewCell2 {
+            showSpecificShopDelegate?.showShop(row: indexPath.row, industry: industry)
+            print("\(indexPath.row) shop selected")
+        }
+        
     }
     
 }

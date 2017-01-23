@@ -10,18 +10,42 @@ import UIKit
 
 class ShopTableViewController: UIViewController, FetchIndustriesData {
 
+     @IBAction func unwindToShopTableViewVC(segue: UIStoryboardSegue){}
     
     @IBOutlet weak var tableView: UITableView!
+    
+    let SHOW_SPECIFIC_SHOP = "showSpecificShop"
     
     var industriesData = [String: [MerchantInShopView]]()
     
     var industryName = [String]()
     
+    var merchantIndexToShow = 0
+    var merchantIndustry = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         DBProvider.Instance.merchantIndustriesDelegate = self
         DBProvider.Instance.getMerchantsInIndustries()
+        tableView.delegate = self
+        tableView.dataSource = self
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == SHOW_SPECIFIC_SHOP {
+            
+            print("going to specific shop vc")
+            let destinationVC = segue.destination as! ShopSpecificViewController
+            let merchantArray = industriesData[merchantIndustry]
+            let merchant = merchantArray?[merchantIndexToShow]
+            DBProvider.Instance.singleMerchantDelegate = destinationVC
+            DBProvider.Instance.getMerchantDataWithId(id: (merchant?.id)!)
+            
+        }
+        
+        //didselect is in collectionviewcell
     }
 
     func industriesDataReceived(industries: [String: [MerchantInShopView]]) {
@@ -42,6 +66,23 @@ class ShopTableViewController: UIViewController, FetchIndustriesData {
         
     }
     
+}
+
+protocol ShowSpecificShopDelegate {
+    func showShop(row: Int, industry: String)
+}
+
+extension ShopTableViewController: ShowSpecificShopDelegate{
+    
+    func showShop(row: Int, industry: String){
+        
+        print("showShopFunc called")
+        
+        merchantIndexToShow = row
+        merchantIndustry = industry
+        
+        performSegue(withIdentifier: SHOW_SPECIFIC_SHOP, sender: nil)
+    }
 }
 
 extension ShopTableViewController: UITableViewDelegate, UITableViewDataSource {
@@ -76,6 +117,7 @@ extension ShopTableViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell2", for: indexPath) as! TableViewCell2
             
          
+            cell.showSpecificShopDelegate = self
             cell.industry = industryName[indexPath.section - 1]
             
             cell.arrayOfMerchants = industriesData[industryName[indexPath.section - 1]]!
@@ -85,6 +127,7 @@ extension ShopTableViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         }
+        
     }
     
     /*

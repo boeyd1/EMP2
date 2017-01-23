@@ -138,12 +138,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/RegistrationTableViewController.swift"
-                  timestampString = "506705656.561477"
+                  timestampString = "506834661.226171"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "108"
                   endingLineNumber = "108"
-                  offsetFromSymbolStart = "10100">
+                  offsetFromSymbolStart = "13085">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -153,12 +153,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/RegistrationTableViewController.swift"
-                  timestampString = "506705656.565141"
+                  timestampString = "506834661.228577"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "112"
                   endingLineNumber = "112"
-                  offsetFromSymbolStart = "60">
+                  offsetFromSymbolStart = "56">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EMP2/DBProvider.swift"
-            timestampString = "506611914.340625"
+            timestampString = "506834512.166509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "443"
-            endingLineNumber = "443"
+            startingLineNumber = "476"
+            endingLineNumber = "476"
             landmarkName = "DBProvider"
             landmarkType = "3">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EMP2/SpecificInventoryViewController.swift"
-            timestampString = "506536480.598977"
+            timestampString = "506794605.436691"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "saveBtnTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -265,13 +265,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EMP2/ShopTableViewController.swift"
-            timestampString = "506615807.963135"
+            filePath = "EMP2/ShopSpecificViewController.swift"
+            timestampString = "506833661.47147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "industriesDataReceived(industries:)"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "ShopSpecificViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EMP2/ShopSpecificViewController.swift"
+            timestampString = "506834197.368114"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "singleMerchantDataReceived(merchant:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -281,30 +297,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EMP2/TableViewCell2.swift"
-            timestampString = "506705249.796652"
+            filePath = "EMP2/ShopSpecificViewController.swift"
+            timestampString = "506834260.333562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "TableViewCell2"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EMP2/ShopCollectionViewCell2.swift"
-            timestampString = "506705339.217815"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "ShopCollectionViewCell2"
-            landmarkType = "3">
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "inventoryDataReceived(inventories:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -45,6 +45,10 @@ protocol FetchIndustriesData: class {
     func industriesDataReceived(industries: [String: [MerchantInShopView]])
 }
 
+protocol FetchSingleMerchantData: class {
+    func singleMerchantDataReceived(merchant: Merchant)
+}
+
 
 class DBProvider {
     
@@ -58,6 +62,7 @@ class DBProvider {
     weak var inventoryDelegate: FetchInventoryData?
     weak var followersDelegate: FetchFollowersData?
     weak var merchantIndustriesDelegate: FetchIndustriesData?
+    weak var singleMerchantDelegate: FetchSingleMerchantData?
     
     private init() {}
     
@@ -343,8 +348,36 @@ class DBProvider {
         }
     }
     
+    func getMerchantDataWithId(id: String) {
+        print("merchantData func called")
+        merchantsRef.child(id).observeSingleEvent(of: FIRDataEventType.value) { (snapshot: FIRDataSnapshot) in
+            
+            if let merchantData = snapshot.value as? NSDictionary {
+                let merchantId = id
+                let name = merchantData[Constants.NAME] as! String
+                let email = merchantData[Constants.ACTUAL_EMAIL] as! String
+                let mobileNum = merchantData[Constants.MOBILE_NUM] as! String
+                let shopName = merchantData[Constants.SHOP_NAME] as! String
+                let shopContact = merchantData[Constants.SHOP_CONTACT_NUM] as! String
+                let addressStreet = merchantData[Constants.SHOP_ADDRESS_STREET] as! String
+                let addressBlk = merchantData[Constants.SHOP_ADDRESS_BLK] as! String
+                let addressUnit = merchantData[Constants.SHOP_ADDRESS_UNIT] as! String
+                let addressPostCode = merchantData[Constants.SHOP_ADDRESS_POST_CODE] as! String
+                let industry = merchantData[Constants.INDUSTRY] as! String
+                let profilePicUrl = merchantData[Constants.URL] as! String
+                
+                let merchant = Merchant(id: merchantId, name: name, email: email, mobileNum: mobileNum, shopName: shopName, shopContactNum: shopContact, addressStreet: addressStreet, addressBlk: addressBlk, addressUnit: addressUnit, addressPostalCode: addressPostCode, industry: industry, profilePicUrl: profilePicUrl)
+                
+                self.singleMerchantDelegate?.singleMerchantDataReceived(merchant: merchant)
+            }
+            
+        }
+        
+    }
+    
     func getMerchantInventoryData(id: String){
         
+        print("getMerchantInventoryData called with id: \(id)")
         
         //for customers do they need to see it constantly updating?
         merchantsRef.child(id).child(Constants.INVENTORIES).observe(FIRDataEventType.value) {
@@ -379,7 +412,7 @@ class DBProvider {
                                 
                                 inventories.append(Inventory(id: id, name: name, description: desc, price: price, quantity: quantity, image: img, url: iImageURL))
                                 
-                                
+                              print("inventory is appending")
                                 self.inventoryDelegate?.inventoryDataReceived(inventories: inventories)
                             }
                         }
