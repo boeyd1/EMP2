@@ -56,6 +56,8 @@ class InventoryCollectionViewController: UIViewController, FetchInventoryData {
             
             destinationVC.inventory = inventories[(indexPath?.row)!]
                 
+            destinationVC.shouldUnwindToCustomer = false
+                
             }
             
         }
@@ -69,7 +71,7 @@ class InventoryCollectionViewController: UIViewController, FetchInventoryData {
 }
 
 
-extension InventoryCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension InventoryCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return inventories.count
@@ -91,6 +93,14 @@ extension InventoryCollectionViewController: UICollectionViewDelegate, UICollect
         let cell = collectionView.cellForItem(at: indexPath)
         performSegue(withIdentifier: SEGUE_TO_SPECIFIC_VC, sender: cell)
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        var collectionViewSize = collectionView.frame.size
+        collectionViewSize.width = collectionViewSize.width / 3.0 - 20
+        collectionViewSize.height = 150
+        return collectionViewSize
     }
 }
 

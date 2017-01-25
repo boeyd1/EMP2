@@ -39,6 +39,7 @@
 		FFB4154E1E327A08007F1A29 /* ShopCollectionViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4154D1E327A08007F1A29 /* ShopCollectionViewCell2.swift */; };
 		FFB415511E34B721007F1A29 /* ShopSpecificViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB415501E34B721007F1A29 /* ShopSpecificViewController.swift */; };
 		FFDEC7091E308AA00031151D /* RegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDEC7081E308AA00031151D /* RegistrationTableViewController.swift */; };
+		FFEBC9541E387AF100D1CD0A /* ShopInfoCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEBC9531E387AF100D1CD0A /* ShopInfoCollectionViewHeader.swift */; };
 		FFF2E8831E2E631E001BC919 /* ShopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2E8821E2E631E001BC919 /* ShopTableViewController.swift */; };
 		FFF2E8851E2E6486001BC919 /* TableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2E8841E2E6486001BC919 /* TableViewCell1.swift */; };
 		FFF2E8871E2E6491001BC919 /* TableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2E8861E2E6491001BC919 /* TableViewCell2.swift */; };
@@ -82,6 +83,7 @@
 		FFB4154D1E327A08007F1A29 /* ShopCollectionViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell2.swift; sourceTree = "<group>"; };
 		FFB415501E34B721007F1A29 /* ShopSpecificViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopSpecificViewController.swift; sourceTree = "<group>"; };
 		FFDEC7081E308AA00031151D /* RegistrationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationTableViewController.swift; sourceTree = "<group>"; };
+		FFEBC9531E387AF100D1CD0A /* ShopInfoCollectionViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopInfoCollectionViewHeader.swift; sourceTree = "<group>"; };
 		FFF2E8821E2E631E001BC919 /* ShopTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopTableViewController.swift; sourceTree = "<group>"; };
 		FFF2E8841E2E6486001BC919 /* TableViewCell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell1.swift; sourceTree = "<group>"; };
 		FFF2E8861E2E6491001BC919 /* TableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell2.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				FFF2E8861E2E6491001BC919 /* TableViewCell2.swift */,
 				FFB4154B1E3279FE007F1A29 /* ShopCollectionViewCell1.swift */,
 				FFB4154D1E327A08007F1A29 /* ShopCollectionViewCell2.swift */,
+				FFEBC9531E387AF100D1CD0A /* ShopInfoCollectionViewHeader.swift */,
 			);
 			name = CustomerShop;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				FFB4154C1E3279FE007F1A29 /* ShopCollectionViewCell1.swift in Sources */,
 				FF7278641E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift in Sources */,
 				FFF2E8831E2E631E001BC919 /* ShopTableViewController.swift in Sources */,
+				FFEBC9541E387AF100D1CD0A /* ShopInfoCollectionViewHeader.swift in Sources */,
 				FF7278501E2BCBBE00A1340E /* ActivityIndicator.swift in Sources */,
 				FFF2E8851E2E6486001BC919 /* TableViewCell1.swift in Sources */,
 				FF7278681E2BCBBE00A1340E /* SimpleAlert.swift in Sources */,

@@ -25,6 +25,7 @@ class ShopTableViewController: UIViewController, FetchIndustriesData {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.automaticallyAdjustsScrollViewInsets = false
         DBProvider.Instance.merchantIndustriesDelegate = self
         DBProvider.Instance.getMerchantsInIndustries()
         tableView.delegate = self

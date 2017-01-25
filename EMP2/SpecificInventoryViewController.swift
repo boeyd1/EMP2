@@ -14,6 +14,9 @@ class SpecificInventoryViewController: UIViewController {
     
     private let UNWIND_TO_INVENTORY_VC = "unwindToInventoryVC"
 
+    private let UNWIND_TO_CUSTOMER_SHOP_VC = "unwindToCustShopVC"
+    
+    var shouldUnwindToCustomer = false
     @IBOutlet weak var productNameTF: UITextField!
     
     @IBOutlet weak var productImage: UIImageView!
@@ -26,6 +29,7 @@ class SpecificInventoryViewController: UIViewController {
     
     @IBOutlet weak var selectImgBtn: UIButton!
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var inventory: Inventory? {
         didSet{
@@ -71,6 +75,15 @@ class SpecificInventoryViewController: UIViewController {
             self.productImage.image = image
         }
     }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        if shouldUnwindToCustomer {
+            performSegue(withIdentifier: UNWIND_TO_CUSTOMER_SHOP_VC, sender: nil)
+        }else{
+            performSegue(withIdentifier: UNWIND_TO_INVENTORY_VC, sender: nil)
+        }
+    }
+    
     
     @IBAction func saveBtnTapped(_ sender: AnyObject) {
         
