@@ -138,12 +138,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/RegistrationTableViewController.swift"
-                  timestampString = "507056874.986884"
+                  timestampString = "507112409.649217"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "108"
                   endingLineNumber = "108"
-                  offsetFromSymbolStart = "10100">
+                  offsetFromSymbolStart = "13085">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -153,12 +153,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/RegistrationTableViewController.swift"
-                  timestampString = "507056874.988092"
+                  timestampString = "507112409.651381"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "112"
                   endingLineNumber = "112"
-                  offsetFromSymbolStart = "60">
+                  offsetFromSymbolStart = "56">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -298,12 +298,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/ShopSpecificViewController.swift"
-                  timestampString = "507056875.00464"
+                  timestampString = "507112409.718987"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "116"
-                  endingLineNumber = "116"
-                  offsetFromSymbolStart = "332">
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "440">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -313,14 +313,30 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/ShopSpecificViewController.swift"
-                  timestampString = "507056875.005823"
+                  timestampString = "507112409.72225"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "116"
-                  endingLineNumber = "116"
-                  offsetFromSymbolStart = "588">
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "757">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EMP2/LoginTableViewController.swift"
+            timestampString = "507130752.976657"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

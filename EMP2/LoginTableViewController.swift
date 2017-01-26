@@ -32,17 +32,16 @@ class LoginTableViewController: UITableViewController {
     
     @IBAction func unwindToSignInVC(segue: UIStoryboardSegue){}
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         // self.hideKeyboard()
         
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         if AuthProvider.Instance.isLoggedIn() {
             
             if isUserMerchant(email: (FIRAuth.auth()?.currentUser!.email)!) {
@@ -147,7 +146,11 @@ class LoginTableViewController: UITableViewController {
             })
         }
     }
+}
+extension UINavigationBar {
     
-
-
+    override open func sizeThatFits(_ size: CGSize) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.size.width, height: 0.1)
+    }
+    
 }
