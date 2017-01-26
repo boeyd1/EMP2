@@ -37,7 +37,7 @@ class SpecificInventoryViewController: UIViewController {
             productDescTV.text = inventory?.description ?? ""
             productPriceTF.text = inventory?.price ?? ""
             productQuantityTF.text = inventory?.quantity ?? ""
-            productImage.image = inventory?.image ?? UIImage(named: "no-image-selected")
+            productImage.image = inventory?.image ?? UIImage(named: "addImage")
         }
     }
     
@@ -60,7 +60,7 @@ class SpecificInventoryViewController: UIViewController {
         productQuantityTF.layer.cornerRadius = 5.0
         selectImgBtn.layer.borderWidth = 1.0
         selectImgBtn.layer.cornerRadius = 10.0
-        productImage.image = inventory?.image ?? UIImage(named: "no-image-selected")
+        productImage.image = inventory?.image ?? UIImage(named: "addImage")
         
         // Do any additional setup after loading the view.
     }
@@ -93,7 +93,7 @@ class SpecificInventoryViewController: UIViewController {
         
         let currentShopName = AuthProvider.Instance.currentMerchant?.shopName
         
-        if productImage.image == UIImage(named: "no-image-selected") {
+        if productImage.image == UIImage(named: "addImage") {
             
             ActivityIndicator.stopAnimating()
             SimpleAlert.Instance.create(title: "Error", message: "Please select an image", vc: self, handler: nil)

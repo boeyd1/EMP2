@@ -43,7 +43,7 @@ class RegistrationTableViewController: UITableViewController, UIPickerViewDelega
         if userOrMerchantSwitch.isOn {
             userIsMerchant = true
             viewWithProfilePic.frame.size.height = 120
-            profilePicImg.image = UIImage(named: "no-image-selected")
+            profilePicImg.image = UIImage(named: "addImage")
         }else{
             userIsMerchant = false
             viewWithProfilePic.frame.size.height = 0
@@ -73,7 +73,7 @@ class RegistrationTableViewController: UITableViewController, UIPickerViewDelega
                 return
             }
             
-            if profilePicImg.image == UIImage(named: "no-image-selected") {
+            if profilePicImg.image == UIImage(named: "addImage") {
                 
                 ActivityIndicator.stopAnimating()
                 SimpleAlert.Instance.create(title: "Error", message: "Please select a profile image", vc: self, handler: nil)

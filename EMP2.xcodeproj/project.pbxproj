@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		748DA5C7179E012FB2F6EAA0 /* Pods_EMP2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87089779C9CB2D16E00F5B0C /* Pods_EMP2.framework */; };
+		FF6975121E39D7AF00201667 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6975111E39D7AF00201667 /* LoginTableViewController.swift */; };
+		FF6975141E39DBAD00201667 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF6975131E39DBAD00201667 /* Assets.xcassets */; };
 		FF7278501E2BCBBE00A1340E /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278341E2BCBBE00A1340E /* ActivityIndicator.swift */; };
 		FF7278511E2BCBBE00A1340E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278351E2BCBBE00A1340E /* AppDelegate.swift */; };
-		FF7278521E2BCBBE00A1340E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF7278361E2BCBBE00A1340E /* Assets.xcassets */; };
 		FF7278531E2BCBBE00A1340E /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278371E2BCBBE00A1340E /* AuthProvider.swift */; };
 		FF7278541E2BCBBE00A1340E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF7278381E2BCBBE00A1340E /* LaunchScreen.storyboard */; };
 		FF7278551E2BCBBE00A1340E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF72783A1E2BCBBE00A1340E /* Main.storyboard */; };
@@ -29,7 +30,6 @@
 		FF7278631E2BCBBE00A1340E /* MerchantSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278491E2BCBBE00A1340E /* MerchantSettingsViewController.swift */; };
 		FF7278641E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784A1E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift */; };
 		FF7278651E2BCBBE00A1340E /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784B1E2BCBBE00A1340E /* PhotoTakingHelper.swift */; };
-		FF7278671E2BCBBE00A1340E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784D1E2BCBBE00A1340E /* SignInViewController.swift */; };
 		FF7278681E2BCBBE00A1340E /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784E1E2BCBBE00A1340E /* SimpleAlert.swift */; };
 		FF7278691E2BCBBE00A1340E /* SpecificInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784F1E2BCBBE00A1340E /* SpecificInventoryViewController.swift */; };
 		FF72786C1E2BCD9600A1340E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF72786B1E2BCD9600A1340E /* GoogleService-Info.plist */; };
@@ -49,10 +49,11 @@
 		5285EA3BF87C60776B8867A3 /* Pods-EMP2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMP2.release.xcconfig"; path = "Pods/Target Support Files/Pods-EMP2/Pods-EMP2.release.xcconfig"; sourceTree = "<group>"; };
 		87089779C9CB2D16E00F5B0C /* Pods_EMP2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EMP2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB21792D38F94E3A22415829 /* Pods-EMP2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMP2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EMP2/Pods-EMP2.debug.xcconfig"; sourceTree = "<group>"; };
+		FF6975111E39D7AF00201667 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
+		FF6975131E39DBAD00201667 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF72781E1E2BCB4600A1340E /* EMP2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EMP2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF7278341E2BCBBE00A1340E /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		FF7278351E2BCBBE00A1340E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FF7278361E2BCBBE00A1340E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF7278371E2BCBBE00A1340E /* AuthProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		FF7278391E2BCBBE00A1340E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF72783B1E2BCBBE00A1340E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		FF7278491E2BCBBE00A1340E /* MerchantSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantSettingsViewController.swift; sourceTree = "<group>"; };
 		FF72784A1E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantSpecificChatViewController.swift; sourceTree = "<group>"; };
 		FF72784B1E2BCBBE00A1340E /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
-		FF72784D1E2BCBBE00A1340E /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		FF72784E1E2BCBBE00A1340E /* SimpleAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleAlert.swift; sourceTree = "<group>"; };
 		FF72784F1E2BCBBE00A1340E /* SpecificInventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificInventoryViewController.swift; sourceTree = "<group>"; };
 		FF72786A1E2BCC2700A1340E /* EMP2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EMP2.entitlements; sourceTree = "<group>"; };
@@ -140,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				FF72786A1E2BCC2700A1340E /* EMP2.entitlements */,
-				FF7278361E2BCBBE00A1340E /* Assets.xcassets */,
 				FF72786E1E2BCE0A00A1340E /* Layout */,
 				FF72786F1E2BCE4000A1340E /* Others */,
 				FF7278711E2BCE5C00A1340E /* Models */,
@@ -162,6 +161,7 @@
 		FF72786E1E2BCE0A00A1340E /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				FF6975131E39DBAD00201667 /* Assets.xcassets */,
 				FF7278381E2BCBBE00A1340E /* LaunchScreen.storyboard */,
 				FF72783A1E2BCBBE00A1340E /* Main.storyboard */,
 			);
@@ -218,8 +218,8 @@
 		FF7278731E2BCE7F00A1340E /* Login & Signup Screens */ = {
 			isa = PBXGroup;
 			children = (
-				FF72784D1E2BCBBE00A1340E /* SignInViewController.swift */,
 				FFDEC7081E308AA00031151D /* RegistrationTableViewController.swift */,
+				FF6975111E39D7AF00201667 /* LoginTableViewController.swift */,
 			);
 			name = "Login & Signup Screens";
 			sourceTree = "<group>";
@@ -408,7 +408,7 @@
 			files = (
 				FF7278551E2BCBBE00A1340E /* Main.storyboard in Resources */,
 				FF72786C1E2BCD9600A1340E /* GoogleService-Info.plist in Resources */,
-				FF7278521E2BCBBE00A1340E /* Assets.xcassets in Resources */,
+				FF6975141E39DBAD00201667 /* Assets.xcassets in Resources */,
 				FF7278541E2BCBBE00A1340E /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,7 +477,6 @@
 				FF7278531E2BCBBE00A1340E /* AuthProvider.swift in Sources */,
 				FF7278651E2BCBBE00A1340E /* PhotoTakingHelper.swift in Sources */,
 				FF7278601E2BCBBE00A1340E /* MerchantAllChatsVC.swift in Sources */,
-				FF7278671E2BCBBE00A1340E /* SignInViewController.swift in Sources */,
 				FF7278571E2BCBBE00A1340E /* Customer.swift in Sources */,
 				FFB415461E32010D007F1A29 /* MerchantInShopView.swift in Sources */,
 				FF7278591E2BCBBE00A1340E /* DBProvider.swift in Sources */,
@@ -493,6 +492,7 @@
 				FF7278501E2BCBBE00A1340E /* ActivityIndicator.swift in Sources */,
 				FFF2E8851E2E6486001BC919 /* TableViewCell1.swift in Sources */,
 				FF7278681E2BCBBE00A1340E /* SimpleAlert.swift in Sources */,
+				FF6975121E39D7AF00201667 /* LoginTableViewController.swift in Sources */,
 				FFB4154E1E327A08007F1A29 /* ShopCollectionViewCell2.swift in Sources */,
 				FF7278691E2BCBBE00A1340E /* SpecificInventoryViewController.swift in Sources */,
 				FF7278561E2BCBBE00A1340E /* Constants.swift in Sources */,
