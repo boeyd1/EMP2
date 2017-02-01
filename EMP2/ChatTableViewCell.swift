@@ -1,5 +1,5 @@
 //
-//  MerchantChatTableViewCell.swift
+//  ChatTableViewCell.swift
 //  EMP2
 //
 //  Created by Desmond Boey on 6/1/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MerchantChatTableViewCell: UITableViewCell{
+class ChatTableViewCell: UITableViewCell{
     
     @IBOutlet weak var userImage: UIImageView!
     

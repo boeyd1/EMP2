@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import FirebaseStorage
+import UIKit
 
-class Merchant {
+class Merchant: User {
     
     private var _id = ""
     private var _name = ""
@@ -28,11 +30,9 @@ class Merchant {
     
     init(id: String, name: String, email: String, mobileNum: String, shopName: String?, shopContactNum: String?, addressStreet: String?, addressBlk: String?, addressUnit: String?, addressPostalCode: String?, industry: String?, profilePicUrl: String? /*, inventory: [Inventory]?*/) {
         
-        _id = id
-        _name = name
-        _email = email
-        _mobileNum = mobileNum
-
+        
+        super.init(id: id, name: name, email: email, mobileNum: mobileNum)
+        
         _shop_name = shopName ?? ""
         _shop_contact_num = shopContactNum ?? ""
         _address_street = addressStreet ?? ""
@@ -51,22 +51,6 @@ class Merchant {
         return _profilePicUrl
     }
     
-    var id: String {
-        return _id
-    }
-    
-    var name: String {
-        return _name
-    }
-    
-    var email: String {
-        return _email
-    }
-    
-    var mobileNum: String {
-        return _mobileNum
-    }
-
     var shopName: String {
         return _shop_name
     }
@@ -99,4 +83,40 @@ class Merchant {
         return _inventory
     } 
  */
+}
+
+class MerchantForChat {
+    
+    private var _id = ""
+    private var _displayName = ""
+    private var _industry = ""
+    
+    private var _profilePicImage: UIImage?
+    
+    init(id: String, displayName: String, industry: String, profilePicImage: UIImage){
+        
+        _id = id
+        _displayName = displayName
+        _industry = industry
+        _profilePicImage = profilePicImage
+        
+        
+        
+    }
+    
+    var id: String {
+        return _id
+    }
+    
+    var displayName: String {
+        return _displayName
+    }
+    
+    var industry: String {
+        return _industry
+    }
+    
+    var profilePicImage: UIImage {
+        return _profilePicImage!
+    }
 }

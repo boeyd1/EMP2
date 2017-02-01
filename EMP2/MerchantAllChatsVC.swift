@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MerchantAllChatsVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class MerchantAllChatsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, FetchChatData{
 
     private let CHAT_CELL = "ChatCell"
     private let SHOW_SPECIFIC_CHAT = "showSpecificChat"
@@ -17,19 +17,44 @@ class MerchantAllChatsVC: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func unwindToMerchantAllChatsVC(segue: UIStoryboardSegue){}
 
+    var chats = [Chat](){
+        didSet{
+            chats.sort(by: {$0.lastUpdate > $1.lastUpdate})
+            chatTableView.reloadData()
+        }
+    }
+    
+    func chatsReceived(chat: [Chat]) {
+        self.chats = chat
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         chatTableView.delegate = self
         chatTableView.dataSource = self
-      
+        
+        DBProvider.Instance.chatDelegate = self
+        DBProvider.Instance.getAllChats()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == SHOW_SPECIFIC_CHAT {
+            
+            let navController = segue.destination as! UINavigationController
+            let destinationVC = navController.topViewController as! MerchantSpecificChatViewController
+            
+            let _ = destinationVC.view
+            
+            if let cell = sender as? ChatTableViewCell{
+                
+                let indexPath = chatTableView.indexPath(for: cell)
+                
+                destinationVC.chat = chats[(indexPath?.row)!]
+            }
+            
+        }
     }
-
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -39,25 +64,44 @@ class MerchantAllChatsVC: UIViewController, UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return chats.count
+        //return number of active chats
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CHAT_CELL, for: indexPath) as! MerchantChatTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CHAT_CELL, for: indexPath) as! ChatTableViewCell
 
         // Configure the cell...
-        cell.userImage.image = UIImage(named: "boy")
-        cell.userName.text = "username"
-        cell.lastMessageContent.text = "this is the last message sent/received"
-        cell.lastMessageTime.text = "11:25pm"
+        if chats.count != 0{
         
+        if AuthProvider.Instance.currentUserIsMerchant!{
+            
+            cell.userImage.image = UIImage(named: "boy")
+            cell.userName.text = chats[(indexPath.row)].customerId
+            
+            
+        }else{
+            cell.userImage.image = chats[(indexPath.row)].merchantProfileImage
+            cell.userName.text = chats[(indexPath.row)].merchantId
+          
+            
+            }
+        
+            cell.lastMessageContent.text = chats[(indexPath.row)].lastMessage
+            
+            let lastUpdateTime = chats[(indexPath.row)].lastUpdate
+            
+            cell.lastMessageTime.text = TimeConverter.Instance.getTimeLabel(dt: lastUpdateTime)
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: SHOW_SPECIFIC_CHAT, sender: nil)
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        performSegue(withIdentifier: SHOW_SPECIFIC_CHAT, sender: cell)
     }
 
     /*

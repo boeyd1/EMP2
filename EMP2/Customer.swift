@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Customer {
+class Customer: User {
     
     private var _id = ""
     private var _name = ""
@@ -16,28 +16,9 @@ class Customer {
     private var _mobileNum = ""
     
     
-    init(id: String, name: String, email: String, mobileNum: String) {
+    override init(id: String, name: String, email: String, mobileNum: String) {
         
-        _id = id
-        _name = name
-        _email = email
-        _mobileNum = mobileNum
+        super.init(id: id, name: name, email: email, mobileNum: mobileNum)
         
-    }
-    
-    var id: String {
-        return _id
-    }
-    
-    var name: String {
-        return _name
-    }
-
-    var email: String {
-        return _email
-    }
-    
-    var mobileNum: String {
-        return _mobileNum
     }
 }

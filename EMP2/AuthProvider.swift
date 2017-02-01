@@ -30,8 +30,16 @@ class AuthProvider {
     
     var userName = ""
     var currentUserIsMerchant : Bool?
-    var currentMerchant: Merchant?
-    var currentCustomer: Customer?
+    var currentMerchant: Merchant?{
+        didSet{
+            userName = currentMerchant!.shopName
+        }
+    }
+    var currentCustomer: Customer?{
+        didSet{
+            userName = currentCustomer!.name
+        }
+    }
     
     func login(withEmail: String, password: String, loginHandler: LoginHandler?, completed: ((FIRUser) -> Void)?) {
         

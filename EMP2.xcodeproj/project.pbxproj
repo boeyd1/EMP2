@@ -8,8 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		748DA5C7179E012FB2F6EAA0 /* Pods_EMP2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87089779C9CB2D16E00F5B0C /* Pods_EMP2.framework */; };
+		FF4A05E11E41A5250035D046 /* NewChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A05E01E41A5250035D046 /* NewChatTableViewCell.swift */; };
+		FF4A05E31E41EB4B0035D046 /* TimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A05E21E41EB4B0035D046 /* TimeConverter.swift */; };
 		FF6975121E39D7AF00201667 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6975111E39D7AF00201667 /* LoginTableViewController.swift */; };
 		FF6975141E39DBAD00201667 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF6975131E39DBAD00201667 /* Assets.xcassets */; };
+		FF6975161E3A46EC00201667 /* MessagesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6975151E3A46EC00201667 /* MessagesHandler.swift */; };
+		FF6975181E3C7A8C00201667 /* AllChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6975171E3C7A8C00201667 /* AllChatViewController.swift */; };
+		FF69751A1E4037AB00201667 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6975191E4037AB00201667 /* Message.swift */; };
+		FF69751C1E403D4F00201667 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF69751B1E403D4F00201667 /* Chat.swift */; };
+		FF69751E1E405B3400201667 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF69751D1E405B3400201667 /* User.swift */; };
+		FF6975201E4195C300201667 /* CustomerSpecificChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF69751F1E4195C300201667 /* CustomerSpecificChatViewController.swift */; };
+		FF6975221E419D9300201667 /* AddChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6975211E419D9300201667 /* AddChatViewController.swift */; };
 		FF7278501E2BCBBE00A1340E /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278341E2BCBBE00A1340E /* ActivityIndicator.swift */; };
 		FF7278511E2BCBBE00A1340E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278351E2BCBBE00A1340E /* AppDelegate.swift */; };
 		FF7278531E2BCBBE00A1340E /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278371E2BCBBE00A1340E /* AuthProvider.swift */; };
@@ -25,7 +34,7 @@
 		FF72785E1E2BCBBE00A1340E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278441E2BCBBE00A1340E /* MainViewController.swift */; };
 		FF72785F1E2BCBBE00A1340E /* Merchant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278451E2BCBBE00A1340E /* Merchant.swift */; };
 		FF7278601E2BCBBE00A1340E /* MerchantAllChatsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278461E2BCBBE00A1340E /* MerchantAllChatsVC.swift */; };
-		FF7278611E2BCBBE00A1340E /* MerchantChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278471E2BCBBE00A1340E /* MerchantChatTableViewCell.swift */; };
+		FF7278611E2BCBBE00A1340E /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278471E2BCBBE00A1340E /* ChatTableViewCell.swift */; };
 		FF7278621E2BCBBE00A1340E /* MerchantMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278481E2BCBBE00A1340E /* MerchantMainViewController.swift */; };
 		FF7278631E2BCBBE00A1340E /* MerchantSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7278491E2BCBBE00A1340E /* MerchantSettingsViewController.swift */; };
 		FF7278641E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF72784A1E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift */; };
@@ -49,8 +58,17 @@
 		5285EA3BF87C60776B8867A3 /* Pods-EMP2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMP2.release.xcconfig"; path = "Pods/Target Support Files/Pods-EMP2/Pods-EMP2.release.xcconfig"; sourceTree = "<group>"; };
 		87089779C9CB2D16E00F5B0C /* Pods_EMP2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EMP2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB21792D38F94E3A22415829 /* Pods-EMP2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMP2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EMP2/Pods-EMP2.debug.xcconfig"; sourceTree = "<group>"; };
+		FF4A05E01E41A5250035D046 /* NewChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewChatTableViewCell.swift; sourceTree = "<group>"; };
+		FF4A05E21E41EB4B0035D046 /* TimeConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeConverter.swift; sourceTree = "<group>"; };
 		FF6975111E39D7AF00201667 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
 		FF6975131E39DBAD00201667 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF6975151E3A46EC00201667 /* MessagesHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesHandler.swift; sourceTree = "<group>"; };
+		FF6975171E3C7A8C00201667 /* AllChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatViewController.swift; sourceTree = "<group>"; };
+		FF6975191E4037AB00201667 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		FF69751B1E403D4F00201667 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		FF69751D1E405B3400201667 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FF69751F1E4195C300201667 /* CustomerSpecificChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerSpecificChatViewController.swift; sourceTree = "<group>"; };
+		FF6975211E419D9300201667 /* AddChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddChatViewController.swift; sourceTree = "<group>"; };
 		FF72781E1E2BCB4600A1340E /* EMP2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EMP2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF7278341E2BCBBE00A1340E /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		FF7278351E2BCBBE00A1340E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +86,7 @@
 		FF7278441E2BCBBE00A1340E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FF7278451E2BCBBE00A1340E /* Merchant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Merchant.swift; sourceTree = "<group>"; };
 		FF7278461E2BCBBE00A1340E /* MerchantAllChatsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantAllChatsVC.swift; sourceTree = "<group>"; };
-		FF7278471E2BCBBE00A1340E /* MerchantChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantChatTableViewCell.swift; sourceTree = "<group>"; };
+		FF7278471E2BCBBE00A1340E /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		FF7278481E2BCBBE00A1340E /* MerchantMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantMainViewController.swift; sourceTree = "<group>"; };
 		FF7278491E2BCBBE00A1340E /* MerchantSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantSettingsViewController.swift; sourceTree = "<group>"; };
 		FF72784A1E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantSpecificChatViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +204,8 @@
 				FF72783F1E2BCBBE00A1340E /* DBProvider.swift */,
 				FF72784B1E2BCBBE00A1340E /* PhotoTakingHelper.swift */,
 				FF72784E1E2BCBBE00A1340E /* SimpleAlert.swift */,
+				FF6975151E3A46EC00201667 /* MessagesHandler.swift */,
+				FF4A05E21E41EB4B0035D046 /* TimeConverter.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -199,8 +219,12 @@
 				FF7278411E2BCBBE00A1340E /* Inventory.swift */,
 				FF7278421E2BCBBE00A1340E /* InventoryCollectionViewCell.swift */,
 				FF7278451E2BCBBE00A1340E /* Merchant.swift */,
-				FF7278471E2BCBBE00A1340E /* MerchantChatTableViewCell.swift */,
+				FF7278471E2BCBBE00A1340E /* ChatTableViewCell.swift */,
 				FFB415451E32010D007F1A29 /* MerchantInShopView.swift */,
+				FF6975191E4037AB00201667 /* Message.swift */,
+				FF69751B1E403D4F00201667 /* Chat.swift */,
+				FF69751D1E405B3400201667 /* User.swift */,
+				FF4A05E01E41A5250035D046 /* NewChatTableViewCell.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -314,6 +338,9 @@
 		FFF2E87F1E2E6224001BC919 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				FF6975171E3C7A8C00201667 /* AllChatViewController.swift */,
+				FF69751F1E4195C300201667 /* CustomerSpecificChatViewController.swift */,
+				FF6975211E419D9300201667 /* AddChatViewController.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -469,25 +496,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF72785B1E2BCBBE00A1340E /* Inventory.swift in Sources */,
+				FF6975181E3C7A8C00201667 /* AllChatViewController.swift in Sources */,
 				FFDEC7091E308AA00031151D /* RegistrationTableViewController.swift in Sources */,
+				FF69751A1E4037AB00201667 /* Message.swift in Sources */,
 				FF7278631E2BCBBE00A1340E /* MerchantSettingsViewController.swift in Sources */,
 				FF72785E1E2BCBBE00A1340E /* MainViewController.swift in Sources */,
+				FF6975221E419D9300201667 /* AddChatViewController.swift in Sources */,
 				FF7278621E2BCBBE00A1340E /* MerchantMainViewController.swift in Sources */,
 				FF7278581E2BCBBE00A1340E /* CustomerMainViewController.swift in Sources */,
+				FF4A05E11E41A5250035D046 /* NewChatTableViewCell.swift in Sources */,
+				FF6975161E3A46EC00201667 /* MessagesHandler.swift in Sources */,
 				FF7278531E2BCBBE00A1340E /* AuthProvider.swift in Sources */,
 				FF7278651E2BCBBE00A1340E /* PhotoTakingHelper.swift in Sources */,
+				FF4A05E31E41EB4B0035D046 /* TimeConverter.swift in Sources */,
 				FF7278601E2BCBBE00A1340E /* MerchantAllChatsVC.swift in Sources */,
 				FF7278571E2BCBBE00A1340E /* Customer.swift in Sources */,
 				FFB415461E32010D007F1A29 /* MerchantInShopView.swift in Sources */,
+				FF6975201E4195C300201667 /* CustomerSpecificChatViewController.swift in Sources */,
 				FF7278591E2BCBBE00A1340E /* DBProvider.swift in Sources */,
 				FF72787C1E2BD89600A1340E /* MerchantNotificationsViewController.swift in Sources */,
-				FF7278611E2BCBBE00A1340E /* MerchantChatTableViewCell.swift in Sources */,
+				FF7278611E2BCBBE00A1340E /* ChatTableViewCell.swift in Sources */,
 				FF72785D1E2BCBBE00A1340E /* InventoryCollectionViewController.swift in Sources */,
 				FF7278511E2BCBBE00A1340E /* AppDelegate.swift in Sources */,
 				FF72785C1E2BCBBE00A1340E /* InventoryCollectionViewCell.swift in Sources */,
 				FFB4154C1E3279FE007F1A29 /* ShopCollectionViewCell1.swift in Sources */,
 				FF7278641E2BCBBE00A1340E /* MerchantSpecificChatViewController.swift in Sources */,
 				FFF2E8831E2E631E001BC919 /* ShopTableViewController.swift in Sources */,
+				FF69751C1E403D4F00201667 /* Chat.swift in Sources */,
 				FFEBC9541E387AF100D1CD0A /* ShopInfoCollectionViewHeader.swift in Sources */,
 				FF7278501E2BCBBE00A1340E /* ActivityIndicator.swift in Sources */,
 				FFF2E8851E2E6486001BC919 /* TableViewCell1.swift in Sources */,
@@ -496,6 +531,7 @@
 				FFB4154E1E327A08007F1A29 /* ShopCollectionViewCell2.swift in Sources */,
 				FF7278691E2BCBBE00A1340E /* SpecificInventoryViewController.swift in Sources */,
 				FF7278561E2BCBBE00A1340E /* Constants.swift in Sources */,
+				FF69751E1E405B3400201667 /* User.swift in Sources */,
 				FFF2E8871E2E6491001BC919 /* TableViewCell2.swift in Sources */,
 				FFB415511E34B721007F1A29 /* ShopSpecificViewController.swift in Sources */,
 				FF72785F1E2BCBBE00A1340E /* Merchant.swift in Sources */,

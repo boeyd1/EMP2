@@ -16,8 +16,10 @@ class ShopInfoCollectionViewHeader: UICollectionViewCell {
     @IBOutlet weak var shopAddress1: UILabel!
     @IBOutlet weak var shopAddress2: UILabel!
     
+    @IBOutlet weak var shopContactButton: UIButton!
     
     @IBAction func shopContactTapped(_ sender: Any) {
+        
     }
     
     @IBAction func chatButtonTapped(_ sender: Any) {

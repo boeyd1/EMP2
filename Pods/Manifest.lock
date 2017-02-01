@@ -51,6 +51,9 @@ PODS:
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
   - OneSignal (2.3.5)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
 
 DEPENDENCIES:
   - Firebase
@@ -61,6 +64,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - JSQMessagesViewController
   - OneSignal
+  - SDWebImage
 
 SPEC CHECKSUMS:
   Firebase: b8134e285eb33201115bc688bc5d7f112923bc1f
@@ -78,7 +82,8 @@ SPEC CHECKSUMS:
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   OneSignal: 4cb42948ebc141bd5deb54d3fda25105db94f6d4
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 11784109efafc284c49aa5573a2f19591d6ef581
+PODFILE CHECKSUM: 9dd3f68e8cda892e6e506c814a94210b55eb4694
 
 COCOAPODS: 1.1.1

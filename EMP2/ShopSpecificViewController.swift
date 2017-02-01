@@ -158,6 +158,8 @@ extension ShopSpecificViewController: UICollectionViewDelegate, UICollectionView
         }
         
         
+        cell.shopContactButton.setTitle(merchant?.contactNum, for: UIControlState.normal)
+        
         
         //cell.shopDescription.text = merchant?.shopDescription ?? ""
         

@@ -147,6 +147,7 @@ class LoginTableViewController: UITableViewController {
         }
     }
 }
+/*
 extension UINavigationBar {
     
     override open func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -154,3 +155,4 @@ extension UINavigationBar {
     }
     
 }
+*/
