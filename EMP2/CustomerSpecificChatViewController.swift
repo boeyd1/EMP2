@@ -41,7 +41,8 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
         DBProvider.Instance.singleChatDelegate = self
         automaticallyScrollsToMostRecentMessage = true
         showTypingIndicator = true
-    
+        
+
         
     }
     

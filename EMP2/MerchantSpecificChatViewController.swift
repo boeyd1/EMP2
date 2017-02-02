@@ -16,10 +16,11 @@ class MerchantSpecificChatViewController: JSQMessagesViewController, UIImagePick
     
     var chat: Chat?{
         didSet{
+            //called multiple times that's why print multiple times too
             MessagesHandler.Instance.observeMessage(chatId: chat!.id)
         }
     }
-    
+
     var customerId: String?
     var customerName: String?
     var merchantId: String?
@@ -32,6 +33,7 @@ class MerchantSpecificChatViewController: JSQMessagesViewController, UIImagePick
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         self.senderId = AuthProvider.Instance.userID()
         self.senderDisplayName = AuthProvider.Instance.userName
         
@@ -39,6 +41,8 @@ class MerchantSpecificChatViewController: JSQMessagesViewController, UIImagePick
         MessagesHandler.Instance.delegate = self
         automaticallyScrollsToMostRecentMessage = true
         showTypingIndicator = true
+        
+
         
     }
     

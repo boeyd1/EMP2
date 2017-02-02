@@ -67,7 +67,7 @@ class MessagesHandler {
             let messageId = snapshot.key
                 
         
-            DBProvider.Instance.messagesRef.child(messageId).observe(.value, with: {
+            DBProvider.Instance.messagesRef.child(messageId).observeSingleEvent(of: .value, with: {
                 snapshot in
                print("messageRef child value changed")
                 if let data = snapshot.value as? NSDictionary {
