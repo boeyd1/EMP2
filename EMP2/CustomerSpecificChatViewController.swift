@@ -26,11 +26,7 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
     var merchantId: String?
     var merchantDisplayName: String?
     
-    private var jsqMessages = [JSQMessage](){
-        didSet{
-            
-        }
-    }
+    private var jsqMessages = [JSQMessage]()
     
     let picker = UIImagePickerController()
     
@@ -43,7 +39,8 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
         picker.delegate = self
         MessagesHandler.Instance.delegate = self
         DBProvider.Instance.singleChatDelegate = self
-        
+        automaticallyScrollsToMostRecentMessage = true
+        showTypingIndicator = true
     
         
     }
@@ -63,7 +60,7 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
         MessagesHandler.Instance.sendMessage(chatId: chat!.id, senderId: senderId, senderDisplayName: senderDisplayName, lastUpdate: lastUpdate, type: Constants.TEXT, text: text, url: nil)
         
         }
-        collectionView.reloadData()
+        
         //removes text from textfield
         finishSendingMessage()
         DBProvider.Instance.getAllChats()
@@ -111,8 +108,8 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
         }
         
         self.dismiss(animated: true, completion: nil)
+        finishSendingMessage()
         collectionView.reloadData()
-        DBProvider.Instance.getAllChats()
     }
     
     //COLLECTION VIEW FUNCTIONS
@@ -174,11 +171,13 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
         self.chat = chat
     }
     
-    func messageReceived(messages: [Message]) {
+    func messageReceived(message: Message) {
         
-        for message in messages {
+        if let _ = message.url {
+                
+                jsqMessages.append(JSQMessage(senderId: "", displayName: "", text: "...downloading media..."))
             
-            if let _ = message.url {
+            let index = jsqMessages.count - 1
                 
                 let url = URL(string:message.url!)!
                 do {
@@ -197,10 +196,10 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
                                     photo?.appliesMediaViewMaskAsOutgoing = false
                                 }
                                 
-                                self.jsqMessages.append(JSQMessage(senderId: message.senderID, displayName: message.senderDisplayName, media: photo))
+                                self.jsqMessages[index] = JSQMessage(senderId: message.senderID, displayName: message.senderDisplayName, media: photo)
                                 
+                                self.finishReceivingMessage()
                                 
-                                self.collectionView.reloadData()
                             }
                             
                             
@@ -214,8 +213,8 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
                             video?.appliesMediaViewMaskAsOutgoing = false
                         }
                         
-                        self.jsqMessages.append(JSQMessage(senderId: message.senderID, displayName: message.senderDisplayName, media: video))
-                        self.collectionView.reloadData()
+                        self.jsqMessages[index] = JSQMessage(senderId: message.senderID, displayName: message.senderDisplayName, media: video)
+                        finishReceivingMessage()
                     }
                     
                 }catch{
@@ -224,10 +223,12 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
                 
             }else{
                 
-                jsqMessages.append(JSQMessage(senderId: message.senderID, displayName: message.senderDisplayName, text: message.text))
-                collectionView.reloadData()
-            }
+                self.jsqMessages.append(JSQMessage(senderId: message.senderID, displayName: message.senderDisplayName, text: message.text))
+               
+            
         }
+        finishReceivingMessage()
+        
     }
     
     /*

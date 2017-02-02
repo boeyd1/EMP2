@@ -37,9 +37,13 @@ class AllChatViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.dataSource = self
 
         DBProvider.Instance.chatDelegate = self
-        DBProvider.Instance.getAllChats()
+        
          self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        DBProvider.Instance.getAllChats()
     }
 
     /*

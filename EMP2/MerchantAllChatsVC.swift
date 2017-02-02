@@ -34,8 +34,11 @@ class MerchantAllChatsVC: UIViewController, UITableViewDelegate, UITableViewData
         chatTableView.dataSource = self
         
         DBProvider.Instance.chatDelegate = self
-        DBProvider.Instance.getAllChats()
         self.automaticallyAdjustsScrollViewInsets = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        DBProvider.Instance.getAllChats()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

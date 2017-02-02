@@ -562,30 +562,23 @@ class DBProvider {
         chatRef.child(id).child(Constants.MESSAGE_IDS).child(messageId).setValue(lastMessage)
     }
     
-    func saveMessage(chatId: String, senderId: String, senderDisplayName: String, lastUpdate: Double, type: String, text: String?, url: String?){
+    func saveMessage(chatId: String, senderId: String, senderDisplayName: String, lastUpdate: Double, type: String, text: String, url: String?){
         
         var data = Dictionary<String, Any>()
         
         if type == Constants.TEXT {
             
-            data = [Constants.SENDER_ID: senderId, Constants.SENDER_NAME: senderDisplayName, Constants.LAST_UPDATE: lastUpdate, Constants.TYPE: type, Constants.TEXT: text!]
+            data = [Constants.SENDER_ID: senderId, Constants.SENDER_NAME: senderDisplayName, Constants.LAST_UPDATE: lastUpdate, Constants.TYPE: type, Constants.TEXT: text]
             
             
         } else {
-            data = [Constants.SENDER_ID: senderId, Constants.SENDER_NAME: senderDisplayName, Constants.LAST_UPDATE: lastUpdate, Constants.TYPE: type, Constants.URL: url!]
+            data = [Constants.SENDER_ID: senderId, Constants.SENDER_NAME: senderDisplayName, Constants.LAST_UPDATE: lastUpdate, Constants.TYPE: type, Constants.TEXT: text, Constants.URL: url!]
         }
         
         let ref = DBProvider.Instance.messagesRef.childByAutoId()
         ref.setValue(data)
         
-        if let lastMessage = text {
-            
-            self.updateChat(id: chatId, lastMessage: lastMessage, lastUpdate: lastUpdate, messageId: ref.key)
-        }else{
-            
-            self.updateChat(id: chatId, lastMessage: "[Media Message]", lastUpdate: lastUpdate, messageId: ref.key)
-            
-        }
+        self.updateChat(id: chatId, lastMessage: text, lastUpdate: lastUpdate, messageId: ref.key)
     }
     
     func getChat(withId: String){

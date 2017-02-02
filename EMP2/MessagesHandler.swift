@@ -12,17 +12,10 @@ import FirebaseDatabase
 import FirebaseStorage
 
 protocol MessageReceivedDelegate: class {
-    func messageReceived(messages: [Message])
+    func messageReceived(message: Message)
 }
 
 class MessagesHandler {
-    
-    var messages = [Message]() {
-        didSet{
-            messages.sort(by: {$0.lastUpdate < $1.lastUpdate})
-            self.delegate?.messageReceived(messages: messages)
-        }
-    }
     
     private static let _instance = MessagesHandler()
     private init () {}
@@ -33,7 +26,7 @@ class MessagesHandler {
         return _instance
     }
     
-    func sendMessage(chatId: String, senderId: String, senderDisplayName: String, lastUpdate: Double, type: String, text: String?, url: String?) {
+    func sendMessage(chatId: String, senderId: String, senderDisplayName: String, lastUpdate: Double, type: String, text: String, url: String?) {
         
         DBProvider.Instance.saveMessage(chatId: chatId, senderId: senderId, senderDisplayName: senderDisplayName, lastUpdate: lastUpdate, type: type, text: text, url: url)
         
@@ -47,7 +40,7 @@ class MessagesHandler {
                 if err != nil {
                     SimpleAlert.Instance.create(title: "Error", message: "Media message could not be sent", vc: vc!, handler: nil)
                 }else{
-                    self.sendMessage(chatId: chatId, senderId: senderId, senderDisplayName: senderDisplayName, lastUpdate: lastUpdate, type: Constants.IMAGE, text: nil, url: String(describing: metadata!.downloadURL()!))
+                    self.sendMessage(chatId: chatId, senderId: senderId, senderDisplayName: senderDisplayName, lastUpdate: lastUpdate, type: Constants.IMAGE, text: "[Image]", url: String(describing: metadata!.downloadURL()!))
                 }
                 
             }
@@ -59,7 +52,7 @@ class MessagesHandler {
                 if err != nil {
                     SimpleAlert.Instance.create(title: "Error", message: "Media message could not be sent", vc: vc!, handler: nil)
                 } else {
-                    self.sendMessage(chatId: chatId, senderId: senderId, senderDisplayName: senderDisplayName, lastUpdate: lastUpdate, type: Constants.VIDEO, text: nil, url: String(describing: metadata!.downloadURL()!))
+                    self.sendMessage(chatId: chatId, senderId: senderId, senderDisplayName: senderDisplayName, lastUpdate: lastUpdate, type: Constants.VIDEO, text: "[Video]", url: String(describing: metadata!.downloadURL()!))
                 }
                 
             }
@@ -67,12 +60,16 @@ class MessagesHandler {
     }
     
     func observeMessage(chatId: String){
-        DBProvider.Instance.chatRef.child(chatId).child(Constants.MESSAGE_IDS).observe(FIRDataEventType.childAdded) { (snapshot: FIRDataSnapshot) in
+    
+        DBProvider.Instance.chatRef.child(chatId).child(Constants.MESSAGE_IDS).observe(.childAdded, with: { snapshot in
             
-            let messageId = snapshot.value as! String
+            print("childadded")
+            let messageId = snapshot.key
+                
+        
             DBProvider.Instance.messagesRef.child(messageId).observe(.value, with: {
                 snapshot in
-                
+               print("messageRef child value changed")
                 if let data = snapshot.value as? NSDictionary {
                     
                     let senderDisplayName = data[Constants.SENDER_NAME] as? String
@@ -83,13 +80,15 @@ class MessagesHandler {
                     let text = data[Constants.TEXT] as? String
                     
                     let url = data[Constants.URL] as? String
-
-                    self.messages.append(Message(id: messageId, senderDisplayName: senderDisplayName!, senderID: senderId!, lastUpdate: lastUpdate!, type: type!, text: text!, url: url))
+                    
+                    let msg = Message(id: messageId, senderDisplayName: senderDisplayName!, senderID: senderId!, lastUpdate: lastUpdate!, type: type!, text: text!, url: url)
+                    
+                    self.delegate?.messageReceived(message: msg)
                 }
                 
             })
             
-        }
+        })
     }
     
     /*
