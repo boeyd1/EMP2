@@ -35,6 +35,7 @@ class MerchantAllChatsVC: UIViewController, UITableViewDelegate, UITableViewData
         
         DBProvider.Instance.chatDelegate = self
         DBProvider.Instance.getAllChats()
+        self.automaticallyAdjustsScrollViewInsets = false
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,18 +76,9 @@ class MerchantAllChatsVC: UIViewController, UITableViewDelegate, UITableViewData
         // Configure the cell...
         if chats.count != 0{
         
-        if AuthProvider.Instance.currentUserIsMerchant!{
-            
+        
             cell.userImage.image = UIImage(named: "boy")
-            cell.userName.text = chats[(indexPath.row)].customerId
-            
-            
-        }else{
-            cell.userImage.image = chats[(indexPath.row)].merchantProfileImage
-            cell.userName.text = chats[(indexPath.row)].merchantId
-          
-            
-            }
+            cell.userName.text = chats[(indexPath.row)].customerDisplayName
         
             cell.lastMessageContent.text = chats[(indexPath.row)].lastMessage
             

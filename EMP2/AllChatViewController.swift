@@ -14,7 +14,6 @@ class AllChatViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var tableView: UITableView!
     
-    
     private let CHAT_CELL = "ChatCell"
     private let SHOW_SPECIFIC_CHAT = "segueToSpecificChat"
     private let SHOW_NEW_CHAT = "segueToAddChatVC"
@@ -24,10 +23,12 @@ class AllChatViewController: UIViewController, UITableViewDelegate, UITableViewD
             chats.sort(by: {$0.lastUpdate > $1.lastUpdate})
             tableView.reloadData()
         }
+        
     }
     
     func chatsReceived(chat: [Chat]) {
         self.chats = chat
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -37,9 +38,16 @@ class AllChatViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         DBProvider.Instance.chatDelegate = self
         DBProvider.Instance.getAllChats()
+         self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view.
     }
-    
+
+    /*
+    override func viewDidAppear(_ animated: Bool) {
+        DBProvider.Instance.getAllChats()
+
+    }
+    */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == SHOW_SPECIFIC_CHAT {
@@ -61,7 +69,6 @@ class AllChatViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 destinationVC.chat = chats[(indexPath?.row)!]
             }
-            
         }
     }
     
@@ -82,13 +89,12 @@ class AllChatViewController: UIViewController, UITableViewDelegate, UITableViewD
         //return number of active chats
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CHAT_CELL, for: indexPath) as! ChatTableViewCell
         
         // Configure the cell...
         cell.userImage.image = chats[indexPath.row].merchantProfileImage
-        cell.userName.text = chats[indexPath.row].merchantId
+        cell.userName.text = chats[indexPath.row].merchantDisplayName
         cell.lastMessageContent.text = chats[indexPath.row].lastMessage
         cell.lastMessageTime.text = TimeConverter.Instance.getTimeLabel(dt: chats[indexPath.row].lastUpdate)
         

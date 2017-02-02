@@ -29,6 +29,7 @@ class AuthProvider {
     }
     
     var userName = ""
+    var userNameInitials = ""
     var currentUserIsMerchant : Bool?
     var currentMerchant: Merchant?{
         didSet{
@@ -38,6 +39,7 @@ class AuthProvider {
     var currentCustomer: Customer?{
         didSet{
             userName = currentCustomer!.name
+            userNameInitials = (userName.components(separatedBy: " ").reduce("") { $0.0 + String($0.1.characters.first!) }).uppercased()
         }
     }
     

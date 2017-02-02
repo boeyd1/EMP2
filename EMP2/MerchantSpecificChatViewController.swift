@@ -21,7 +21,9 @@ class MerchantSpecificChatViewController: JSQMessagesViewController, UIImagePick
     }
     
     var customerId: String?
+    var customerName: String?
     var merchantId: String?
+    var merchantName: String?
 
     private var jsqMessages = [JSQMessage]()
     
@@ -44,17 +46,12 @@ class MerchantSpecificChatViewController: JSQMessagesViewController, UIImagePick
         
         let lastUpdate = Date().timeIntervalSince1970
         
-        if chat == nil {
-            DBProvider.Instance.saveNewChatUsers(customerId: customerId!, merchantId: merchantId!, saveSuccess: { (chatId) in
-                MessagesHandler.Instance.sendMessage(chatId: chatId, senderId: senderId, senderDisplayName: senderDisplayName, lastUpdate: lastUpdate, type: Constants.TEXT, text: text, url: nil)
-            })
-        }else{
-            MessagesHandler.Instance.sendMessage(chatId: chat!.id, senderId: senderId, senderDisplayName: senderDisplayName, lastUpdate: lastUpdate, type: Constants.TEXT, text: text, url: nil)
-            
-        }
+        MessagesHandler.Instance.sendMessage(chatId: chat!.id, senderId: senderId, senderDisplayName: senderDisplayName, lastUpdate: lastUpdate, type: Constants.TEXT, text: text, url: nil)
+        
         collectionView.reloadData()
         //removes text from textfield
         finishSendingMessage()
+        DBProvider.Instance.getAllChats()
     }
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
@@ -100,6 +97,7 @@ class MerchantSpecificChatViewController: JSQMessagesViewController, UIImagePick
         
         self.dismiss(animated: true, completion: nil)
         collectionView.reloadData()
+        DBProvider.Instance.getAllChats()
     }
     
     //COLLECTION VIEW FUNCTIONS

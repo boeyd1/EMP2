@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 
-class AddChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FetchMerchantsForChatData {
+class AddChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FetchMerchantsForChatData, FetchSingleChatData {
 
     private let CELL = "Cell"
     private let SHOW_SPECIFIC_CHAT = "segueToSpecificChat"
@@ -25,6 +25,16 @@ class AddChatViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    var existingChat: Chat?{
+        didSet{
+            performSegue(withIdentifier: SHOW_SPECIFIC_CHAT, sender: nil)
+        }
+    }
+    
+    func chatReceived(chat: Chat) {
+        existingChat = chat
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +42,7 @@ class AddChatViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.dataSource = self
         DBProvider.Instance.merchantsForChatDelegate = self
         DBProvider.Instance.getMerchantsForChat()
+        DBProvider.Instance.singleChatDelegate = self
         
         self.automaticallyAdjustsScrollViewInsets = false
         
@@ -58,23 +69,23 @@ class AddChatViewController: UIViewController, UITableViewDataSource, UITableVie
                 let indexPath = tableView.indexPath(for: cell)
                 
                 let customerId = AuthProvider.Instance.userID()
+                let customerName = AuthProvider.Instance.userNameInitials
                 let merchantId = arrayOfMerchantsForChat[(indexPath?.row)!].id
+                let merchantName = arrayOfMerchantsForChat[(indexPath?.row)!].displayName
                 
                 destinationVC.customerId = customerId
                 destinationVC.merchantId = merchantId
+                destinationVC.customerDisplayName = customerName
+                destinationVC.merchantDisplayName = merchantName
                 
-                DBProvider.Instance.checkForExistingChat(customerId: customerId, merchantId: merchantId, chatId: { (idReturned) in
-                    
-                    
-                    DBProvider.Instance.singleChatDelegate = destinationVC
-                    if idReturned == nil {
-                        
-                    }else{
-                        
-                        DBProvider.Instance.getChat(withId: idReturned)
-                    }
-                })
-                
+            }else{
+                if let _ = existingChat{
+                    destinationVC.chat = existingChat
+                    destinationVC.customerId = existingChat!.customerId
+                    destinationVC.customerDisplayName = existingChat!.customerDisplayName
+                    destinationVC.merchantId = existingChat!.merchantId
+                    destinationVC.merchantDisplayName = existingChat!.merchantDisplayName
+                }
             }
             
         }
@@ -117,7 +128,19 @@ class AddChatViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRow(at: indexPath)
-        performSegue(withIdentifier: SHOW_SPECIFIC_CHAT, sender: cell)
+        if let cell = tableView.cellForRow(at: indexPath) as? NewChatTableViewCell{
+            
+            let customerId = AuthProvider.Instance.userID()
+            let merchantId = arrayOfMerchantsForChat[indexPath.row].id
+            
+            DBProvider.Instance.checkForExistingChat(customerId: customerId, merchantId: merchantId, chatId: { (idReturned) in
+                
+                if idReturned == nil {
+                    self.performSegue(withIdentifier: self.SHOW_SPECIFIC_CHAT, sender: cell)
+                }else{
+                    DBProvider.Instance.getChat(withId: idReturned!)
+                }
+            })
+        }
     }
 }

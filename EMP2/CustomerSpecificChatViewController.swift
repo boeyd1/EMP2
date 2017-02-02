@@ -21,7 +21,10 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
     }
     
     var customerId: String?
+    var customerDisplayName: String?
+    
     var merchantId: String?
+    var merchantDisplayName: String?
     
     private var jsqMessages = [JSQMessage](){
         didSet{
@@ -35,11 +38,13 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
         super.viewDidLoad()
         
         self.senderId = AuthProvider.Instance.userID()
-        self.senderDisplayName = AuthProvider.Instance.userName
+        self.senderDisplayName = AuthProvider.Instance.userNameInitials
         
         picker.delegate = self
         MessagesHandler.Instance.delegate = self
         DBProvider.Instance.singleChatDelegate = self
+        
+    
         
     }
     
@@ -49,7 +54,7 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
         let lastUpdate = Date().timeIntervalSince1970
         
         if chat == nil {
-            DBProvider.Instance.saveNewChatUsers(customerId: customerId!, merchantId: merchantId!, saveSuccess: { (chatId) in
+            DBProvider.Instance.saveNewChatUsers(customerId: customerId!, customerName: self.senderDisplayName, merchantId: merchantId!, merchantName: merchantDisplayName!, saveSuccess: { (chatId) in
                 MessagesHandler.Instance.sendMessage(chatId: chatId, senderId: senderId, senderDisplayName: senderDisplayName, lastUpdate: lastUpdate, type: Constants.TEXT, text: text, url: nil)
                 
                 DBProvider.Instance.getChat(withId: chatId)
@@ -61,6 +66,7 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
         collectionView.reloadData()
         //removes text from textfield
         finishSendingMessage()
+        DBProvider.Instance.getAllChats()
     }
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
@@ -106,6 +112,7 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
         
         self.dismiss(animated: true, completion: nil)
         collectionView.reloadData()
+        DBProvider.Instance.getAllChats()
     }
     
     //COLLECTION VIEW FUNCTIONS
