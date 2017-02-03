@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MerchantAllChatsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, FetchChatData{
+class MerchantAllChatsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, FetchChatIdsData, FetchSingleChatData{
 
     private let CHAT_CELL = "ChatCell"
     private let SHOW_SPECIFIC_CHAT = "showSpecificChat"
@@ -20,12 +20,43 @@ class MerchantAllChatsVC: UIViewController, UITableViewDelegate, UITableViewData
     var chats = [Chat](){
         didSet{
             chats.sort(by: {$0.lastUpdate > $1.lastUpdate})
+            
+            var newChatIds = [String]()
+            
+            for chat in chats {
+                newChatIds.append(chat.id)
+            }
+            chatIds = newChatIds
             chatTableView.reloadData()
         }
     }
     
-    func chatsReceived(chat: [Chat]) {
-        self.chats = chat
+    var chatIds = [String]()
+    
+    func chatIdsReceived(ids: [String]) {
+        for id in ids {
+            if !chatIds.contains(id){
+                DBProvider.Instance.getChat(withId: id)
+            }
+        }
+        //might need to check if chat is deleted
+    }
+    
+    func chatReceived(chat: Chat) {
+        
+        var shouldAddChat = true
+        for (index, iChat) in chats.enumerated() {
+            if chat.id == iChat.id{
+                chats[index] = chat
+                shouldAddChat = false
+            }
+        }
+        if shouldAddChat{
+           chats.append(chat)
+        }
+        
+        chatTableView.reloadData()
+        
     }
     
     override func viewDidLoad() {
@@ -33,12 +64,17 @@ class MerchantAllChatsVC: UIViewController, UITableViewDelegate, UITableViewData
         chatTableView.delegate = self
         chatTableView.dataSource = self
         
-        DBProvider.Instance.chatDelegate = self
+        DBProvider.Instance.chatIdsDelegate = self
+        DBProvider.Instance.singleChatDelegate = self
+        DBProvider.Instance.getChatIds(userId: AuthProvider.Instance.userID())
+        
         self.automaticallyAdjustsScrollViewInsets = false
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        DBProvider.Instance.getAllChats()
+    override func viewWillAppear(_ animated: Bool) {
+        if self.chatTableView != nil {
+            self.chatTableView.reloadData()
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -79,8 +115,13 @@ class MerchantAllChatsVC: UIViewController, UITableViewDelegate, UITableViewData
         // Configure the cell...
         if chats.count != 0{
         
-        
+            var boyImg = UIImage(named: "boy")
+            
+
             cell.userImage.image = UIImage(named: "boy")
+            cell.userImage.layer.cornerRadius = cell.userImage.frame.size.height/4
+            cell.userImage.layer.masksToBounds = true
+            
             cell.userName.text = chats[(indexPath.row)].customerDisplayName
         
             cell.lastMessageContent.text = chats[(indexPath.row)].lastMessage

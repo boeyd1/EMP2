@@ -138,7 +138,7 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/RegistrationTableViewController.swift"
-                  timestampString = "507752896.479833"
+                  timestampString = "507831587.597143"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "108"
@@ -153,7 +153,7 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/RegistrationTableViewController.swift"
-                  timestampString = "507752896.545162"
+                  timestampString = "507831587.59845"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "112"
@@ -202,13 +202,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EMP2/MerchantNotificationsViewController.swift"
-            timestampString = "506584751.38357"
+            timestampString = "507802532.290248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "sendButtonTapped(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EMP2.MerchantNotificationsViewController.sendButtonTapped (Any) -&gt; ()"
+                  moduleName = "EMP2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/MerchantNotificationsViewController.swift"
+                  timestampString = "507831587.610375"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "19">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EMP2.MerchantNotificationsViewController.(sendButtonTapped (Any) -&gt; ()).(closure #1)"
+                  moduleName = "EMP2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/MerchantNotificationsViewController.swift"
+                  timestampString = "507831587.611908"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "120">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -265,12 +297,44 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EMP2/CustomerSpecificChatViewController.swift"
-            timestampString = "507752240.488417"
+            filePath = "EMP2/MerchantAllChatsVC.swift"
+            timestampString = "507826028.401388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "chatReceived(chat:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EMP2/MerchantAllChatsVC.swift"
+            timestampString = "507826028.401388"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EMP2/MerchantSpecificChatViewController.swift"
+            timestampString = "507829880.909795"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "messageReceived(message:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -278,16 +342,144 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EMP2/AllChatViewController.swift"
-            timestampString = "507712503.247764"
+            timestampString = "507826530.436571"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "chatsReceived(chat:)"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "AllChatViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EMP2.AllChatViewController.chats.didset : Swift.Array&lt;EMP2.Chat&gt;"
+                  moduleName = "EMP2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/AllChatViewController.swift"
+                  timestampString = "507831587.633695"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EMP2.AllChatViewController.(chats.didset : Swift.Array&lt;EMP2.Chat&gt;).(closure #1)"
+                  moduleName = "EMP2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/AllChatViewController.swift"
+                  timestampString = "507831587.635361"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EMP2/AllChatViewController.swift"
+            timestampString = "507826737.292966"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "chatReceived(chat:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EMP2/AllChatViewController.swift"
+            timestampString = "507826718.184428"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "chatIdsReceived(ids:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EMP2/DBProvider.swift"
+            timestampString = "507828333.467546"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "638"
+            endingLineNumber = "638"
+            landmarkName = "getChat(withId:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EMP2.DBProvider.(getChat (withId : Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "EMP2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/DBProvider.swift"
+                  timestampString = "507831587.645385"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "639"
+                  endingLineNumber = "639"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EMP2.DBProvider.(getChat (withId : Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "EMP2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/DBProvider.swift"
+                  timestampString = "507831587.646678"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "639"
+                  endingLineNumber = "639"
+                  offsetFromSymbolStart = "577">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EMP2/DBProvider.swift"
+            timestampString = "507828333.467546"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "666"
+            endingLineNumber = "666"
+            landmarkName = "getChat(withId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -298,12 +490,156 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EMP2/CustomerSpecificChatViewController.swift"
-            timestampString = "507752240.488417"
+            timestampString = "507828333.467546"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "didPressSend(_:withMessageText:senderId:senderDisplayName:date:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EMP2.CustomerSpecificChatViewController.didPressSend (Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIButton&gt;, withMessageText : Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;, senderId : Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;, senderDisplayName : Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;, date : Swift.ImplicitlyUnwrappedOptional&lt;Foundation.Date&gt;) -&gt; ()"
+                  moduleName = "EMP2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/CustomerSpecificChatViewController.swift"
+                  timestampString = "507831587.654494"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "502">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EMP2.CustomerSpecificChatViewController.(didPressSend (Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIButton&gt;, withMessageText : Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;, senderId : Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;, senderDisplayName : Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;, date : Swift.ImplicitlyUnwrappedOptional&lt;Foundation.Date&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "EMP2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/CustomerSpecificChatViewController.swift"
+                  timestampString = "507831587.656577"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "183">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EMP2/CustomerSpecificChatViewController.swift"
+            timestampString = "507829179.745694"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "CustomerSpecificChatViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EMP2/CustomerSpecificChatViewController.swift"
+            timestampString = "507829880.909795"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "messageReceived(message:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EMP2/DBProvider.swift"
+            timestampString = "507829259.071914"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "595"
+            endingLineNumber = "595"
+            landmarkName = "getOneChat(withId:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EMP2.DBProvider.getOneChat (withId : Swift.String) -&gt; ()"
+                  moduleName = "EMP2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/DBProvider.swift"
+                  timestampString = "507831587.667204"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "595"
+                  endingLineNumber = "595"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EMP2.DBProvider.(getOneChat (withId : Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "EMP2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/DBProvider.swift"
+                  timestampString = "507831587.669944"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "597"
+                  endingLineNumber = "597"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EMP2/CustomerSpecificChatViewController.swift"
+            timestampString = "507829880.909795"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "oneChatReceived(chat:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EMP2/CustomerSpecificChatViewController.swift"
+            timestampString = "507829356.84243"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "didPressSend(_:withMessageText:senderId:senderDisplayName:date:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

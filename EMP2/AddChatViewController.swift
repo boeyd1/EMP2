@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 
-class AddChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FetchMerchantsForChatData, FetchSingleChatData {
+class AddChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FetchMerchantsForChatData, FetchChatDataOnce {
 
     private let CELL = "Cell"
     private let SHOW_SPECIFIC_CHAT = "segueToSpecificChat"
@@ -25,14 +25,9 @@ class AddChatViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    var existingChat: Chat?{
-        didSet{
-            performSegue(withIdentifier: SHOW_SPECIFIC_CHAT, sender: nil)
-        }
-    }
     
-    func chatReceived(chat: Chat) {
-        existingChat = chat
+    func oneChatReceived(chat: Chat) {
+        performSegue(withIdentifier: SHOW_SPECIFIC_CHAT, sender: chat)
     }
     
     override func viewDidLoad() {
@@ -42,7 +37,7 @@ class AddChatViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.dataSource = self
         DBProvider.Instance.merchantsForChatDelegate = self
         DBProvider.Instance.getMerchantsForChat()
-        DBProvider.Instance.singleChatDelegate = self
+        DBProvider.Instance.oneChatDelegate = self
         
         self.automaticallyAdjustsScrollViewInsets = false
         
@@ -79,15 +74,15 @@ class AddChatViewController: UIViewController, UITableViewDataSource, UITableVie
                 destinationVC.merchantDisplayName = merchantName
                 
             }else{
-                if let _ = existingChat{
+                if let existingChat = sender as? Chat{
+                    
                     destinationVC.chat = existingChat
-                    destinationVC.customerId = existingChat!.customerId
-                    destinationVC.customerDisplayName = existingChat!.customerDisplayName
-                    destinationVC.merchantId = existingChat!.merchantId
-                    destinationVC.merchantDisplayName = existingChat!.merchantDisplayName
+                    destinationVC.customerId = existingChat.customerId
+                    destinationVC.customerDisplayName = existingChat.customerDisplayName
+                    destinationVC.merchantId = existingChat.merchantId
+                    destinationVC.merchantDisplayName = existingChat.merchantDisplayName
                 }
             }
-            
         }
     }
 
@@ -138,7 +133,7 @@ class AddChatViewController: UIViewController, UITableViewDataSource, UITableVie
                 if idReturned == nil {
                     self.performSegue(withIdentifier: self.SHOW_SPECIFIC_CHAT, sender: cell)
                 }else{
-                    DBProvider.Instance.getChat(withId: idReturned!)
+                    DBProvider.Instance.getOneChat(withId: idReturned!)
                 }
             })
         }

@@ -57,6 +57,14 @@ protocol FetchSingleChatData: class {
     func chatReceived(chat: Chat)
 }
 
+protocol FetchChatDataOnce: class {
+    func oneChatReceived(chat: Chat)
+}
+
+protocol FetchChatIdsData: class {
+    func chatIdsReceived(ids: [String])
+}
+
 class DBProvider {
     
     
@@ -72,6 +80,8 @@ class DBProvider {
     weak var singleMerchantDelegate: FetchSingleMerchantData?
     weak var chatDelegate: FetchChatData?
     weak var singleChatDelegate: FetchSingleChatData?
+    weak var oneChatDelegate: FetchChatDataOnce?
+    weak var chatIdsDelegate: FetchChatIdsData?
     
     private init() {}
     
@@ -516,7 +526,7 @@ class DBProvider {
                 for(key, value) in chatIds{
                     let idToVerify = value as! String
                     if merchantId == idToVerify{
-                        idToReturn = key as! String
+                        idToReturn = key as! String 
                     }
                 }
                 chatId!(idToReturn)
@@ -581,6 +591,48 @@ class DBProvider {
         self.updateChat(id: chatId, lastMessage: text, lastUpdate: lastUpdate, messageId: ref.key)
     }
     
+    func getOneChat(withId: String){
+        chatRef.child(withId).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+            
+            if let chats = snapshot.value as? NSDictionary{
+                
+                let id = withId
+                
+                let lastMessage = chats[Constants.LAST_MESSAGE] as? String
+                let lastUpdate = chats[Constants.LAST_UPDATE] as? Double
+                
+                if let customer = chats[Constants.CUSTOMERS] as? NSDictionary {
+                    
+                    let customerId = customer[Constants.CUSTOMER_ID] as? String
+                    
+                    let customerName = customer[Constants.NAME] as? String
+                    
+                    if let merchant = chats[Constants.MERCHANTS] as? NSDictionary {
+                        let merchantId = merchant[Constants.MERCHANT_ID] as? String
+                        let merchantName = merchant[Constants.NAME] as? String
+                        
+                        self.getMerchantProfileImageUrl(withId: merchantId!, url: { (url) in
+                            
+                            let storageRef = FIRStorage.storage().reference(forURL: url)
+                            
+                            storageRef.data(withMaxSize: 1 * 1024 * 1024) { (data, error) in
+                                
+                                if error != nil {
+                                    print("couldn't download profilePicImage")
+                                }else{
+                                    let profileImage = UIImage(data: data!)
+                                    
+                                    self.oneChatDelegate?.oneChatReceived(chat: Chat(id: id, customerId: customerId!, merchantId: merchantId!, customerDisplayName: customerName!, merchantDisplayName: merchantName!, lastMessage: lastMessage, lastUpdate: lastUpdate, merchantProfileImage: profileImage!))
+                                }
+                            }
+                        })}
+                }
+                
+            }
+            
+        })
+    }
+    
     func getChat(withId: String){
         chatRef.child(withId).observe(FIRDataEventType.value, with: { (snapshot) in
             
@@ -612,8 +664,7 @@ class DBProvider {
                             }else{
                                 let profileImage = UIImage(data: data!)
                                 
-                                self.singleChatDelegate?.chatReceived(chat: Chat(id: id, customerId: customerId!, merchantId: merchantId!,
-                                                                                 customerDisplayName: customerName!, merchantDisplayName: merchantName!, lastMessage: lastMessage, lastUpdate: lastUpdate, merchantProfileImage: profileImage!))
+                                self.singleChatDelegate?.chatReceived(chat: Chat(id: id, customerId: customerId!, merchantId: merchantId!, customerDisplayName: customerName!, merchantDisplayName: merchantName!, lastMessage: lastMessage, lastUpdate: lastUpdate, merchantProfileImage: profileImage!))
                             }
                         }
                     })}
@@ -624,65 +675,11 @@ class DBProvider {
         })
     }
     
-    func getAllChats(){
-        
-        var sumChatIds = [String](){
-            didSet{
-                
-                var arrayOfChats = [Chat]()
-                
-                for id in sumChatIds{
-                    self.chatRef.child(id).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
-                        
-                        if let chats = snapshot.value as? NSDictionary{
-                            let id = id
-                            let lastMessage = chats[Constants.LAST_MESSAGE] as? String
-                            let lastUpdate = chats[Constants.LAST_UPDATE] as? Double
-                            
-                            
-                            if let customer = chats[Constants.CUSTOMERS] as? NSDictionary {
-                                
-                                let customerId = customer[Constants.CUSTOMER_ID] as? String
-                                
-                                let customerName = customer[Constants.NAME] as? String
-                                
-                                if let merchant = chats[Constants.MERCHANTS] as? NSDictionary {
-                                    let merchantId = merchant[Constants.MERCHANT_ID] as? String
-                                    let merchantName = merchant[Constants.NAME] as? String
-                                    
-                                    self.getMerchantProfileImageUrl(withId: merchantId!, url: { (url) in
-                                        
-                                        let storageRef = FIRStorage.storage().reference(forURL: url)
-                                        
-                                        storageRef.data(withMaxSize: 1 * 1024 * 1024) { (data, error) in
-                                            
-                                            if error != nil {
-                                                print("couldn't download profilePicImage")
-                                            }else{
-                                                let profileImage = UIImage(data: data!)
-                                                
-                                                arrayOfChats.append(Chat(id: id, customerId: customerId!, merchantId: merchantId!, customerDisplayName: customerName!, merchantDisplayName: merchantName!, lastMessage: lastMessage, lastUpdate: lastUpdate, merchantProfileImage: profileImage!))
-                                                
-                                                self.chatDelegate?.chatsReceived(chat: arrayOfChats)
-                                                
-                                            }
-                                        }
-                                    })
-                                }
-                            }
-                        }
-                    })
-                }
-                
-                
-                
-            }
-        }
-        
+    func getChatIds(userId: String){
         
         if AuthProvider.Instance.currentUserIsMerchant!{
             
-            merchantsRef.child(AuthProvider.Instance.userID()).child(Constants.CHAT_IDS).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+            merchantsRef.child(AuthProvider.Instance.userID()).child(Constants.CHAT_IDS).observe(.value, with: { snapshot in
                 
                 if let chats = snapshot.value as? NSDictionary{
                     
@@ -692,11 +689,12 @@ class DBProvider {
                         chatIds.append(key as! String)
                         
                     }
-                    sumChatIds = chatIds
+                    self.chatIdsDelegate?.chatIdsReceived(ids: chatIds)
                 }
+                
             })
         }else{
-            customersRef.child(AuthProvider.Instance.userID()).child(Constants.CHAT_IDS).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+            customersRef.child(AuthProvider.Instance.userID()).child(Constants.CHAT_IDS).observe(.value, with: { snapshot in
                 
                 if let chats = snapshot.value as? NSDictionary{
                     
@@ -706,10 +704,64 @@ class DBProvider {
                         chatIds.append(key as! String)
                         
                     }
-                    sumChatIds = chatIds
+                    self.chatIdsDelegate?.chatIdsReceived(ids: chatIds)
                 }
             })
         }
+        
     }
+    
+    
+    func observeChats(withId: [String]) {
+        var arrayOfChats = [Chat]()
+        
+        for id in withId{
+            self.chatRef.child(id).observe(.value, with: { snapshot in
+                
+                if let chats = snapshot.value as? NSDictionary{
+                    let id = id
+                    let lastMessage = chats[Constants.LAST_MESSAGE] as? String
+                    let lastUpdate = chats[Constants.LAST_UPDATE] as? Double
+                    
+                    
+                    if let customer = chats[Constants.CUSTOMERS] as? NSDictionary {
+                        
+                        let customerId = customer[Constants.CUSTOMER_ID] as? String
+                        
+                        let customerName = customer[Constants.NAME] as? String
+                        
+                        if let merchant = chats[Constants.MERCHANTS] as? NSDictionary {
+                            let merchantId = merchant[Constants.MERCHANT_ID] as? String
+                            let merchantName = merchant[Constants.NAME] as? String
+                            
+                            self.getMerchantProfileImageUrl(withId: merchantId!, url: { (url) in
+                                
+                                let storageRef = FIRStorage.storage().reference(forURL: url)
+                                
+                                storageRef.data(withMaxSize: 1 * 1024 * 1024) { (data, error) in
+                                    
+                                    if error != nil {
+                                        print("couldn't download profilePicImage")
+                                    }else{
+                                        let profileImage = UIImage(data: data!)
+                                        
+                                        arrayOfChats.append(Chat(id: id, customerId: customerId!, merchantId: merchantId!, customerDisplayName: customerName!, merchantDisplayName: merchantName!, lastMessage: lastMessage, lastUpdate: lastUpdate, merchantProfileImage: profileImage!))
+                                        
+                                        self.chatDelegate?.chatsReceived(chat: arrayOfChats)
+                                        
+                                    }
+                                }
+                            })
+                        }
+                    }
+                }
+            })
+        }
+        
+        
+        
+    }
+    
+    
 }
 

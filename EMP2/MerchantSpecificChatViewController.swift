@@ -28,6 +28,8 @@ class MerchantSpecificChatViewController: JSQMessagesViewController, UIImagePick
 
     private var jsqMessages = [JSQMessage]()
     
+    var lastMessageId = ""
+    
     let picker = UIImagePickerController()
     
     override func viewDidLoad() {
@@ -56,7 +58,7 @@ class MerchantSpecificChatViewController: JSQMessagesViewController, UIImagePick
         
         //removes text from textfield
         finishSendingMessage()
-        DBProvider.Instance.getAllChats()
+       
     }
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
@@ -101,6 +103,7 @@ class MerchantSpecificChatViewController: JSQMessagesViewController, UIImagePick
         }
         
         self.dismiss(animated: true, completion: nil)
+        collectionView.reloadData()
         finishSendingMessage()
         
     }
@@ -109,7 +112,11 @@ class MerchantSpecificChatViewController: JSQMessagesViewController, UIImagePick
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         
-        return JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "boy"), diameter: 30)
+        if jsqMessages[indexPath.row].senderId == self.senderId {
+            return JSQMessagesAvatarImageFactory.avatarImage(with: chat?.merchantProfileImage, diameter: 30)
+        }else{
+            return JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "boy"), diameter: 30)
+        }
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
@@ -160,111 +167,122 @@ class MerchantSpecificChatViewController: JSQMessagesViewController, UIImagePick
     
     //Delegation functions
     func messageReceived(message: Message) {
-            
-            if let _ = message.url {
-                
-                jsqMessages.append(JSQMessage(senderId: "", displayName: "", text: "...downloading media..."))
-                
-                let index = jsqMessages.count - 1
-                
-                let url = URL(string:message.url!)!
-                do {
-                    
-                    let data = try Data(contentsOf: url)
-                    
-                    if let _ = UIImage(data: data) {
-                        
-                        let _ = SDWebImageDownloader.shared().downloadImage(with: url, options: [], progress: nil, completed: { (image, data, error, finished) in
-                            
-                            DispatchQueue.main.async {
-                                let photo = JSQPhotoMediaItem(image: image)
-                                if message.senderID == self.senderId {
-                                    photo?.appliesMediaViewMaskAsOutgoing = true
-                                } else {
-                                    photo?.appliesMediaViewMaskAsOutgoing = false
-                                }
-                                
-                                self.jsqMessages[index] = JSQMessage(senderId: message.senderID, displayName: message.senderDisplayName, media: photo)
-                                self.finishReceivingMessage()
-                                
-
-                            }
-                            
-                            
-                        })
-                    } else{
-                        let video = JSQVideoMediaItem(fileURL: url, isReadyToPlay: true)
-                        
-                        if message.senderID == self.senderId {
-                            video?.appliesMediaViewMaskAsOutgoing = true
-                        } else {
-                            video?.appliesMediaViewMaskAsOutgoing = false
-                        }
-                        
-                        self.jsqMessages.append(JSQMessage(senderId: message.senderID, displayName: message.senderDisplayName, media: video))
-                        finishReceivingMessage()
-                    }
-                    
-                }catch{
-                    
-                }
-                
-            }else{
-                
-                self.jsqMessages.append(JSQMessage(senderId: message.senderID, displayName: message.senderDisplayName, text: message.text))
-                
-            }
-        finishReceivingMessage()
         
-    }
-    
-    /*
-    
-    func mediaReceived(senderId: String, senderName: String, url: String) {
+        if message.id == lastMessageId {
+            return
+        }
         
-        if let mediaURL = URL(string: url){
+        lastMessageId = message.id
+        
+        if let _ = message.url {
             
+            jsqMessages.append(JSQMessage(senderId: "", displayName: "", text: "...downloading media..."))
+            
+            let index = jsqMessages.count - 1
+            
+            let url = URL(string:message.url!)!
             do {
                 
-                let data = try Data(contentsOf: mediaURL)
+                let data = try Data(contentsOf: url)
                 
                 if let _ = UIImage(data: data) {
                     
-                    let _ = SDWebImageDownloader.shared().downloadImage(with: mediaURL, options: [], progress: nil, completed: { (image, data, error, finished) in
+                    let _ = SDWebImageDownloader.shared().downloadImage(with: url, options: [], progress: nil, completed: { (image, data, error, finished) in
                         
                         DispatchQueue.main.async {
                             let photo = JSQPhotoMediaItem(image: image)
-                            if senderId == self.senderId {
+                            if message.senderID == self.senderId {
                                 photo?.appliesMediaViewMaskAsOutgoing = true
                             } else {
                                 photo?.appliesMediaViewMaskAsOutgoing = false
                             }
                             
-                            self.jsqMessages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
-                            
+                            self.jsqMessages[index] = JSQMessage(senderId: message.senderID, displayName: message.senderDisplayName, media: photo)
                             self.collectionView.reloadData()
+                            self.finishReceivingMessage()
+                            
+                            
                         }
                         
                         
                     })
                 } else{
-                    let video = JSQVideoMediaItem(fileURL: mediaURL, isReadyToPlay: true)
+                    let video = JSQVideoMediaItem(fileURL: url, isReadyToPlay: true)
                     
-                    if senderId == self.senderId {
+                    if message.senderID == self.senderId {
                         video?.appliesMediaViewMaskAsOutgoing = true
                     } else {
                         video?.appliesMediaViewMaskAsOutgoing = false
                     }
-                    jsqMessages.append(JSQMessage(senderId: senderId, displayName: senderName, media: video))
-                   self.collectionView.reloadData()
+                    
+                    self.jsqMessages.append(JSQMessage(senderId: message.senderID, displayName: message.senderDisplayName, media: video))
+                    
+                    self.collectionView.reloadData()
+                    finishReceivingMessage()
                 }
                 
             }catch{
                 
             }
+            
+        }else{
+            
+            self.jsqMessages.append(JSQMessage(senderId: message.senderID, displayName: message.senderDisplayName, text: message.text))
+            
         }
+        
+        self.collectionView.reloadData()
+        finishReceivingMessage()
+        
     }
- 
- */
-
+    
+    /*
+     
+     func mediaReceived(senderId: String, senderName: String, url: String) {
+     
+     if let mediaURL = URL(string: url){
+     
+     do {
+     
+     let data = try Data(contentsOf: mediaURL)
+     
+     if let _ = UIImage(data: data) {
+     
+     let _ = SDWebImageDownloader.shared().downloadImage(with: mediaURL, options: [], progress: nil, completed: { (image, data, error, finished) in
+     
+     DispatchQueue.main.async {
+     let photo = JSQPhotoMediaItem(image: image)
+     if senderId == self.senderId {
+     photo?.appliesMediaViewMaskAsOutgoing = true
+     } else {
+     photo?.appliesMediaViewMaskAsOutgoing = false
+     }
+     
+     self.jsqMessages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+     
+     self.collectionView.reloadData()
+     }
+     
+     
+     })
+     } else{
+     let video = JSQVideoMediaItem(fileURL: mediaURL, isReadyToPlay: true)
+     
+     if senderId == self.senderId {
+     video?.appliesMediaViewMaskAsOutgoing = true
+     } else {
+     video?.appliesMediaViewMaskAsOutgoing = false
+     }
+     jsqMessages.append(JSQMessage(senderId: senderId, displayName: senderName, media: video))
+     self.collectionView.reloadData()
+     }
+     
+     }catch{
+     
+     }
+     }
+     }
+     
+     */
+    
 }

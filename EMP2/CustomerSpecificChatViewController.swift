@@ -12,9 +12,11 @@ import MobileCoreServices
 import AVKit
 import SDWebImage
 
-class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MessageReceivedDelegate, FetchSingleChatData{
+class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MessageReceivedDelegate, FetchChatDataOnce{
+    
     var chat: Chat?{
         didSet{
+            
             MessagesHandler.Instance.observeMessage(chatId: chat!.id)
         
         }
@@ -22,11 +24,13 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
     
     var customerId: String?
     var customerDisplayName: String?
-    
     var merchantId: String?
     var merchantDisplayName: String?
     
     private var jsqMessages = [JSQMessage]()
+    
+    var lastMessageId = ""
+    
     
     let picker = UIImagePickerController()
     
@@ -38,7 +42,7 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
         
         picker.delegate = self
         MessagesHandler.Instance.delegate = self
-        DBProvider.Instance.singleChatDelegate = self
+        DBProvider.Instance.oneChatDelegate = self
         automaticallyScrollsToMostRecentMessage = true
         showTypingIndicator = true
         
@@ -55,7 +59,8 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
             DBProvider.Instance.saveNewChatUsers(customerId: customerId!, customerName: self.senderDisplayName, merchantId: merchantId!, merchantName: merchantDisplayName!, saveSuccess: { (chatId) in
                 MessagesHandler.Instance.sendMessage(chatId: chatId, senderId: senderId, senderDisplayName: senderDisplayName, lastUpdate: lastUpdate, type: Constants.TEXT, text: text, url: nil)
                 
-                DBProvider.Instance.getChat(withId: chatId)
+                DBProvider.Instance.getOneChat(withId: chatId)
+               
             })
         }else{
         MessagesHandler.Instance.sendMessage(chatId: chat!.id, senderId: senderId, senderDisplayName: senderDisplayName, lastUpdate: lastUpdate, type: Constants.TEXT, text: text, url: nil)
@@ -64,7 +69,7 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
         
         //removes text from textfield
         finishSendingMessage()
-        DBProvider.Instance.getAllChats()
+      
     }
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
@@ -109,15 +114,20 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
         }
         
         self.dismiss(animated: true, completion: nil)
-        finishSendingMessage()
         collectionView.reloadData()
+        finishSendingMessage()
+        
     }
     
     //COLLECTION VIEW FUNCTIONS
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         
-        return JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "boy"), diameter: 30)
+        if jsqMessages[indexPath.row].senderId == self.senderId {
+            return JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "boy"), diameter: 30)
+        }else{
+            return JSQMessagesAvatarImageFactory.avatarImage(with: chat?.merchantProfileImage, diameter: 30)
+        }
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
@@ -168,11 +178,18 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
     
     //Delegation functions
     
-    func chatReceived(chat: Chat) {
+    func oneChatReceived(chat: Chat) {
         self.chat = chat
+        
     }
     
     func messageReceived(message: Message) {
+        
+        if message.id == lastMessageId {
+            return
+        }
+        
+        lastMessageId = message.id
         
         if let _ = message.url {
                 
@@ -199,6 +216,8 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
                                 
                                 self.jsqMessages[index] = JSQMessage(senderId: message.senderID, displayName: message.senderDisplayName, media: photo)
                                 
+                                
+                                self.collectionView.reloadData()
                                 self.finishReceivingMessage()
                                 
                             }
@@ -215,6 +234,8 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
                         }
                         
                         self.jsqMessages[index] = JSQMessage(senderId: message.senderID, displayName: message.senderDisplayName, media: video)
+                       
+                        self.collectionView.reloadData()
                         finishReceivingMessage()
                     }
                     
@@ -228,6 +249,8 @@ class CustomerSpecificChatViewController: JSQMessagesViewController, UIImagePick
                
             
         }
+        
+        self.collectionView.reloadData()
         finishReceivingMessage()
         
     }

@@ -21,7 +21,20 @@ class MerchantNotificationsViewController: UIViewController, UITextViewDelegate,
     
     @IBAction func sendButtonTapped(_ sender: Any) {
         
+        /*
         OneSignal.postNotification(["contents": ["en": textView.text], "include_player_ids": followerOSIds], onSuccess: { (_: [AnyHashable : Any]?) in
+            SimpleAlert.Instance.create(title: "Success", message: "Your message has been broadcasted to fans!", vc: self, handler: nil)
+        }) { (error) in
+            
+            let err = self.osErrorInStr(err: OneSignal.parseNSError(asJsonString: error)!)
+            
+            SimpleAlert.Instance.create(title: "Error", message: "Message could not be broadcasted because \(err)", vc: self, handler: nil)
+            
+            
+        }
+ */
+        //delete this (only for testing)
+        OneSignal.postNotification(["contents": ["en": textView.text], "include_player_ids": ["1f35b552-29f9-444d-813e-92ed76ab6070"]], onSuccess: { (_: [AnyHashable : Any]?) in
             SimpleAlert.Instance.create(title: "Success", message: "Your message has been broadcasted to fans!", vc: self, handler: nil)
         }) { (error) in
             
