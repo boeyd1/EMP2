@@ -138,12 +138,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/RegistrationTableViewController.swift"
-                  timestampString = "507831587.597143"
+                  timestampString = "507870790.189772"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "108"
                   endingLineNumber = "108"
-                  offsetFromSymbolStart = "13085">
+                  offsetFromSymbolStart = "10100">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -153,12 +153,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/RegistrationTableViewController.swift"
-                  timestampString = "507831587.59845"
+                  timestampString = "507870790.192977"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "112"
                   endingLineNumber = "112"
-                  offsetFromSymbolStart = "56">
+                  offsetFromSymbolStart = "60">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -218,12 +218,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/MerchantNotificationsViewController.swift"
-                  timestampString = "507831587.610375"
+                  timestampString = "507870790.248024"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "37"
                   endingLineNumber = "37"
-                  offsetFromSymbolStart = "19">
+                  offsetFromSymbolStart = "24">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -233,12 +233,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/MerchantNotificationsViewController.swift"
-                  timestampString = "507831587.611908"
+                  timestampString = "507870790.250225"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "38"
                   endingLineNumber = "38"
-                  offsetFromSymbolStart = "120">
+                  offsetFromSymbolStart = "108">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -362,12 +362,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/AllChatViewController.swift"
-                  timestampString = "507831587.633695"
+                  timestampString = "507870790.434207"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
                   endingLineNumber = "23"
-                  offsetFromSymbolStart = "86">
+                  offsetFromSymbolStart = "96">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -377,12 +377,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/AllChatViewController.swift"
-                  timestampString = "507831587.635361"
+                  timestampString = "507870790.445721"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
                   endingLineNumber = "23"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -442,12 +442,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/DBProvider.swift"
-                  timestampString = "507831587.645385"
+                  timestampString = "507870790.471663"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "639"
                   endingLineNumber = "639"
-                  offsetFromSymbolStart = "40">
+                  offsetFromSymbolStart = "60">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -457,12 +457,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/DBProvider.swift"
-                  timestampString = "507831587.646678"
+                  timestampString = "507870790.472897"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "639"
                   endingLineNumber = "639"
-                  offsetFromSymbolStart = "577">
+                  offsetFromSymbolStart = "488">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -506,12 +506,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/CustomerSpecificChatViewController.swift"
-                  timestampString = "507831587.654494"
+                  timestampString = "507870790.503648"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "59"
                   endingLineNumber = "59"
-                  offsetFromSymbolStart = "502">
+                  offsetFromSymbolStart = "380">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -521,12 +521,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/CustomerSpecificChatViewController.swift"
-                  timestampString = "507831587.656577"
+                  timestampString = "507870790.50677"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
                   endingLineNumber = "60"
-                  offsetFromSymbolStart = "183">
+                  offsetFromSymbolStart = "152">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -586,12 +586,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/DBProvider.swift"
-                  timestampString = "507831587.667204"
+                  timestampString = "507870790.520181"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "595"
                   endingLineNumber = "595"
-                  offsetFromSymbolStart = "31">
+                  offsetFromSymbolStart = "32">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -601,12 +601,12 @@
                   moduleName = "EMP2"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/DBProvider.swift"
-                  timestampString = "507831587.669944"
+                  timestampString = "507870790.521425"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "597"
                   endingLineNumber = "597"
-                  offsetFromSymbolStart = "40">
+                  offsetFromSymbolStart = "60">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -641,6 +641,54 @@
             endingLineNumber = "61"
             landmarkName = "didPressSend(_:withMessageText:senderId:senderDisplayName:date:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EMP2/MerchantNotificationsViewController.swift"
+            timestampString = "507870156.697639"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "sendButtonTapped(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EMP2.MerchantNotificationsViewController.sendButtonTapped (Any) -&gt; ()"
+                  moduleName = "EMP2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/MerchantNotificationsViewController.swift"
+                  timestampString = "507870790.533458"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EMP2.MerchantNotificationsViewController.(sendButtonTapped (Any) -&gt; ()).(closure #1)"
+                  moduleName = "EMP2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DesmondB/Desktop/Dom/App%20stuff/iOS%20apps/WIP/EMP2/EMP2/MerchantNotificationsViewController.swift"
+                  timestampString = "507870790.535343"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "108">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
