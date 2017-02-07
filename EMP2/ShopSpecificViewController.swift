@@ -80,6 +80,14 @@ class ShopSpecificViewController: UIViewController, FetchInventoryData, FetchSin
             
         }
     }
+    
+    @IBAction func followButtonTapped(_ sender: Any) {
+        
+        
+        
+    }
+    
+    
 
 }
 

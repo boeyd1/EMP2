@@ -10,6 +10,7 @@ import Foundation
 import FirebaseDatabase
 import FirebaseStorage
 import UIKit
+import OneSignal
 
 protocol FetchCustomerData: class {
     
@@ -143,6 +144,26 @@ class DBProvider {
             let dataForCustomerRef: Dictionary<String, Any> = [Constants.ONE_SIGNAL_TOKEN: token]
             customersRef.child(AuthProvider.Instance.userID()).updateChildValues(dataForCustomerRef)
         }
+        
+    }
+    
+    func follow(id: String){
+        OneSignal.idsAvailable({(userId, pushToken) in
+        
+            self.merchantsRef.child(id).child(Constants.FOLLOWERS).child(AuthProvider.Instance.userID()).setValue(userId)
+            
+           
+            self.customersRef.child(AuthProvider.Instance.userID()).child(Constants.FOLLOWING).child(id).setValue(id)
+            
+        })
+        
+    }
+    
+    func getFolloweeIds(){
+        
+    }
+    
+    func getFollowerIds(){
         
     }
     

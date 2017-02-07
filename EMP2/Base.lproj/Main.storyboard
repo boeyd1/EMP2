@@ -2091,6 +2091,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PgE-5j-reS">
                                             <rect key="frame" x="8" y="218" width="149.5" height="29"/>
                                             <state key="normal" title="Follow"/>
+                                            <connections>
+                                                <action selector="followButtonTapped:" destination="Bnn-va-3dn" eventType="touchUpInside" id="xvX-FD-Jry"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyq-O3-JtY">
                                             <rect key="frame" x="162.5" y="218" width="149.5" height="29"/>
@@ -2400,6 +2403,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NB4-XR-a0D"/>
-        <segue reference="RhA-ah-5PE"/>
+        <segue reference="4sS-53-bol"/>
     </inferredMetricsTieBreakers>
 </document>

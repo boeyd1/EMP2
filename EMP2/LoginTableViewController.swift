@@ -135,6 +135,8 @@ class LoginTableViewController: UITableViewController {
                 }
             })
         }else if segue.identifier == SHOW_CUSTOMER_STORYBOARD {
+            
+            //check existing onesignal id
             OneSignal.idsAvailable({ (userId, pushToken) in
                 print("UserId:%@", userId)
                 DBProvider.Instance.updateOneSignalUserId(isMerchant: false, id: userId!)
